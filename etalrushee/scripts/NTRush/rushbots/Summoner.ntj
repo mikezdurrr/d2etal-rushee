@@ -57,8 +57,12 @@ function NTMain()
 	}
 
 	NTM_MakeTP();
+	NTC_Delay(500);
+	NTA_ClearPosition(20);
 
 	Say("Summoner up!");
+	NTC_Delay(2000);//wait for monsters to draw near
+	NTA_ClearPosition(20);
 	
 	while(!NTC_IsQuesterIn()) {
 		NTC_TPGuard(10);
