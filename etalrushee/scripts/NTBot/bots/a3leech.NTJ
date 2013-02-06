@@ -10,13 +10,23 @@ function NTMain(){
 	NTA_Initialize();
 	RegisterEvent(EVENT_GAMEMSG, chat);
 
-	if(!NTTM_CheckAct(3)) {
-		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_CheckAct()");
+	if(!NTTM_CheckAct()) {
+		NTC_SendMsgToScript("loader.ntj", "NTTM_CheckAct()");
 		return;
 	}
 
-
 	NTTMGR_TownManager();
+
+	if(!NTTM_TownMove("waypoint")) {
+		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
+		return;
+	}
+
+	if(!NTM_TakeWaypoint(75)) {
+		NTC_SendMsgToScript("loader.ntj", "NTM_TakeWaypoint()");
+		return;
+	}
+
 	if(!NTTM_TownMove("portalspot")) {
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
 		return;
