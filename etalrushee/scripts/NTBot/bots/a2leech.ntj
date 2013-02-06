@@ -126,7 +126,7 @@ function chat(msg, type)
 							NTM_UsePortal("BluePortal", 71, NTConfig_Leader);
 							NTM_UsePortal("BluePortal", 72, NTConfig_Leader);}
 							NTPR_PlaceStaff();
-							NTC_Delay(15500);
+							NTC_Delay(14000);
 							GoDuriel();
 							NTC_Delay(5000);
 							TalkTyrael();
