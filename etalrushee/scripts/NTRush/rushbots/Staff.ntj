@@ -19,6 +19,7 @@ function NTMain()
 
 	NTTMGR_TownManager();
 
+	NTC_Delay(5000);
 	Say("Talk to Drognan!");
 	NTC_Delay(3000);
 
