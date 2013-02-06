@@ -1,0 +1,132 @@
+function NTMain()
+{
+
+	Include("libs/common/NTCommon.ntl");
+	NTC_IncludeLibs();
+	NTC_IncludeConfig("NTBot/char_configs");
+
+	NT_LoadConfig();
+	NTSI_LoadNIPFiles("NTBot/item_configs");
+
+	NTA_Initialize();
+
+	RegisterEvent(EVENT_GAMEMSG, chat);
+
+	if(!NTTM_CheckAct(1)) 
+	{
+		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_CheckAct()");
+		return;
+	}
+
+	NTTMGR_TownManager();
+
+	if(!NTTM_TownMove("portalspot")) 
+	{
+		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
+		return;
+	}
+
+	while(1) 
+	{
+		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
+		me.Cancel(0);
+		NTC_Delay(250);
+	}
+					
+}
+
+function chat(msg, type)
+{
+    if(type == 0)
+    {
+        var _split = msg.split(":");
+        if(_split.length >= 1 && _split[1] != undefined)
+        {
+            var _sender = _split[0].substring(3, _split[0].length - 3);
+            var _msg = _split[1].substring(1);
+            if(_sender == NTConfig_Leader)
+            {
+                switch(_msg)
+                {
+                    case "Andariel up!" :
+                    NTC_Delay(200);
+                    for(var i = 0 ; i < 100 && me.areaid == 1 ; i++)
+                    {
+                       NTM_UsePortal("BluePortal", 37, NTConfig_Leader);
+                    }
+                    break;
+
+                    case "Andariel is dead!" :
+                    NTC_Delay(200);
+		    CL_TakePortal();
+                    NTC_Delay(200);
+		    GoEast();
+                    break;  
+                }
+            }
+        }
+    }
+    else if(type == 4 && (msg.indexof("weaken") != -1) && (msg.indexof(NTConfig_Leader) != -1))
+    {
+        NTC_Delay(750);
+        ExitGame();
+    }
+}
+
+function GoEast()
+{
+NTC_Delay(200);
+	if(me.areaid != 1)
+		CL_TakePortal();
+			while(me.areaid == 1)
+			{
+				NTTM_TownMove("warriv");
+				_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(2895), 5);
+				if(_npc)
+				{
+					NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+					if(NTT_DoInteract(_npc))
+					{
+						for(var i = 0 ; i < 4 ; i++)
+						{
+							if((i % 4) == 0)
+							me.SelectNPCMenu(0x0D36);
+							NTC_Delay(200);
+						}
+						me.Cancel(1);
+					}
+				}
+                        NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");
+			}
+		return;
+}
+
+function CL_TakePortal()
+{
+	var _prearea = me.areaid;
+	var _portal = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3226), 10);
+	if(!_portal)
+		return false;
+
+	do {
+		if(GetDistance(me, _portal) < 15) {
+			for(var i = 0 ; i < 20 ; i++) {
+				if((i % 5) == 0) {
+					if(i == 10)
+						NTM_MoveTo(_prearea, me.x+6, me.y+6);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
+				}
+				NTC_Delay(200);
+				if(me.areaid != _prearea)
+					break;
+			}
+			while(me.areaid == 0)
+				NTC_Delay(200);
+			if(me.areaid == _prearea)
+				return false;
+			NTC_PingDelay(NTConfig_AreaDelay);
+			return true;
+		}
+	} while(_portal.GetNext());
+	return false;
+}
