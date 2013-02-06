@@ -46,7 +46,7 @@ var fastJoin = false;				// this has preconfigured delays for easy switching.  G
 // =============================================================================
 // Game password (leave blank if none)
 // =============================================================================
-var gamepassword = "521";
+var gamepassword = "";
 
 // =============================================================================
 // UseCDKeyChangeTrick :
