@@ -68,7 +68,7 @@ function NTMain()
 	while(!NTC_IsQuesterIn()) {
 		NTC_TPGuard(5);
 	}
-	NTC_Delay(3000);
+	NTC_Delay(10000);
 	NTM_UsePortal("BluePortal", 40, me.charname);
 	NTTMGR_TownManager();
 
