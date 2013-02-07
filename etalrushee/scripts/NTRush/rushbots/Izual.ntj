@@ -36,9 +36,9 @@ function NTMain()
 
 	NTA_ClearPosition(10);
 
-	Say("Izzy up!");
-
 	NTM_MakeTP();
+
+	Say("Izzy up!");
 
 	NTA_ClearPosition(10);
 
@@ -61,11 +61,11 @@ function NTMain()
 	
 	NTC_Delay(2000);
 
-	NTM_MakeTP();
-
 	NTA_ClearPosition(10);
 
 	NTSI_PickItems();
+
+	NTM_MakeTP();
 
 	NTM_UsePortal("BluePortal", 103, me.charname);
 
