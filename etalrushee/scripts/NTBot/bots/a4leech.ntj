@@ -37,6 +37,21 @@ function chat(msg, type)
 			var _msg = _split[1].substring(1);
 			if(_sender == NTConfig_Leader) {
 				switch(_msg) {
+
+					case "Izzy up!" :
+						if(me.areaid == 103){
+						NTM_UsePortal("BluePortal", 105, NTConfig_Leader);
+						}
+						break;
+
+					case "Izzy dead!" :
+						NTC_Delay(100);
+						if(me.areaid == 105){
+						TalkIzzy();
+						CL_TakePortal();
+						}
+						break;
+
 					case "Diablo up!" :
 						NTC_Delay(100);
 						if(me.areaid == 103){
@@ -78,7 +93,7 @@ function GoTyrael()
 					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 					NTC_CancelOut(0);
-					NTC_Delay(2000);//let portal open
+					NTC_Delay(1000);//let portal open
 				}
             		}
 		}
@@ -100,7 +115,7 @@ function CL_TakePortal()
 			for(var i = 0 ; i < 20 ; i++) {
 				if((i % 5) == 0) {
 					if(i == 10)
-					NTM_MoveTo(_prearea, me.x+6, me.y+6);
+						NTM_MoveTo(_prearea, me.x+6, me.y+6);
 					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
 				}
 				NTC_Delay(200);
