@@ -38,15 +38,16 @@ function chat(msg, type)
 			var _msg = _split[1].substring(1);
 			if(_sender == NTConfig_Leader) {
 				switch(_msg) {
+					case "malah" :
+						TalkMalah();
+						break;
 					case "Anya up!" :
-						if(me.areaid == 109){
 						TalkAnya();
 						TalkMalah();
 						TalkAnya();
 						TalkMalah();
 						NTC_Delay(1000);
 						ReadBook();
-						}
 						break;
 					case "Shenk up!" :
 						NTC_Delay(100);
@@ -56,8 +57,8 @@ function chat(msg, type)
 						break;
 					
 					case "Shenk is dead!" :
-						if(me.areaid == 110){
 						NTC_Delay(100);
+						if(me.areaid == 110){
 						CL_TakePortal();}
 						break;
 				}
@@ -75,19 +76,44 @@ function TalkAnya()
 	if(me.areaid == 109){
 	Say("Heading to Anya");
 	NTM_UsePortal("BluePortal", 114, NTConfig_Leader);
+	}
+	while(me.areaid == 114){
 	NTC_PingDelay(500);
- 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(22478), 5);
+	var _anya = NTC_FindUnit(NTC_UNIT_NPC, NTC_NPC_ID_ANYA_FROZEN_RIVER);
+	if(_anya)
+	{
+		if(GetDistance(me, _anya) > 2)  
+                NTM_MoveTo(_anya.areaid,_anya.x+2, _anya.y);  
+ 
+                NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _anya); 
+		NTC_CancelOut(0); 
+                NTC_PingDelay(500);
+	}
+			}
+
+
+	/*if(me.areaid == 109){
+	Say("Heading to Anya");
+	NTM_UsePortal("BluePortal", 114, NTConfig_Leader);
+	}
+	while(me.areaid == 114){
+	NTC_PingDelay(500);
+ 	_npc = NTC_FindUnit(NTC_UNIT_NPC, NTC_NPC_ID_ANYA_FROZEN_RIVER, 5);
       
 	if(_npc)
  	{
-		if(GetDistance(me, _npc) < 15) 
+		if(GetDistance(me, _npc) < 2) 
 		{
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 			NTC_CancelOut(0);
 		}
+		if(NTT_DoInteract(_npc))
+		{
+			NTC_CancelOut(0);
+		}
 	}				
-		           }
+		           }*/
 return;
 }
 
@@ -97,7 +123,7 @@ function TalkMalah()
 	Say("Talking to Malah");
 	CL_TakePortal();
 	NTTM_TownMove("malah");
- 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(2890), 5);
+ 	_npc = NTC_FindUnit(NTC_UNIT_NPC, NTC_NPC_ID_MALAH, 5);
       
 	if(_npc)
  	{
@@ -105,6 +131,10 @@ function TalkMalah()
 		{
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+			NTC_CancelOut(0);
+		}
+		if(NTT_DoInteract(_npc))
+		{
 			NTC_CancelOut(0);
 		}
 	}				
