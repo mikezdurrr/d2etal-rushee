@@ -65,14 +65,13 @@ function NTMain()
 		
 	Say("Ammy up!");
 
+	while(!NTC_IsQuesterIn()) {
+		NTC_TPGuard(5);
+	}
 	NTC_PingDelay(500);
 
 	NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 149, +5, +2);
 
-	while(!NTC_IsQuesterIn()) {
-		NTC_TPGuard(5);
-	}
-	NTC_Delay(10000);
 	NTM_UsePortal("BluePortal", 40, me.charname);
 	NTTMGR_TownManager();
 
