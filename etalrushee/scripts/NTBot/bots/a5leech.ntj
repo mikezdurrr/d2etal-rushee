@@ -152,7 +152,7 @@ function ReadBook()
 
 	if(_readbook.length == 0)
 	{
-		Print("Don't have: " + COLOR_17 + "Book of Skill");
+		Print("Don't have: " + COLOR_17 + "Scroll of Resistance");
 		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Scroll of Resistance");		
 			returnCheck = true
 	}
