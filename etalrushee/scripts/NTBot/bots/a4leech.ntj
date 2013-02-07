@@ -73,15 +73,17 @@ function GoTyrael()
         		NTM_MoveTo(me.areaid, _npc.x, _npc.y);
          		if(NTT_DoInteract(_npc))
             		{
-              			for(var i = 0 ; i < 4 ; i++)
-               			{
-                  			if((i % 4) == 0)
-                     			me.SelectNPCMenu(0x0D35);
-                  			NTC_Delay(100);
-               			}
-               				 me.Cancel(1);
-            	}
+				if(GetDistance(me, _npc) < 15) 
+				{
+					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+					NTC_CancelOut(0);
+					NTC_Delay(5000);
+					NTC_CancelOut(0);
+					NTC_Delay(1000);//let portal open
 				}
+            		}
+		}
 				GoHarrogath();
 				NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");												
 				}
