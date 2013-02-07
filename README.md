@@ -18,5 +18,5 @@ I'm not sure if there is a better way of doing this at this time, although I do 
 - In the NTBot char_config: I recommend you setting your rushee's NTConfig_PartyMaxTime = 20; to 2000 
 this ensures the rushee won't leave before your rushbot gets in game.
 
-- I plan on adding in skills/tomb/anya quests in the near future.
+- I plan on adding in skills/tome/anya quests in the near future.
 
