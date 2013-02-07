@@ -103,9 +103,9 @@ function NTMain()
 		}
 
 		NTSI_PickItems();	
-		NTC_Delay(25000);
+		NTC_Delay(10000);
 		NTM_MakeTP(true);
-		NTC_Delay(25000);
+		NTC_Delay(2000);
 	}
 	
 	NTC_PutSkill(115, NTC_HAND_RIGHT);	
