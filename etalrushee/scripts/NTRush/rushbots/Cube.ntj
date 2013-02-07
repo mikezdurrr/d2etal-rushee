@@ -74,7 +74,7 @@ function NTMain()
 		while(!NTC_IsQuesterIn()) {
 			NTC_TPGuard(30);
 		}
-		NTC_Delay(6000);
+		NTC_Delay(2000);
 
 		NTSI_PickItems();
 
