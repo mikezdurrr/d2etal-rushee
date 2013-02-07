@@ -36,9 +36,11 @@ function NTMain()
 
 	NTA_ClearPosition(10);
 
-	Say("Izzy up! If you die stay dead!");
+	Say("Izzy up!");
 
 	NTM_MakeTP();
+
+	NTA_ClearPosition(10);
 
 	while(!NTC_IsQuesterIn()) {
 		NTC_TPGuard(20);
@@ -55,9 +57,11 @@ function NTMain()
 
 	NTSI_PickItems();
 
-	NTM_MakeTP();
+	Say("Izzy dead!");
+	
+	NTC_Delay(2000);
 
-	Say("Izzy dead! Talk to Tyreal to get your skills!");
+	NTM_MakeTP();
 
 	NTA_ClearPosition(10);
 
