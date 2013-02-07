@@ -79,7 +79,7 @@ function TalkAnya()
 	}
 	while(me.areaid == 114){
 	NTC_PingDelay(500);
-	var _anya = NTC_FindUnit(NTC_UNIT_NPC, NTC_NPC_ID_ANYA_FROZEN_RIVER);
+	var _anya = NTC_FindUnit(NTC_UNIT_NPC, NTC_NPC_ID_ANYA_FROZEN_RIVER, 5);
 	if(!_anya){Say("I can't find Anya"); return;}
 	if(_anya)
 	{
