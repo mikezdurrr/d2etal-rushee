@@ -52,9 +52,12 @@ function NTMain()
 
 	NTA_ClearPosition();
 
-	NTSI_PickItems();
+	NTM_MoveTo(110, 3855, 5125);
+	NTM_MakeTP();
 
 	Say("Shenk is dead!");
+
+	NTSI_PickItems();
 
 	if(!NTM_MoveTo(110, 3865, 5125)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveTo()");
