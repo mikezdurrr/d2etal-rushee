@@ -38,6 +38,16 @@ function chat(msg, type)
 			var _msg = _split[1].substring(1);
 			if(_sender == NTConfig_Leader) {
 				switch(_msg) {
+					case "Anya up!" :
+						if(me.areaid == 109){
+						TalkAnya();
+						TalkMalah();
+						TalkAnya();
+						TalkMalah();
+						NTC_Delay(1000);
+						ReadBook();
+						}
+						break;
 					case "Shenk up!" :
 						NTC_Delay(100);
 						if(me.areaid == 109){
@@ -58,6 +68,114 @@ function chat(msg, type)
 		NTC_Delay(750);
 		ExitGame();
 	}
+}
+
+function TalkAnya()
+{
+	if(me.areaid == 109){
+	Say("Heading to Anya");
+	NTM_UsePortal("BluePortal", 114, NTConfig_Leader);
+	NTC_PingDelay(500);
+ 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(22478), 5);
+      
+	if(_npc)
+ 	{
+		if(GetDistance(me, _npc) < 15) 
+		{
+			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+			NTC_CancelOut(0);
+		}
+	}				
+		           }
+return;
+}
+
+function TalkMalah()
+{
+	if(me.areaid == 114){
+	Say("Talking to Malah");
+	CL_TakePortal();
+	NTTM_TownMove("malah");
+ 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(2890), 5);
+      
+	if(_npc)
+ 	{
+		if(GetDistance(me, _npc) < 15) 
+		{
+			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+			NTC_CancelOut(0);
+		}
+	}				
+		           }
+	CheckLocation();
+return;
+
+}
+
+function ReadBook()
+{
+	var i;
+	var _readbook = me.GetItems(646);
+	var returnCheck = false;
+
+	if(_readbook.length == 0)
+	{
+		Print("Don't have: " + COLOR_17 + "Book of Skill");
+		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Scroll of Resistance");		
+			returnCheck = true
+	}
+	if(returnCheck)
+	{
+		Print("Didn't get the Scroll of Resistance");
+		return false;
+	}
+	
+	else if(!returnCheck)
+	{
+
+	SetUIState(0x01, true);
+
+	if(_readbook.length > 0 && _readbook[0])
+	{
+    		for(i = 0; i < 5; i++)
+    		{
+        		me.ClickItem(1, _readbook[0]);
+        
+        		Delay(500);
+        
+        		if(me.itemoncursor)
+            		break;
+    		}
+	}
+
+	if(i < 5)
+	{
+    		for(i = 0; i < 5; i++)
+    		{
+        		me.ClickItem(1, 0, 0, 0);
+        
+        		Delay(500);
+        
+        		if(!me.itemoncursor)
+            		break;
+    		}
+	}
+		me.Cancel(1);
+		Print("My resistance has increased!");
+		if(_readbook.length > 0)
+			return true;
+		else
+			return false;
+	}
+
+
+}
+
+function CheckLocation()
+{
+	NTTM_TownMove("portalspot");
 }
 
 function CL_TakePortal()
