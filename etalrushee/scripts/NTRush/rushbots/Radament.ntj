@@ -82,8 +82,6 @@ function NTMain()
 		_rad = [me.x, me.y];
 	}
 
-	NTSI_PickItems();
-
 	Say("Radament dead!");
 
 	NTM_MoveTo(me.areaid, _rad[0], _rad[1]);
@@ -99,6 +97,8 @@ function NTMain()
 	while(NTC_IsQuesterIn()) {
 		NTC_TPGuard(30);
 	}
+
+	NTSI_PickItems();
 
 	NTM_UsePortal("BluePortal", 40, me.charname);
 	
