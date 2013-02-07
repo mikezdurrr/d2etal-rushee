@@ -167,6 +167,8 @@ function talktoCain()
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 			NTC_CancelOut(0);
+			NTC_Delay(500);
+			NTC_CancelOut(0);
 		}
 	}					
 		           }
@@ -243,6 +245,8 @@ function TalkTyrael()
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 			NTC_CancelOut(0);
+			NTC_Delay(500);
+			NTC_CancelOut(0);
 		}
 	}				
 		           }
@@ -267,6 +271,8 @@ function TalkJer()
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 			NTC_CancelOut(0);
+			NTC_Delay(500);
+			NTC_CancelOut(0);
 		}
 	}					
 		           }
@@ -285,6 +291,8 @@ function TalkJer()
 				{
 					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+					NTC_CancelOut(0);
+					NTC_Delay(500);
 					NTC_CancelOut(0);
 				}
          	if(NTT_DoInteract(_npc))
@@ -328,6 +336,8 @@ function GoCain()
 		{
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+			NTC_CancelOut(0);
+			NTC_Delay(500);
 			NTC_CancelOut(0);
 		}
 	}				
