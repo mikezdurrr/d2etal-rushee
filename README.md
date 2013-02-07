@@ -9,8 +9,7 @@ A few things to mention:
 - When using the rushbot
 if you are going to skip ahead or back up a script YOU MUST PAUSE FIRST with printscreen.
 
-- If for some reason the rushbot leaves the game the rushee will also leave!
-- It's somewhere in there but I'll have to disable the leader check.
+- If for some reason the rushbot leaves the game the rushee will also leave! It's somewhere in there but I'll have to disable the leader check.
 
 - When the rushee is called to enter Duriel's tomb and place staff in the orifice, 
 be patient it may take 1 second, it may take 10 seconds depending on which tomb it is. 
