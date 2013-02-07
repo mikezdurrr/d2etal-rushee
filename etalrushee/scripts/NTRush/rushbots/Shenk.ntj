@@ -54,7 +54,7 @@ function NTMain()
 
 	NTSI_PickItems();
 
-	Say("Shenk is dead! Got talk to Larzark!");
+	Say("Shenk is dead!");
 
 	if(!NTM_MoveTo(110, 3865, 5125)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveTo()");
