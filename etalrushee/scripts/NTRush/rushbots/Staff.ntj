@@ -19,9 +19,7 @@ function NTMain()
 
 	NTTMGR_TownManager();
 
-	NTC_Delay(5000);
 	Say("Talk to Drognan!");
-	NTC_Delay(3000);
 
 	if(!NTTM_TownMove("waypoint")) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
@@ -91,7 +89,7 @@ function NTMain()
 	NTM_MakeTP(true);
 
 	Say("Staff up!");
-	Delay(10000);
+	Delay(5000);
 
 	NTTMGR_TownManager();
 	
