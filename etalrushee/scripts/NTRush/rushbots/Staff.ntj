@@ -91,6 +91,8 @@ function NTMain()
 	Say("Staff up!");
 	Delay(5000);
 
+	NTM_UsePortal("BluePortal", 1, me.charname);
+
 	NTTMGR_TownManager();
 	
 	NTC_SendMsgToScript("loader.ntj", "end");
