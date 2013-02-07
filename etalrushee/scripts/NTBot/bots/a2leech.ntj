@@ -36,6 +36,9 @@ function chat(msg, type)
 			var _msg = _split[1].substring(1);
 			if(_sender == NTConfig_Leader) {
 				switch(_msg) {
+					case "move staff" :
+						MoveStaff();
+						break;
 					case "Radament up!" :
 						if(me.areaid == 40){
 						NTM_UsePortal("BluePortal", 49, NTConfig_Leader);}
@@ -525,7 +528,7 @@ function NTPR_MakeStaff()
 	var shaft = me.GetItems(92);
 	var vpramu = me.GetItems(521);
 	var cube = me.GetItems(549);
-	var _horadricstaff = me.GetItems(91)
+	var _horadricstaff = me.GetItems(91);
 
 	if(shaft.length == 0)
 	{
@@ -552,32 +555,33 @@ function NTPR_MakeStaff()
 	}
 	
 	else if(!returnCheck)
-	{
+	{	
 		SetUIState(0x01, true);  		//opens inv
 
 		NTCU_MoveItemToCubeInt(cube[0], shaft[0]);
 		NTCU_MoveItemToCubeInt(cube[0], vpramu[0]);
-		
+
 		NTCU_OpenCubeInt(cube[0]);
 		Transmute();
 		NTC_Delay(3000);
-		NTCU_ClearCubeInt(cube[0]);
+		//NTCU_ClearCubeInt(cube[0]);
+		MoveStaffToInventoryInt(_horadricstaff[0]);
 		NTCU_CloseCubeInt(cube[0]);
 		me.Cancel(1);
 		Print("Staff made!");
 		if(_horadricstaff.length > 0)
 			return true;
 		else
-			return false;
+			return false;		
 	}
 }
 
 function NTPR_PlaceStaff() 
 {
 	var _horadricstaff = me.GetItems(91);
-	
+
 	if(_horadricstaff.length == 0)
-	{	
+	{			
 		Print("Don't have: " + COLOR_17 + "Horadric Staff");
 		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Don't have Horadric Staff");
 			return;
@@ -598,8 +602,8 @@ function NTPR_PlaceStaff()
                 NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _orifice);  
                 NTC_PingDelay(1000);  
         }  
- 
-        NTC_ItemToCursor(_horadricstaff[0]);   
+	
+        NTC_ItemToCursor(_horadricstaff[0]);
  
         NTC_Delay(500);  
         SubmitItem();  
@@ -699,4 +703,81 @@ function ReadBook()
 	}
 
 
+}
+
+function MoveStaffToInventoryInt(item)
+{
+	var x, y, m, n;
+	var _havespace;
+
+	for(y = 0 ; y < 4 ; y++)
+	{
+		for(x = 0 ; x < 10 ; x++)
+		{
+			_havespace = true;
+
+			for(m = 0 ; m < item.ysize ; m++)
+			{
+				for(n = 0 ; n < item.xsize ; n++)
+				{
+					if(_NTCU_Inventory[y+m][x+n] == 1)
+					{
+						_havespace = false;
+						m = 4;
+						break;
+					}
+				}
+			}
+
+			if(_havespace)
+			{
+				if(!NTC_ItemToCursor(item))
+					return false;
+
+				for(m = 0 ; m < 80 ; m++)
+				{
+					if((m % 40) == 0)
+						me.ClickItem(0, 2, 0, 0);
+
+					NTC_Delay(100);
+
+					if(!me.itemoncursor)
+						break;
+				}
+
+				if(m >= 80)
+					return false;
+
+				for(m = 0 ; m < item.ysize ; m++)
+				{
+					for(n = 0 ; n < item.xsize ; n++)
+						_NTCU_Inventory[y+m][x+n] = 1;
+				}
+
+				NTC_PingDelay(200);
+
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+function MoveStaff()
+{
+	
+	var _horadricstaff = me.GetItems(91)
+	var cube = me.GetItems(549);
+
+		SetUIState(0x01, true);  		
+		NTCU_OpenCubeInt(cube[0]);
+		NTC_Delay(300);
+		//NTCU_ClearCubeInt(cube[0]);
+		MoveStaffToInventoryInt(_horadricstaff[0]);
+		NTCU_CloseCubeInt(cube[0]);
+		me.Cancel(1);
+		if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0)
+		Print("Staff in inventory!");
+		return true;
 }
