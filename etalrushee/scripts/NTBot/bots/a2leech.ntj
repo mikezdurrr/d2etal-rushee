@@ -129,6 +129,7 @@ function chat(msg, type)
 							GoDuriel();
 							NTC_Delay(5000);
 							TalkTyrael();
+							CL_TakePortal();
 							NTC_Delay(500);
 							TalkJer();
 						
@@ -246,7 +247,6 @@ function TalkTyrael()
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 			NTC_CancelOut(0);
 			NTC_Delay(500);
-			NTC_CancelOut(0);
 		}
 	}				
 		           }
