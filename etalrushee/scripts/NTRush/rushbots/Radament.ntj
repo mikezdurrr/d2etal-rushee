@@ -65,7 +65,7 @@ function NTMain()
 
 	NTM_MakeTP();
 
-	Say("Radament up! If you die stay dead!");
+	Say("Radament up!");
 
 	while(!NTC_IsQuesterIn()) {				
 		NTC_TPGuard(15);
@@ -84,17 +84,18 @@ function NTMain()
 
 	NTSI_PickItems();
 
-	Say("Radament dead! Come get your book of skill!");
-
-	NTA_ClearPosition(25);
-
-	NTSI_PickItems();
+	Say("Radament dead!");
 
 	NTM_MoveTo(me.areaid, _rad[0], _rad[1]);
 
+	NTC_Delay(2000);
+
 	NTM_MakeTP();
 
-	//while(!NTC_IsItemLooted("ass"))
+	NTA_ClearPosition(25);
+
+	Say("Get the book!");
+
 	while(NTC_IsQuesterIn()) {
 		NTC_TPGuard(30);
 	}
