@@ -46,11 +46,11 @@ function NTMain()
 	if(!NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 193)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
 		return;
-	}	
+	}
 
-	Say("Lam Esens Tome up!");
+	NTM_MakeTP();	
 
-	NTM_MakeTP();
+	Say("Tome up!");
 
 	while(!NTC_IsQuesterIn()) {
 		NTC_TPGuard(25);
