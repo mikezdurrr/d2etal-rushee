@@ -84,7 +84,7 @@ function NTMain()
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
 		return;
 	}
-	NTC_Delay(5000);
+	NTC_Delay(3000);
 	NTM_MakeTP();
 	while(!NTM_UsePortal("Portal", 40)) {
 		NTA_ClearPosition(40);
