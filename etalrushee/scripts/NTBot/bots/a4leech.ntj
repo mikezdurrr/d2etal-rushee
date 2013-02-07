@@ -47,8 +47,8 @@ function chat(msg, type)
 					case "Izzy dead!" :
 						NTC_Delay(100);
 						if(me.areaid == 105){
-						TalkIzzy();
 						CL_TakePortal();
+						TalkTyrael();
 						}
 						break;
 
@@ -73,6 +73,31 @@ function chat(msg, type)
 		NTC_Delay(750);
 		ExitGame();
 	}
+}
+
+function TalkTyrael()
+{
+	NTC_Delay(100);
+	if(me.areaid == 103) {
+	NTTM_TownMove("tyrael");
+
+ 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
+      
+      		if(_npc)
+      		{
+        		NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+         		if(NTT_DoInteract(_npc))
+            		{
+				if(GetDistance(me, _npc) < 15) 
+				{
+					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+					NTC_CancelOut(0);
+				}
+            		}
+		}												
+				}
+return;
 }
 
 function GoTyrael()
