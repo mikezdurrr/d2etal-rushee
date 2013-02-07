@@ -91,7 +91,7 @@ function NTMain()
 	NTM_MakeTP(true);
 
 	Say("Staff up!");
-	Delay(28000);
+	Delay(10000);
 
 	NTTMGR_TownManager();
 	
