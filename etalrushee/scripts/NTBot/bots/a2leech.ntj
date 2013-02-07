@@ -239,6 +239,7 @@ function TalkTyrael()
 	Say("Heading to Tyrael");
    	GoTyrael();
       	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
+	//if(!_npc){return true;}
       	if(_npc)
       	{
 		if(GetDistance(me, _npc) < 15) 
@@ -317,6 +318,7 @@ if(me.areaid == 40){
 NTM_MoveTo(40,5097,5060);
 NTM_MoveTo(40,5095,5154);
 NTM_MoveTo(40,5077,5151);
+NTM_MoveTo(40,5065,5145);
 }
 return;
 }
