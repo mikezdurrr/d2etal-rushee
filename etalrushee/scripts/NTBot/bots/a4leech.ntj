@@ -95,7 +95,8 @@ function TalkTyrael()
 					NTC_CancelOut(0);
 				}
             		}
-		}												
+		}
+				CheckLocation();
 				}
 return;
 }
@@ -126,6 +127,11 @@ function GoTyrael()
 				NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");												
 				}
 return;
+}
+
+function CheckLocation()
+{
+	NTTM_TownMove("portalspot");
 }
 
 function CL_TakePortal()
