@@ -85,6 +85,8 @@ function NTMain()
 		NTC_TPGuard(25);
 	}
 
+	NTC_Delay(2000);
+
 	NTM_UsePortal("BluePortal", 109, me.charname);
 	
 	NTC_SendMsgToScript("loader.ntj", "end");
