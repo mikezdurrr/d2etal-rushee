@@ -564,11 +564,11 @@ function NTPR_MakeStaff()
 		NTCU_OpenCubeInt(cube[0]);
 		Transmute();
 		NTC_Delay(3000);
-		//NTCU_ClearCubeInt(cube[0]);
-		MoveStaffToInventoryInt(_horadricstaff[0]);
+		NTCU_ClearCubeInt(cube[0]);
 		NTCU_CloseCubeInt(cube[0]);
 		me.Cancel(1);
 		Print("Staff made!");
+		MoveStaff();
 		if(_horadricstaff.length > 0)
 			return true;
 		else
