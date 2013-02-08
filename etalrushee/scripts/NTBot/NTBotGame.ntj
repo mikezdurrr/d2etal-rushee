@@ -1,6 +1,6 @@
 var CurScriptIndex = 0;
 var LastScript = false;
-var Rev = "Rushee v1.0.106";
+var Rev = "Rushee v1.0.108";
 
 // Provalone Edit //
 //Include("libs/common/NTExp.ntl");
