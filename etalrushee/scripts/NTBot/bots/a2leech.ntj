@@ -52,6 +52,7 @@ function chat(msg, type)
 						NTM_UsePortal("BluePortal", 49, NTConfig_Leader);}
 						while(me.areaid == 49){
 						GetBook();
+						NTC_Delay(1500);
 						CL_TakePortal();
 						NTC_Delay(500);
 						ReadBook();
