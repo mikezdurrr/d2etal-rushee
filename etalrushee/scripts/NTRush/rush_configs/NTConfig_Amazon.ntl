@@ -12,22 +12,22 @@ function NT_LoadConfig()
 	NTConfig_RushScript = [
 		//"Cain",
 		"Andy",
-		//"Radament",
+		"Radament",
 		"Cube",
 		"Ammy",
 		"Staff",
 		"Summoner",
 		"Duriel",
-		//"Tome",
+		"Tome",
 		"Travincal",
 		"Mephisto",
-		//"Izual",
+		"Izual",
 		"Diablo",
 		"Shenk",
-		//"Anya",
-		//"Ancients",
-		//"Baal",
-		//"Waypoints"
+		"Anya",
+		"Ancients",
+		"Baal",
+		"Waypoints"
 	];
 
 	NTConfig_TpHarem = true;
