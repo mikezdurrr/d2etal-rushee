@@ -62,6 +62,7 @@ function chat(msg, type)
 					case "Shenk is dead!" :
 						NTC_Delay(100);
 						if(me.areaid == 110){
+						NTC_PingDelay(500);
 						CL_TakePortal();}
 						break;
 				}
@@ -114,8 +115,9 @@ function TalkMalah()
                		{
                   		if((i % 4) == 0)
                      		me.SelectNPCMenu(0x0D35);
-                  		NTC_Delay(100);
+				NTC_PingDelay(500);
 				NTC_CancelOut(0);
+				NTC_PingDelay(500);
                		}
 		}
 	}				
