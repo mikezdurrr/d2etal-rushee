@@ -47,7 +47,9 @@ function chat(msg, type)
 					case "Izzy dead!" :
 						NTC_Delay(100);
 						if(me.areaid == 105){
+						NTC_PingDelay(500);
 						CL_TakePortal();
+						NTC_PingDelay(500);
 						TalkTyrael();
 						}
 						break;
@@ -63,6 +65,7 @@ function chat(msg, type)
 					case "Diablo is dead!" :
 						NTC_Delay(100);
 						CL_TakePortal();
+						NTC_PingDelay(500);
 						GoTyrael();
 						break;
 				}
@@ -92,7 +95,9 @@ function TalkTyrael()
 				{
 					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+					NTC_PingDelay(500);
 					NTC_CancelOut(0);
+					NTC_PingDelay(500);
 				}
             		}
 		}
@@ -118,6 +123,7 @@ function GoTyrael()
 				{
 					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+					NTC_PingDelay(500);
 					NTC_CancelOut(0);
 					NTC_Delay(1000);//let portal open
 				}
