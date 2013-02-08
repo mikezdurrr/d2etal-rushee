@@ -32,9 +32,13 @@ function NT_LoadConfig()
 
 	NTConfig_Leader = "config me";						// Leaders name. (Don't set to yourself.)
 	NTConfig_PartyOnlyLeader = false;					// Party only with leader (NTConfig_Leader)? (If true, NTConfig_PublicMode MUST be set false in the general config section below).
-	NTConfig_PartyMaxTime = 20;							// Time in seconds the leecher has to party with leader before exiting game
+	NTConfig_PartyMaxTime = 1000;							// Time in seconds the leecher has to party with leader before exiting game
 	NTConfig_LeechBo = false; 							// Set false to disable BO & BC cast by leecher.
 	NTConfig_LeechExitDelay = 500;						// Delay before leecher exits game after leader in milliseconds.  Use this to stagger leechers exit times to avoid crashes.
+
+	//------------------------------------------------------------------------------
+	//		RusheeStarter 
+	//------------------------------------------------------------------------------
 
 	NTConfig_Script.push("a1leech.ntj");
 	NTConfig_Script.push("a2leech.ntj");
@@ -43,9 +47,19 @@ function NT_LoadConfig()
 	NTConfig_Script.push("a5leech.ntj");
 
 	//------------------------------------------------------------------------------
+	//		RusheeLeecher
+	//------------------------------------------------------------------------------
+
+	//NTConfig_Script.push("a1RusheeLeecher.ntj");
+	//NTConfig_Script.push("a2RusheeLeecher.ntj");
+	//NTConfig_Script.push("a3RusheeLeecher.ntj");
+	//NTConfig_Script.push("a4RusheeLeecher.ntj");
+	//NTConfig_Script.push("a5RusheeLeecher.ntj");
+
+	//------------------------------------------------------------------------------
 	// Speed Settings
 	//------------------------------------------------------------------------------
-	me.maxgametime = 1200; 								// Maximum game length in seconds (0 is infinite).
+	me.maxgametime = 0; 								// Maximum game length in seconds (0 is infinite).
 	NTConfig_StartDelay = 0;							// Delay time in milliseconds to wait at start.
 	NTConfig_AreaDelay = 500;							// Delay time in milliseconds to wait on each area change.
 	NTConfig_SnagDelay = 500;							// Delay time in milliseconds (added to ping delay) to wait before each pickit call.
