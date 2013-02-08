@@ -38,12 +38,12 @@ set the Picket the way you prefer,
 Find ----- NTConfig_AttackSkill[0] = 0; set all these to the skills of your character class to use on monsters.
 
 4. Go back to the scripts folder(where the EtalManager is) open Rushbot.ntj
-5. 
-Find var leaderAccountName = ""; set this to the Rushee's account name Spelled EXACTLY
-6. 
-Find var leaderName = "";set this to the Rushee's Character name Spelled EXACTLY
-7. 
-Find var gamepassword = ""; Set this to the password you will be using
+
+5. Find var leaderAccountName = ""; set this to the Rushee's account name Spelled EXACTLY
+
+6. Find var leaderName = "";set this to the Rushee's Character name Spelled EXACTLY
+
+7. Find var gamepassword = ""; Set this to the password you will be using
 
 8. Remember to save all changes and move on to EtalManager-Setup
 
