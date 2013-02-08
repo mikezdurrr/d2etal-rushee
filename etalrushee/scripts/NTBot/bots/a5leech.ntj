@@ -16,7 +16,7 @@ function NTMain(){
 	}
 
 
-	NTTMGR_TownManager();
+	//NTTMGR_TownManager();
 	if(!NTTM_TownMove("portalspot")) {
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
 		return;
