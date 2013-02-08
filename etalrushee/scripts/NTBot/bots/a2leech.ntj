@@ -15,7 +15,7 @@ function NTMain(){
 		return;
 	}
 
-	NTTMGR_TownManager();
+	//NTTMGR_TownManager();
 
 	if(me.areaid == 40){NTTM_TownMove("portalspot");}
 
