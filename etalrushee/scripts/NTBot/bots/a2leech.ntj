@@ -359,7 +359,6 @@ function GoCain()
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 			NTC_CancelOut(0);
 			NTC_Delay(500);
-			NTC_CancelOut(0);
 		}
 	}				
 		           }
