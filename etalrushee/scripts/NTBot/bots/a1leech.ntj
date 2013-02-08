@@ -18,7 +18,7 @@ function NTMain()
 		return;
 	}
 
-	NTTMGR_TownManager();
+	//NTTMGR_TownManager();
 
 	if(!NTTM_TownMove("portalspot")) 
 	{
