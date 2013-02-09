@@ -49,6 +49,7 @@ function chat(msg, type)
 						NTM_UsePortal("BluePortal", 49, NTConfig_Leader);}
 						while(me.areaid == 49){
 						GetBook();
+						NTC_PingDelay(500);
 						CL_TakePortal();
 						NTC_Delay(500);
 						ReadBook();}
@@ -58,7 +59,6 @@ function chat(msg, type)
 						if(me.areaid == 40){
 						NTM_UsePortal("BluePortal", 60, NTConfig_Leader);}
 						while(me.areaid == 60){
-						//OpenCubeChest();
 						GetCube();
 						CL_TakePortal();}						
 						break;
@@ -74,18 +74,14 @@ function chat(msg, type)
 					case "Summoner is dead!" :
 						//OpenJournal();
 						CL_TakePortal();
-						GoCain();
 						break;
 
-					case "Duriel up!" :
+					case "Leeches Talk to Tyrael!" :
 						if(me.areaid == 40)
 						{
 							NTC_CheckPlayer(NTConfig_Leader);
 							NTM_UsePortal("BluePortal", _leaderareaid, NTConfig_Leader);}
-							NTPR_PlaceStaff();
-							NTC_Delay(14000);
-							GoDuriel();
-							NTC_Delay(5000);
+							NTC_PingDelay(500);
 							TalkTyrael();
 							NTC_PingDelay(500);
 							CL_TakePortal();
@@ -565,6 +561,18 @@ function GetBook()
 		if ((i % 5) == 0){
 			if (_book.mode == 3 || _book.mode == 5){
 				if (NTC_ClearCursor())
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+				NTC_PingDelay(500);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+				NTC_PingDelay(500);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+				NTC_PingDelay(500);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+				NTC_PingDelay(500);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+				NTC_PingDelay(500);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+				NTC_PingDelay(500);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
 				}
 			}
