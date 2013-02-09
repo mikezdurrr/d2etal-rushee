@@ -768,19 +768,29 @@ function MoveStaffToInventoryInt(item)
 }
 
 function MoveStaff()
-{
-	
+{	
+	var i;
+	var _itemcounts = 0;
 	var _horadricstaff = me.GetItems(91)
 	var cube = me.GetItems(549);
 
-		SetUIState(0x01, true);  		
-		NTCU_OpenCubeInt(cube[0]);
-		NTC_Delay(300);
-		//NTCU_ClearCubeInt(cube[0]);
-		MoveStaffToInventoryInt(_horadricstaff[0]);
-		NTCU_CloseCubeInt(cube[0]);
-		me.Cancel(1);
-		if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0)
-		Print("Staff in inventory!");
-		return true;
+	for(i = 0 ; i < _horadricstaff.length ; i++)
+	{
+		if(_horadricstaff[i].itemloc == 3){
+			Say("Moving Staff to inventory!");
+			NTC_PingDelay(1000);
+			SetUIState(0x01, true);  		
+			NTCU_OpenCubeInt(cube[0]);
+			NTC_Delay(300);
+			//NTCU_ClearCubeInt(cube[0]);
+			MoveStaffToInventoryInt(_horadricstaff[0]);
+			NTCU_CloseCubeInt(cube[0]);
+			me.Cancel(1);
+			if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0)
+			Print("Staff in inventory!");
+			return true;}
+		else if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0){
+			Say("Staff in inventory!");
+			return true;}
+	}
 }
