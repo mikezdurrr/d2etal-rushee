@@ -152,7 +152,7 @@ function chat(msg, type)
 							TalkTyrael();
 							NTC_PingDelay(500);
 							CL_TakePortal();
-							NTC_Delay(500)
+							NTC_PingDelay(1000)
 							TalkJer();						
 						break;
 					case "talk to cain" :
@@ -484,7 +484,7 @@ function CheckLocation()
 	NTM_TakeWaypoint(40);
 	NTC_Delay(100);}
 	
-	if(me.areaid == 40){NTTM_TownMove("portalspot");}
+	else if(me.areaid == 40){NTTM_TownMove("portalspot");NTC_CancelOut(0);}
 return;
 }
 
