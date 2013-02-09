@@ -80,21 +80,18 @@ function chat(msg, type)
 					case "Duriel up!" :
 						if(me.areaid == 40)
 						{
-							//NTM_UsePortal("BluePortal", (66 || 67 || 68 || 69 || 70 || 71 || 72), NTConfig_Leader);
-							NTM_UsePortal("BluePortal", 66, NTConfig_Leader);
-							NTM_UsePortal("BluePortal", 67, NTConfig_Leader);
-							NTM_UsePortal("BluePortal", 68, NTConfig_Leader);
-							NTM_UsePortal("BluePortal", 69, NTConfig_Leader);
-							NTM_UsePortal("BluePortal", 70, NTConfig_Leader);
-							NTM_UsePortal("BluePortal", 71, NTConfig_Leader);
-							NTM_UsePortal("BluePortal", 72, NTConfig_Leader);}
+							NTC_CheckPlayer(NTConfig_Leader);
+							NTM_UsePortal("BluePortal", _leaderareaid, NTConfig_Leader);}
+							NTPR_PlaceStaff();
 							NTC_Delay(14000);
 							GoDuriel();
 							NTC_Delay(5000);
 							TalkTyrael();
+							NTC_PingDelay(500);
 							CL_TakePortal();
-							NTC_Delay(500);
-							TalkJer();
+							NTC_Delay(500)
+							TalkJer();						
+						break;
 					
 					case "go back!":
 						NTC_Delay(100);
