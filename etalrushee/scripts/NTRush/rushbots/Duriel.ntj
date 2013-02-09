@@ -104,6 +104,7 @@ function NTMain()
 
 		NTSI_PickItems();
 		NTM_MakeTP(true);
+		Say("Leeches Talk to Tyrael!");
 	}
 
 	if(!NTTM_TownMove("waypoint")) {
