@@ -79,8 +79,7 @@ function chat(msg, type)
 					case "Leeches Talk to Tyrael!" :
 						if(me.areaid == 40)
 						{
-							NTC_CheckPlayer(NTConfig_Leader);
-							NTM_UsePortal("BluePortal", _leaderareaid, NTConfig_Leader);}
+							NTM_UsePortal("BluePortal", 73, NTConfig_Leader);}
 							NTC_PingDelay(500);
 							TalkTyrael();
 							NTC_PingDelay(500);
