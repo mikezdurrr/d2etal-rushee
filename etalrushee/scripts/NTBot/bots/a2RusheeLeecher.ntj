@@ -414,7 +414,7 @@ function CheckLocation()
 	NTM_TakeWaypoint(40);
 	NTC_Delay(100);}
 	
-	if(me.areaid == 40){NTTM_TownMove("portalspot");}
+	if(me.areaid == 40){NTTM_TownMove("portalspot");NTC_CancelOut(0);}
 return;
 }
 
