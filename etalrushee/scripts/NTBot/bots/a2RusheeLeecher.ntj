@@ -62,7 +62,10 @@ function chat(msg, type)
 						GetCube();
 						CL_TakePortal();}						
 						break;
-
+					case "Staff up!" :
+						NTC_PingDelay(2000);
+						GoCain():
+						break;
 					case "Summoner up!" :
 						NTC_Delay(100);
 						if(me.areaid == 40)
@@ -74,6 +77,8 @@ function chat(msg, type)
 					case "Summoner is dead!" :
 						//OpenJournal();
 						CL_TakePortal();
+						NTC_PingDelay(500);
+						GoCain():
 						break;
 
 					case "Leeches Talk to Tyrael!" :
@@ -425,6 +430,7 @@ var _cube = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2231));
 		if ((i % 5) == 0){
 			if (_cube.mode == 3 || _cube.mode == 5){
 				if (NTC_ClearCursor())
+				NTC_PingDelay(800);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
 				}
 			}
