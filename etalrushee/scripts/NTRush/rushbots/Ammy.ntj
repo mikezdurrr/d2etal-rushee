@@ -68,7 +68,7 @@ function NTMain()
 	while(!NTC_IsQuesterIn()) {
 		NTC_TPGuard(5);
 	}
-	NTC_PingDelay(500);
+	NTC_PingDelay(3000);
 
 	NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 149, +5, +2);
 
