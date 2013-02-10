@@ -9,6 +9,7 @@ function NTMain(){
 
 	NTA_Initialize();
 	RegisterEvent(EVENT_GAMEMSG, chat);
+	NTR_Heal();
 
 	if(!NTTM_CheckAct()) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_CheckAct()");
