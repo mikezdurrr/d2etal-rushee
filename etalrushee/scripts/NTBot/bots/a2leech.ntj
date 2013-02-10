@@ -66,8 +66,6 @@ function chat(msg, type)
 						if(me.areaid == 40){
 						NTM_UsePortal("BluePortal", 60, NTConfig_Leader);}
 						while(me.areaid == 60){
-						//OpenCubeChest();
-						NTC_PingDelay(500);
 						GetCube();
 						NTC_PingDelay(500);
 						CL_TakePortal();
@@ -143,20 +141,27 @@ function chat(msg, type)
 						GoCain();
 						break;
 
+					case "Leeches Talk to Tyrael!" :
+						if(me.areaid == 40)
+						{
+							NTC_PingDelay(500);
+							NTM_UsePortal("BluePortal", 73, NTConfig_Leader);}
+							NTC_PingDelay(500);
+							TalkTyrael();
+							NTC_PingDelay(500);
+							CL_TakePortal();
+							NTC_PingDelay(500);
+							TalkJer();						
+						break;
+
 					case "Duriel up!" :
 						if(me.areaid == 40)
 						{
 							NTC_CheckPlayer(NTConfig_Leader);
 							NTM_UsePortal("BluePortal", _leaderareaid, NTConfig_Leader);}
 							NTPR_PlaceStaff();
-							NTC_Delay(14200);
-							GoDuriel();
-							NTC_Delay(4000);
-							TalkTyrael();
 							NTC_PingDelay(500);
 							CL_TakePortal();
-							NTC_PingDelay(700)
-							TalkJer();						
 						break;
 					case "talk to cain" :
 						talktoCain();
@@ -350,8 +355,6 @@ return;
 
 function GoCain()
 {
-	var _uiflag = 0x08;
-
 	if(me.areaid == 40) {
 	Say("Heading to Cain");
 	NTTM_TownMove("cain");
@@ -490,7 +493,7 @@ return;
 function GetCube()
 {
 for (i = 0; i < 20; i++){
-var _cube = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2231));
+var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549));
 	if (_cube)
 	break;
 	
@@ -498,6 +501,7 @@ var _cube = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2231));
 		if ((i % 5) == 0){
 			if (_cube.mode == 3 || _cube.mode == 5 && _cube.mode != 0 && _cube.mode != 4){
 				if (NTC_ClearCursor())
+				NTC_PingDelay(100);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
 				}
 			}
