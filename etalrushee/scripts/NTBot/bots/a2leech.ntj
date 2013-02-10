@@ -20,7 +20,7 @@ function NTMain(){
 
 	if(me.areaid == 40){NTTM_TownMove("portalspot");}
 
-	while(me.mode != 0)
+	while(me.areaid == 40)
 	{
 		if(me.hp < 40){NTR_Heal();}
 	}
