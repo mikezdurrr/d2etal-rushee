@@ -20,10 +20,11 @@ function NTMain(){
 
 	if(me.areaid == 40){NTTM_TownMove("portalspot");}
 
-	if(me.hp < 40){NTR_Heal();}
+	if(me.hp < 20){NTR_Heal();}
 	
 	while(1) 
 	{
+		if(me.areaid == 40){NTR_Heal();CheckLocation();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
