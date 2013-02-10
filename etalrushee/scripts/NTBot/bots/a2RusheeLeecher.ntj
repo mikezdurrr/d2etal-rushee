@@ -7,7 +7,10 @@ function NTMain(){
 	NT_LoadConfig();
 
 	NTA_Initialize();
+
 	RegisterEvent(EVENT_GAMEMSG, chat);
+
+	NTR_Heal();
 
 	if(!NTTM_CheckAct(2)) {
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_CheckAct()");
