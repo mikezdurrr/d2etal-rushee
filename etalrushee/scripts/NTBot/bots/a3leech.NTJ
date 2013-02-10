@@ -17,7 +17,7 @@ function NTMain(){
 
 	//NTTMGR_TownManager();
 
-	if(me.hp < 40){NTR_Heal();}
+	if(me.hp < 20){NTR_Heal();}
 
 	if(!NTTM_TownMove("waypoint")) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
@@ -36,8 +36,7 @@ function NTMain(){
 
 	while(1) 
 	{
-		if(me.hp < 99){
-		NTR_Heal();}
+		if(me.areaid == 75){NTR_Heal();CheckLocation();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
@@ -79,8 +78,6 @@ function chat(msg, type)
 					case "Council is dead!" :
 						NTC_Delay(100);
 						CL_TakePortal();
-						NTC_PingDelay(100);
-						if(me.hp < 40){NTR_Heal();}
 						NTC_PingDelay(500);
 						GoCain();
 						break;
