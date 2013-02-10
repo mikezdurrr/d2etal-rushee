@@ -21,10 +21,11 @@ function NTMain(){
 		return;
 	}
 	
-	if(me.hp < 40){NTR_Heal();}
+	if(me.hp < 20){NTR_Heal();}
 
 	while(1) 
 	{
+		if(me.areaid == 109){NTR_Heal();CheckLocation();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
@@ -52,7 +53,6 @@ function chat(msg, type)
 						if(me.areaid == 105){
 						CL_TakePortal();
 						NTC_PingDelay(100);
-						if(me.hp < 40){NTR_Heal();}
 						TalkTyrael();
 						}
 						break;
