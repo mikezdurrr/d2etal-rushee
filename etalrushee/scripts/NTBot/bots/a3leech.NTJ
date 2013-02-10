@@ -16,9 +16,6 @@ function NTMain(){
 	}
 
 	//NTTMGR_TownManager();
-
-	if(me.hp < 20){NTR_Heal();}
-
 	if(!NTTM_TownMove("waypoint")) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
 		return;
@@ -36,7 +33,7 @@ function NTMain(){
 
 	while(1) 
 	{
-		if(me.areaid == 75){NTR_Heal();CheckLocation();}
+		if(me.areaid == 75){NTR_Heal();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
