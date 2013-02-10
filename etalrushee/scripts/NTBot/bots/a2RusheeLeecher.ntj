@@ -5,7 +5,6 @@ function NTMain(){
 	NTC_IncludeConfig("NTBot/char_configs");
 
 	NT_LoadConfig();
-	NTSI_LoadNIPFiles("NTBot/item_configs");
 
 	NTA_Initialize();
 	RegisterEvent(EVENT_GAMEMSG, chat);
@@ -14,8 +13,6 @@ function NTMain(){
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_CheckAct()");
 		return;
 	}
-
-	NTTMGR_TownManager();
 
 	if(me.areaid == 40){NTTM_TownMove("portalspot");}
 
@@ -48,10 +45,11 @@ function chat(msg, type)
 						if (me.areaid == 40) {
 						NTM_UsePortal("BluePortal", 49, NTConfig_Leader);}
 						while(me.areaid == 49){
+						NTC_PingDelay(200);
 						GetBook();
-						NTC_PingDelay(500);
+						NTC_PingDelay(200);
 						CL_TakePortal();
-						NTC_Delay(500);
+						NTC_Delay(200);
 						ReadBook();}
 						break;
 					case "Cube up!" :
@@ -59,6 +57,7 @@ function chat(msg, type)
 						if(me.areaid == 40){
 						NTM_UsePortal("BluePortal", 60, NTConfig_Leader);}
 						while(me.areaid == 60){
+						NTC_PingDelay(1000);
 						GetCube();
 						CL_TakePortal();}						
 						break;
@@ -277,8 +276,6 @@ return;
 
 function GoCain()
 {
-	var _uiflag = 0x08;
-
 	if(me.areaid == 40) {
 	Say("Heading to Cain");
 	NTTM_TownMove("cain");
@@ -331,38 +328,6 @@ if(_journal)
                 NTC_PingDelay(500); 
 		me.Cancel(1);
 		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _journal.x, _journal.y-10);
-	}
-return;
-}
-
-function OpenCubeChest()
-{
-	var _chest = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(22528));
- 
-	if(!_chest){return;}
-	if(_chest)
-	{
-		if(GetDistance(me, _chest) > 2)  
-                NTM_MoveTo(_chest.areaid,_chest.x+2, _chest.y);  
- 
-                NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _chest);  
-                NTC_PingDelay(500);
-	}
-return;
-}
-
-function OpenStaffChest()
-{
-	var _chest = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(22520));
- 
-	if(!_chest){return;}
-	if(_chest)
-	{
-		if(GetDistance(me, _chest) > 2)  
-                NTM_MoveTo(_chest.areaid,_chest.x+2, _chest.y);  
- 
-                NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _chest);  
-                NTC_PingDelay(500);
 	}
 return;
 }
@@ -457,104 +422,6 @@ function GoTyrael()
 return;
 }
 
-function NTPR_MakeStaff()
-{
-	var returnCheck = false;
-	var shaft = me.GetItems(92);
-	var vpramu = me.GetItems(521);
-	var cube = me.GetItems(549);
-	var _horadricstaff = me.GetItems(91);
-
-	if(shaft.length == 0)
-	{
-		Print("Don't have: " + COLOR_17 + "Shaft of Horadric Staff");
-		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Don't have Shaft of Horadric Staff");
-			returnCheck = true;
-	}
-	if(vpramu.lengh == 0)
-	{
-		Print("Don't have: " + COLOR_17 + "Viper Amulet");
-		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Don't have Viper Amulet");		
-			returnCheck = true
-	}
-	if(cube.length == 0)
-	{
-		Print("Don't have: " + COLOR_17 + "Horadric Cube");
-		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Don't have Horadric Cube");		
-			returnCheck = true
-	}
-	if(returnCheck)
-	{
-		Print("Do not have proper components for the  Horadric Staff");
-		return false;
-	}
-	
-	else if(!returnCheck)
-	{	
-		SetUIState(0x01, true);  		//opens inv
-
-		NTCU_MoveItemToCubeInt(cube[0], shaft[0]);
-		NTCU_MoveItemToCubeInt(cube[0], vpramu[0]);
-
-		NTCU_OpenCubeInt(cube[0]);
-		Transmute();
-		NTC_Delay(3000);
-		NTCU_ClearCubeInt(cube[0]);
-		NTCU_CloseCubeInt(cube[0]);
-		me.Cancel(1);
-		Print("Staff made!");
-		MoveStaff();
-		if(_horadricstaff.length > 0)
-			return true;
-		else
-			return false;		
-	}
-}
-
-function NTPR_PlaceStaff() 
-{
-	var _horadricstaff = me.GetItems(91);
-
-	if(_horadricstaff.length == 0)
-	{			
-		Print("Don't have: " + COLOR_17 + "Horadric Staff");
-		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Don't have Horadric Staff");
-			return;
-	}
-	
-	for(var b = 0; b < 1; b++)
-	{
-        if(_horadricstaff && _horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0)  
-        {  
-                var _orifice = NTC_FindUnit(NTC_UNIT_OBJECT, 152);  
-        } 
- 
-        if(_orifice)  
-        {  
-                if(GetDistance(me, _orifice) > 2)  
-                NTM_MoveTo(_orifice.areaid,_orifice.x+2, _orifice.y);  
- 
-                NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _orifice);  
-                NTC_PingDelay(1000);  
-        }  
-	
-        NTC_ItemToCursor(_horadricstaff[0]);
- 
-        NTC_Delay(500);  
-        SubmitItem();  
- 
-        NTC_Delay(1000);  
- 
-        _horadricstaff = me.GetItems(91);  
- 
-        if((!_horadricstaff || _horadricstaff.length < 1) && !me.itemoncursor)  
-        {  
-			NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 152, -1, 2);  
-		} 
-	}
-	return true;
-}
-
 function GetBook()
 {
 
@@ -567,16 +434,6 @@ function GetBook()
 		if ((i % 5) == 0){
 			if (_book.mode == 3 || _book.mode == 5){
 				if (NTC_ClearCursor())
-				NTC_PingDelay(800);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-				NTC_PingDelay(500);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-				NTC_PingDelay(500);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-				NTC_PingDelay(500);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-				NTC_PingDelay(500);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
 				NTC_PingDelay(500);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
 				NTC_PingDelay(500);
