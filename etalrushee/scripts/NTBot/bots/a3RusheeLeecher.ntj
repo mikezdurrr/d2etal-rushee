@@ -30,11 +30,10 @@ function NTMain(){
 		return;
 	}
 
-	if(me.hp < 20){NTR_Heal();}
 
 	while(1) 
 	{
-		if(me.areaid == 75){NTR_Heal();CheckLocation();}
+		if(me.areaid == 75){NTR_Heal();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
