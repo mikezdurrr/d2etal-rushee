@@ -30,7 +30,7 @@ function NTMain()
 
 	while(1) 
 	{
-		if(me.areaid == 1){NTR_Heal();CheckLocation();}
+		if(me.areaid == 1){NTR_Heal();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
