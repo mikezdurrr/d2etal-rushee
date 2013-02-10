@@ -136,3 +136,12 @@ function CL_TakePortal()
 	} while(_portal.GetNext());
 	return false;
 }
+function CheckLocation()
+{
+	if(!NTTM_TownMove("portalspot")) 
+	{
+		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
+		return;
+	}
+return;
+}
