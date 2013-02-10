@@ -40,13 +40,13 @@ function chat(msg, type)
 				switch(_msg) {
 					case "Anya up!" :
 						TalkAnya();
-						NTC_PingDelay(700);
+						NTC_PingDelay(500);
 						TalkMalah();
-						NTC_PingDelay(700);
+						NTC_PingDelay(500);
 						TalkAnya();
-						NTC_PingDelay(700);
+						NTC_PingDelay(500);
 						TalkMalah();
-						NTC_Delay(1000);
+						NTC_Delay(500);
 						ReadBook();
 						break;
 					case "Shenk up!" :
