@@ -10,8 +10,6 @@ function NTMain(){
 
 	RegisterEvent(EVENT_GAMEMSG, chat);
 
-	NTR_Heal();
-
 	if(!NTTM_CheckAct(2)) {
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_CheckAct()");
 		return;
@@ -20,6 +18,7 @@ function NTMain(){
 	if(me.areaid == 40){NTTM_TownMove("portalspot");}
 
 	while(1) {
+		NTR_Heal();
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 			me.Cancel(0);
 		NTC_Delay(250);
