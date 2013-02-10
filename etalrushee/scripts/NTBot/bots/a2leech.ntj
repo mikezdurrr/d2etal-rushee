@@ -60,7 +60,9 @@ function chat(msg, type)
 						CL_TakePortal();
 						NTC_PingDelay(500);
 						ReadBook();
-						NTC_PingDelay(1000);
+						NTC_PingDelay(100);
+						if(me.hp < 40){NTR_Heal();}
+						NTC_PingDelay(500);
 						GoCain();}
 						break;
 					case "Cube up!" :
@@ -141,6 +143,8 @@ function chat(msg, type)
 						//OpenJournal();
 						NTC_PingDelay(200);
 						CL_TakePortal();
+						NTC_PingDelay(100);
+						if(me.hp < 40){NTR_Heal();}
 						NTC_PingDelay(600);
 						GoCain();
 						break;
