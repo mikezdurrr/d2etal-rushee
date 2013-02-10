@@ -62,7 +62,7 @@ function NTMain()
 		} while(_unit.GetNext());
 	}
 
-	if(!NTM_MoveTo(me.areaid, 17589, 8068)) {
+	if(!NTM_MoveTo(me.areaid, 17583, 8068)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveTo()");
 		return;
 	}
