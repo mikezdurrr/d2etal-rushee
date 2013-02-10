@@ -493,7 +493,7 @@ return;
 function GetCube()
 {
 for (i = 0; i < 20; i++){
-var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549));
+var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
 	if (_cube)
 	break;
 	
