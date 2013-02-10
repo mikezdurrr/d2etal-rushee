@@ -1,7 +1,5 @@
 function NTR_Heal()
 {
-  if(me.hp < 90)
-	{
 		if(me.areaid == 1)
 		{
 			NTTM_TownMove("akara");
@@ -98,6 +96,5 @@ function NTR_Heal()
 				}
 			}
 		}
-	}
 	return;
 }
