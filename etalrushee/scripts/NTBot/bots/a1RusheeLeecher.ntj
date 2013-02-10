@@ -6,8 +6,7 @@ function NTMain()
 	NTC_IncludeConfig("NTBot/char_configs");
 
 	NT_LoadConfig();
-	NTSI_LoadNIPFiles("NTBot/item_configs");
-
+	
 	NTA_Initialize();
 
 	RegisterEvent(EVENT_GAMEMSG, chat);
@@ -49,19 +48,19 @@ function chat(msg, type)
                 switch(_msg)
                 {
                     case "Andariel up!" :
-                    NTC_Delay(200);
-                    for(var i = 0 ; i < 100 && me.areaid == 1 ; i++)
-                    {
-                       NTM_UsePortal("BluePortal", 37, NTConfig_Leader);
-                    }
-                    break;
+							NTC_Delay(200);
+							for(var i = 0 ; i < 100 && me.areaid == 1 ; i++)
+							{
+								NTM_UsePortal("BluePortal", 37, NTConfig_Leader);
+							}
+							break;
 
                     case "Andariel is dead!" :
-                    NTC_Delay(200);
-		    CL_TakePortal();
-                    NTC_Delay(200);
-		    GoEast();
-                    break;  
+							NTC_Delay(200);
+							CL_TakePortal();
+							NTC_Delay(200);
+							GoEast();
+							break;  
                 }
             }
         }
@@ -91,8 +90,8 @@ NTC_Delay(200);
 							NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 						}
 						NTC_CancelOut(0);
-					if(NTT_DoInteract(_npc))
-					{
+						if(NTT_DoInteract(_npc))
+						{
 
 						for(var i = 0 ; i < 4 ; i++)
 						{
@@ -120,7 +119,7 @@ function CL_TakePortal()
 				if((i % 5) == 0) {
 					if(i == 10)
 						NTM_MoveTo(_prearea, me.x+6, me.y+6);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
+						NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
 				}
 				NTC_Delay(200);
 				if(me.areaid != _prearea)
