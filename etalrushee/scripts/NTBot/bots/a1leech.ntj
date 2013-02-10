@@ -10,6 +10,8 @@ function NTMain()
 
 	NTA_Initialize();
 
+	NTR_Heal();
+
 	RegisterEvent(EVENT_GAMEMSG, chat);
 
 	if(!NTTM_CheckAct(1)) 
