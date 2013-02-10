@@ -23,10 +23,10 @@ function NTMain()
 		return;
 	}
 
+	if(me.hp < 40){NTR_Heal();}
+
 	while(1) 
 	{
-		if(me.hp < 99){
-		NTR_Heal();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
