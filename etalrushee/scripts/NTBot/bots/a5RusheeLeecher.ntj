@@ -9,6 +9,7 @@ function NTMain(){
 
 	NTA_Initialize();
 	RegisterEvent(EVENT_GAMEMSG, chat);
+	NTR_Heal();
 
 	if(!NTTM_CheckAct(5)) {
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_CheckAct()");
