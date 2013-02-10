@@ -56,8 +56,6 @@ function chat(msg, type)
 						if(me.areaid == 105){
 						NTC_PingDelay(500);
 						CL_TakePortal();
-						NTC_PingDelay(100);
-						if(me.hp < 40){NTR_Heal();}
 						NTC_PingDelay(500);
 						TalkTyrael();
 						}
