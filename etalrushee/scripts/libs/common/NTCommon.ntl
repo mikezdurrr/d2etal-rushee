@@ -312,6 +312,7 @@ function NTC_IncludeLibs()
 	//Include("libs/common/NTVoyage.ntl");
 	Include("libs/common/NTItemlogger.ntl");
 	Include("libs/common/NTColorConverter.ntl");
+	Include("libs/common/NTRushee.ntl");
 
 
 	switch (me.classid) {
