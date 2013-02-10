@@ -17,10 +17,11 @@ function NTMain(){
 
 	if(me.areaid == 40){NTTM_TownMove("portalspot");}
 
-	if(me.hp < 40){NTR_Heal();}
+	if(me.hp < 20){NTR_Heal();}
 
 	while(1) 
 	{
+		if(me.areaid == 109){NTR_Heal();CheckLocation();}
 		if(me.mode == 17 || me.mode == 0 || me.hp < 1)
 		me.Cancel(0);
 		NTC_Delay(250);
@@ -55,9 +56,6 @@ function chat(msg, type)
 						CL_TakePortal();
 						NTC_Delay(200);
 						ReadBook();
-						NTC_PingDelay(100);
-						if(me.hp < 40){NTR_Heal();}
-						NTC_PingDelay(500);
 						CheckLocation();}
 						break;
 					case "Cube up!" :
