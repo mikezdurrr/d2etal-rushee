@@ -15,8 +15,6 @@ function NTMain(){
 		return;
 	}
 
-	NTTMGR_TownManager();
-
 	if(!NTTM_TownMove("waypoint")) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
 		return;
@@ -187,8 +185,7 @@ var _altar = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(2229));
 	if(_altar)
 	{
 		if(GetDistance(me, _altar) > 2)  
-                NTM_MoveTo(_altar.areaid,_altar.x+2, _altar.y);  
- 
+                NTM_MoveTo(_altar.areaid,_altar.x+2, _altar.y);   
                 NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _altar);  
                 NTC_PingDelay(500);
 	}
