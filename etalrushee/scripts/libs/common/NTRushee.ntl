@@ -98,6 +98,17 @@ function NTR_Heal()
 				}
 			}
 		}
+			CheckLocation();
 	}
 	return;
+}
+
+function CheckLocation()
+{
+	if(!NTTM_TownMove("portalspot")) 
+	{
+		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
+		return;
+	}
+return;
 }
