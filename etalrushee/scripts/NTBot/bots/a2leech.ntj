@@ -501,7 +501,7 @@ var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
 		if ((i % 5) == 0){
 			if (_cube.mode == 3 || _cube.mode == 5 && _cube.mode != 0 && _cube.mode != 4){
 				if (NTC_ClearCursor())
-				NTC_PingDelay(100);
+				NTC_PingDelay(200);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
 				}
 			}
@@ -639,7 +639,7 @@ function GetBook()
 		if ((i % 5) == 0){
 		if (_book.mode == 3 || _book.mode == 5 && _book.mode != 0 && _book.mode != 4){
 				if (NTC_ClearCursor())
-				NTC_PingDelay(100);
+				NTC_PingDelay(200);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
 				}
 			}
