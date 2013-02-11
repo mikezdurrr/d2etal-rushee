@@ -40,6 +40,8 @@ function NTMain()
 
 	Say("Izzy up!");
 
+	NTC_PingDelay(2000);
+
 	NTA_ClearPosition(10);
 
 	while(!NTC_IsQuesterIn()) {
