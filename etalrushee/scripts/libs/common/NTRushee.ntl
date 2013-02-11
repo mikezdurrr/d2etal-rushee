@@ -1,6 +1,6 @@
 function NTR_Heal()
 {
-	if(me.hp < 40)
+	if(me.hp < me.hpmax)
 	{
 		if(me.areaid == 1)
 		{
