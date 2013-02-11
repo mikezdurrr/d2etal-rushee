@@ -15,7 +15,6 @@ function NTMain(){
 		return;
 	}
 
-	//NTTMGR_TownManager();
 	if(!NTTM_TownMove("waypoint")) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
 		return;
@@ -26,11 +25,8 @@ function NTMain(){
 		return;
 	}
 
-	if(!NTTM_TownMove("portalspot")) {
-		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
-		return;
-	}
-
+	NTR_CheckLocation();
+	
 	while(1) 
 	{
 		if(me.areaid == 75){NTR_Heal();}
@@ -56,14 +52,14 @@ function chat(msg, type)
 						NTM_UsePortal("BluePortal", 94, NTConfig_Leader);
 						}
 						if(me.areaid == 94){
-						OpenAltar();
-						GetTome();
-						CL_TakePortal();
+						NTR_OpenAltar();
+						NTR_GetTome();
+						NTR_TakePortal();
 						NTC_PingDelay(500);
-						GoCain();
+						NTR_GoCain();
 						NTC_PingDelay(500);
-						GoAlkor();}
-						CheckLocation();
+						NTR_GoAlkor();}
+						NTR_CheckLocation();
 						break;
 					case "Council up!" :
 						NTC_Delay(100);
@@ -74,9 +70,9 @@ function chat(msg, type)
 
 					case "Council is dead!" :
 						NTC_Delay(100);
-						CL_TakePortal();
+						NTR_TakePortal();
 						NTC_PingDelay(500);
-						GoCain();
+						NTR_GoCain();
 						break;
 
 					case "Mephisto up!" :
@@ -104,132 +100,4 @@ function chat(msg, type)
 		NTC_Delay(750);
 		ExitGame();
 	}
-}
-
-function CL_TakePortal()
-{
-	var _prearea = me.areaid;
-	var _portal = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3226), 10);
-	if(!_portal)
-		return false;
-
-	do {
-		if(GetDistance(me, _portal) < 15) {
-			for(var i = 0 ; i < 20 ; i++) {
-				if((i % 5) == 0) {
-					if(i == 10)
-						NTM_MoveTo(_prearea, me.x+6, me.y+6);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
-				}
-				NTC_Delay(200);
-				if(me.areaid != _prearea)
-					break;
-			}
-			while(me.areaid == 0)
-				NTC_Delay(200);
-			if(me.areaid == _prearea)
-				return false;
-			NTC_PingDelay(NTConfig_AreaDelay);
-			return true;
-		}
-	} while(_portal.GetNext());
-	return false;
-}
-
-function GoCain()
-{
-	var _uiflag = 0x08;
-
-	if(me.areaid == 75) {
-	Say("Heading to Cain");
-	NTTM_TownMove("cain");
- 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(2890), 5);
-      
-	if(_npc)
- 	{
-		if(GetDistance(me, _npc) < 15) 
-		{
-			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-			NTC_CancelOut(0);
-			NTC_PingDelay(500);
-			NTC_CancelOut(0);
-		}
-	}				
-		           }
-	CheckLocation();
-return;
-}
-
-function GoAlkor()
-{
-	if(me.areaid == 75) {
-	Say("Heading to Alkor");
-	NTTM_TownMove("alkor");
- 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1010), 5);
-      
-	if(_npc)
- 	{
-		if(GetDistance(me, _npc) < 15) 
-		{
-			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-                 	NTC_PingDelay(500);
-			NTC_CancelOut(0);
-                 	NTC_PingDelay(500);
-			NTC_CancelOut(0);
-		}
-	}				
-		           }
-return;
-}
-
-function CheckLocation()
-{
-	if(me.areaid == 75)
-	{
-		NTTM_TownMove("portalspot");
-	}
-return;
-}
-
-function OpenAltar()
-{
-var _altar = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(2229));
-	if(_altar)
-	{
-		if(GetDistance(me, _altar) > 2)  
-                NTM_MoveTo(_altar.areaid,_altar.x+2, _altar.y);  
- 
-                NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _altar);  
-                NTC_PingDelay(500);
-	}
-return;
-
-}
-
-function GetTome()
-{	
-	for (i = 0; i < 20; i++){
-	var _tome = NTC_FindUnit(NTC_UNIT_ITEM, 548);
-	if (_tome)
-	break;
-	}						
-	for (i = 0; i < 20; i++){
-		if ((i % 5) == 0){
-			if (_tome.mode == 3 || _tome.mode == 5){
-				if (NTC_ClearCursor())
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _tome);
-				}
-			}
-			NTC_PingDelay(100);
-			if (_tome.mode != 3 && _tome.mode != 5){
-			Print(COLOR_4 + "Picked up Tome!");
-			Say("I picked up the Tome!");
-			NTC_PingDelay(200);
-			break;
-		}
-	}
-return;
-
 }
