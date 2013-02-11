@@ -15,14 +15,8 @@ function NTMain(){
 		return;
 	}
 
-
-	NTTMGR_TownManager();
-
-	if(!NTTM_TownMove("portalspot")) {
-		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
-		return;
-	}
-
+	NTR_CheckLocation();
+	
 	while(1) 
 	{
 		if(me.areaid == 109){NTR_Heal();}
@@ -43,15 +37,15 @@ function chat(msg, type)
 			if(_sender == NTConfig_Leader) {
 				switch(_msg) {
 					case "Anya up!" :
-						TalkAnya();
+						NTR_TalkAnya();
 						NTC_PingDelay(500);
-						TalkMalah();
+						NTR_TalkMalah();
 						NTC_PingDelay(500);
-						TalkAnya();
+						NTR_TalkAnya();
 						NTC_PingDelay(500);
-						TalkMalah();
+						NTR_TalkMalah();
 						NTC_Delay(500);
-						ReadBook();
+						NTR_ReadScroll();
 						break;
 					case "Shenk up!" :
 						NTC_Delay(100);
@@ -63,7 +57,7 @@ function chat(msg, type)
 					case "Shenk is dead!" :
 						NTC_Delay(100);
 						if(me.areaid == 110){
-						CL_TakePortal();}
+						NTR_TakePortal();}
 						break;
 				}
 			}
@@ -73,149 +67,4 @@ function chat(msg, type)
 		NTC_Delay(750);
 		ExitGame();
 	}
-}
-
-function TalkAnya()
-{
-	var _anya;
-	if(me.areaid == 109){
-	Say("Heading to Anya");
-	NTM_UsePortal("BluePortal", 114, NTConfig_Leader);
-	}
-	while(me.areaid == 114){
-	NTC_PingDelay(500);
-	_anya = NTC_FindUnit(NTC_UNIT_OBJECT, 558, 5);
-	if(_anya)
-	{
-		NTM_MoveTo(_anya.areaid,_anya.x+2, _anya.y);  
- 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _anya); 
-                	NTC_PingDelay(500);
-			NTC_CancelOut(0); 
-                	NTC_PingDelay(500);
-			return;
-	}
-			}
-return;
-}
-
-function TalkMalah()
-{
-	if(me.areaid == 114){
-	Say("Talking to Malah");
-	CL_TakePortal();
-	NTTM_TownMove("malah");
- 	_npc = NTC_FindUnit(NTC_UNIT_NPC, NTC_NPC_ID_MALAH, 5);
-      
-	if(_npc)
- 	{
-
-		if(NTT_DoInteract(_npc))
-		{
-              		for(var i = 0 ; i < 4 ; i++)
-               		{
-                  		if((i % 4) == 0)
-                     		me.SelectNPCMenu(0x0D35);
-                  		NTC_Delay(100);
-				NTC_CancelOut(0);
-               		}
-		}
-	}				
-		           }
-	CheckLocation();
-return;
-
-}
-
-function ReadBook()
-{
-	var i;
-	var _readbook = me.GetItems(646);
-	var returnCheck = false;
-
-	if(_readbook.length == 0)
-	{
-		Print("Don't have: " + COLOR_17 + "Book of Skill");
-		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Scroll of Resistance");		
-			returnCheck = true
-	}
-	if(returnCheck)
-	{
-		Print("Didn't get the Scroll of Resistance");
-		return false;
-	}
-	
-	else if(!returnCheck)
-	{
-
-	SetUIState(0x01, true);
-
-	if(_readbook.length > 0 && _readbook[0])
-	{
-    		for(i = 0; i < 5; i++)
-    		{
-        		me.ClickItem(1, _readbook[0]);
-        
-        		Delay(500);
-        
-        		if(me.itemoncursor)
-            		break;
-    		}
-	}
-
-	if(i < 5)
-	{
-    		for(i = 0; i < 5; i++)
-    		{
-        		me.ClickItem(1, 0, 0, 0);
-        
-        		Delay(500);
-        
-        		if(!me.itemoncursor)
-            		break;
-    		}
-	}
-		me.Cancel(1);
-		Print("My resistance has increased!");
-		if(_readbook.length > 0)
-			return true;
-		else
-			return false;
-	}
-
-
-}
-
-function CheckLocation()
-{
-	NTTM_TownMove("portalspot");
-}
-
-function CL_TakePortal()
-{
-	var _prearea = me.areaid;
-	var _portal = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3226), 10);
-	if(!_portal)
-		return false;
-
-	do {
-		if(GetDistance(me, _portal) < 15) {
-			for(var i = 0 ; i < 20 ; i++) {
-				if((i % 5) == 0) {
-					if(i == 10)
-						NTM_MoveTo(_prearea, me.x+6, me.y+6);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
-				}
-				NTC_Delay(200);
-				if(me.areaid != _prearea)
-					break;
-			}
-			while(me.areaid == 0)
-				NTC_Delay(200);
-			if(me.areaid == _prearea)
-				return false;
-			NTC_PingDelay(NTConfig_AreaDelay);
-			return true;
-		}
-	} while(_portal.GetNext());
-	return false;
 }
