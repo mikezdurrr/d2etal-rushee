@@ -16,10 +16,7 @@ function NTMain(){
 		return;
 	}
 
-	if(!NTTM_TownMove("portalspot")) {
-		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
-		return;
-	}
+	NTR_CheckLocation();
 	
 	while(1) 
 	{
@@ -49,7 +46,7 @@ function chat(msg, type)
 					case "Izzy dead!" :
 						NTC_Delay(100);
 						if(me.areaid == 105){
-						CL_TakePortal();
+						NTR_TakePortal();
 						NTC_PingDelay(100);
 						TalkTyrael();
 						}
@@ -59,13 +56,13 @@ function chat(msg, type)
 						NTC_Delay(100);
 						if(me.areaid == 103){
 						NTM_UsePortal("BluePortal", 108, NTConfig_Leader);
-						NTM_MoveTo(me.areaid, 7763, 5267);
+						NTM_MoveTo(me.areaid, 7767, 5261);
 						}
 						break;
 
 					case "Diablo is dead!" :
 						NTC_Delay(100);
-						CL_TakePortal();
+						NTR_TakePortal();
 						GoTyrael();
 						break;
 				}
@@ -99,7 +96,7 @@ function TalkTyrael()
 				}
             		}
 		}
-				CheckLocation();
+				NTR_CheckLocation();
 				}
 return;
 }
@@ -126,58 +123,8 @@ function GoTyrael()
 				}
             		}
 		}
-				GoHarrogath();
+				NTR_GoHarrogath();
 				NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");												
 				}
-return;
-}
-
-function CheckLocation()
-{
-	NTTM_TownMove("portalspot");
-}
-
-function CL_TakePortal()
-{
-	var _prearea = me.areaid;
-	var _portal = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3226), 10);
-	if(!_portal)
-		return false;
-
-	do {
-		if(GetDistance(me, _portal) < 15) {
-			for(var i = 0 ; i < 20 ; i++) {
-				if((i % 5) == 0) {
-					if(i == 10)
-						NTM_MoveTo(_prearea, me.x+6, me.y+6);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
-				}
-				NTC_Delay(200);
-				if(me.areaid != _prearea)
-					break;
-			}
-			while(me.areaid == 0)
-				NTC_Delay(200);
-			if(me.areaid == _prearea)
-				return false;
-			NTC_PingDelay(NTConfig_AreaDelay);
-			return true;
-		}
-	} while(_portal.GetNext());
-	return false;
-}
-
-function GoHarrogath()
-{
-var _gath = NTM_TakeUnit(NTC_UNIT_OBJECT, GetLocaleString(22646));
-	if(me.areaid == 103)
-	{
-		if(_gath)
-		{ 
- 
-                	NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _gath); 
-			
-		}
-	}
 return;
 }
