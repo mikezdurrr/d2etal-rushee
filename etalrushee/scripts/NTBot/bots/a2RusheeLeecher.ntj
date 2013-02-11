@@ -69,7 +69,7 @@ function chat(msg, type)
 						break;
 					case "Staff up!" :
 						NTC_PingDelay(2000);
-						GoCain():
+						talktoCain();
 						break;
 					case "Summoner up!" :
 						NTC_Delay(100);
@@ -83,7 +83,7 @@ function chat(msg, type)
 						//OpenJournal();
 						CL_TakePortal();
 						NTC_PingDelay(500);
-						GoCain():
+						talktoCain();
 						break;
 
 					case "Leeches Talk to Tyrael!" :
@@ -282,7 +282,6 @@ return;
 
 function GoCain()
 {
-	if(me.areaid == 40) {
 	Say("Heading to Cain");
 	NTTM_TownMove("cain");
  	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(2890), 5);
@@ -298,7 +297,7 @@ function GoCain()
 			NTC_CancelOut(0);
 		}
 	}				
-		           }
+		           
 	CheckLocation();
 return;
 }
