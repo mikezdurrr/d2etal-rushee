@@ -18,16 +18,8 @@ function NTMain()
 		return;
 	}
 
-	//NTTMGR_TownManager();
-
-	if(me.hp < 20){NTR_Heal();}
-
-	if(!NTTM_TownMove("portalspot")) 
-	{
-		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
-		return;
-	}
-
+	NTR_CheckLocation();
+	
 	while(1) 
 	{
 		if(me.areaid == 1){NTR_Heal();}
@@ -61,9 +53,9 @@ function chat(msg, type)
 
                     case "Andariel is dead!" :
                     NTC_Delay(200);
-		    CL_TakePortal();
+					NTR_TakePortal();
                     NTC_Delay(200);
-		    GoEast();
+					NTR_GoEast();
                     break;  
                 }
             }
@@ -74,80 +66,4 @@ function chat(msg, type)
         NTC_Delay(750);
         ExitGame();
     }
-}
-
-function GoEast()
-{
-NTC_Delay(200);
-	if(me.areaid != 1)
-		CL_TakePortal();
-			while(me.areaid == 1)
-			{
-				NTTM_TownMove("warriv");
-				_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(2895), 5);
-				if(_npc)
-				{
-					NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-						if(GetDistance(me, _npc) < 15) 
-						{
-							NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-							NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-							NTC_CancelOut(0);
-							NTC_Delay(500);
-							NTC_CancelOut(0);
-						}
-					if(NTT_DoInteract(_npc))
-					{
-
-						for(var i = 0 ; i < 4 ; i++)
-						{
-							if((i % 4) == 0)
-							me.SelectNPCMenu(0x0D36);
-							NTC_Delay(200);
-						}
-					}
-				}
-                        NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");
-			}
-		return;
-}
-
-function CL_TakePortal()
-{
-	var _prearea = me.areaid;
-	var _portal = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3226), 10);
-	if(!_portal)
-		return false;
-
-	do {
-		if(GetDistance(me, _portal) < 15) {
-			for(var i = 0 ; i < 20 ; i++) {
-				if((i % 5) == 0) {
-					if(i == 10)
-						NTM_MoveTo(_prearea, me.x+6, me.y+6);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _portal);
-				}
-				NTC_Delay(200);
-				if(me.areaid != _prearea)
-					break;
-			}
-			while(me.areaid == 0)
-				NTC_Delay(200);
-			if(me.areaid == _prearea)
-				return false;
-			NTC_PingDelay(NTConfig_AreaDelay);
-			return true;
-		}
-	} while(_portal.GetNext());
-	return false;
-}
-
-function CheckLocation()
-{
-	if(!NTTM_TownMove("portalspot")) 
-	{
-		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
-		return;
-	}
-return;
 }
