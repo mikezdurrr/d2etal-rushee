@@ -48,7 +48,7 @@ function chat(msg, type)
 						if (me.areaid == 40) {
 						NTM_UsePortal("BluePortal", 49, NTConfig_Leader);}
 						while(me.areaid == 49){
-						NTC_PingDelay(1200);
+						NTC_PingDelay(600);
 						GetBook();
 						NTC_PingDelay(200);
 						NTR_TakePortal();
@@ -156,26 +156,18 @@ return;
 
 function GetCube()
 {
-for (i = 0; i < 20; i++){
 var _cube = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2231));
-	if (_cube)
-	break;
-	}						
-	for (i = 0; i < 20; i++){
-		if ((i % 5) == 0){
-			if (_cube.mode == 3 || _cube.mode == 5){
-				if (NTC_ClearCursor())
-				NTC_PingDelay(800);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
-				}
-			}
-			NTC_PingDelay(100);
-			if (_cube.mode != 3 && _cube.mode != 5){
-			Print(COLOR_4 + "Picked up the Cube");
-			Say("I picked up the Cube!");
-			NTC_PingDelay(200);
-			break;
-		}
+	if(_cube.mode != 0)
+	{
+		NTC_PingDelay(800);
+		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
+	}
+	if(_cube.mode == 0)
+	{
+		NTC_PingDelay(100);
+		Print(COLOR_4 + "Picked up the Cube");
+		Say("I picked up the Cube!");
+		NTC_PingDelay(200);
 	}
 return;
 }
@@ -194,29 +186,20 @@ return;
 
 function GetBook()
 {
-
-	for (i = 0; i < 20; i++){
 	var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
-	if (_book)
-	break;
-	}						
-	for (i = 0; i < 20; i++){
-		if ((i % 5) == 0){
-			if (_book.mode == 3 || _book.mode == 5){
-				if (NTC_ClearCursor())
-				NTC_PingDelay(500);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-				NTC_PingDelay(500);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-				}
-			}
-			NTC_PingDelay(100);
-			if (_book.mode != 3 && _book.mode != 5){
-			Print(COLOR_4 + "Picked up Skill Book");
-			Say("I picked up the Skill Book!");
-			NTC_PingDelay(200);
-			break;
-		}
+	if (_book.mode != 0)
+	{
+		NTC_PingDelay(500);
+		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+	}
+	
+	NTC_PingDelay(100);
+	if (_book.mode == 0)
+	{
+		Print(COLOR_4 + "Picked up Skill Book");
+		Say("I picked up the Skill Book!");
+		NTC_PingDelay(200);
+	
 	}
 return;
 }
