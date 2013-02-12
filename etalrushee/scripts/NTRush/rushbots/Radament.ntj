@@ -67,6 +67,12 @@ function NTMain()
 
 	Say("Radament up!");
 
+	NTA_ClearPosition(10);
+	
+	NTC_Delay(2000);
+
+	NTA_ClearPosition(10);
+
 	while(!NTC_IsQuesterIn()) {				
 		NTC_TPGuard(15);
 	}
