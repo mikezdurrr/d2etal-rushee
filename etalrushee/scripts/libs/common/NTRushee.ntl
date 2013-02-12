@@ -156,7 +156,7 @@ function NTR_GoEast()
 {
 	NTC_Delay(200);
 	if(me.areaid != 1)
-		CL_TakePortal();
+		NTR_TakePortal();
 			while(me.areaid == 1)
 			{
 				NTTM_TownMove("warriv");
