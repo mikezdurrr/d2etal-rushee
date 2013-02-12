@@ -84,10 +84,10 @@ function NTMain()
 
 	Say("Radament dead!");
 
-	NTM_MoveTo(me.areaid, _rad[0], _rad[1]);
-
 	NTC_Delay(2000);
 
+	Movetobook();
+	
 	NTM_MakeTP();
 
 	NTA_ClearPosition(25);
@@ -103,4 +103,16 @@ function NTMain()
 	NTM_UsePortal("BluePortal", 40, me.charname);
 	
 	NTC_SendMsgToScript("loader.ntj", "end");
+}
+function Movetobook()
+{
+		var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
+		if (_book.mode == 3 || _book.mode == 5)
+		{
+			NTM_MoveTo(me.areaid, _book.x, _book.y);
+		}
+		
+		NTC_PingDelay(100);
+	
+return;
 }
