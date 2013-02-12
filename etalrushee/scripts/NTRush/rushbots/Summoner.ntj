@@ -77,15 +77,23 @@ function NTMain()
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
 	}
-
+	if(_journalx < 25300) {
+		NTM_MoveTo(me.areaid, _journalx+55, _journaly);
+	}
+	if(_journaly < 5300) {
+		NTM_MoveTo(me.areaid, _journalx+15, _journaly+55);
+	}
+	if(_journalx > 25500) {
+		NTM_MoveTo(me.areaid, _journalx-40, _journaly+15);
+	}
+	if(_journaly > 5500) {
+		NTM_MoveTo(me.areaid, _journalx+15, _journaly-40);
+	}
+	NTM_MakeTP();
+	NTC_PingDelay(300);
 	Say("Summoner is dead!");
 
-	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, +10, +10)) {
-		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
-		return;
-	}
 	NTC_Delay(3000);
-	NTM_MakeTP();
 	while(!NTM_UsePortal("Portal", 40)) {
 		NTA_ClearPosition(40);
 		NTM_MoveTo(me.areaid, _journalx, _journaly);
