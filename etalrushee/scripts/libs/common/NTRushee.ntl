@@ -224,7 +224,7 @@ function NTR_GetStaff()
 
 		if (_staff.mode != 3 && _staff.mode != 5)
 		{
-			Print(COLOR_4 + "Picked up the Staff");
+			Print(COLOR_8 + "Picked up the Staff");
 			Say("I picked up the staff!");
 			NTC_PingDelay(200);
 		}
@@ -265,7 +265,7 @@ function NTR_GetAmmy()
 			NTC_PingDelay(100);
 			if (_ammy.mode != 3 && _ammy.mode != 5)
 			{
-			Print(COLOR_4 + "Picked up the Ammy");
+			Print(COLOR_8 + "Picked up the Ammy");
 			Say("I picked up the ammy!");
 			NTC_PingDelay(200);
 			break;
@@ -296,7 +296,7 @@ function NTR_GetCube()
 			NTC_PingDelay(100);
 			if (_cube.mode != 3 && _cube.mode != 5)
 			{
-				Print(COLOR_4 + "Picked up the Cube");
+				Print(COLOR_8 + "Picked up the Cube");
 				Say("I picked up the Cube!");
 				NTC_PingDelay(200);
 				break;
@@ -373,7 +373,7 @@ function NTR_GetBook()
 		NTC_PingDelay(100);
 		if (_book.mode != 3 && _book.mode != 5)
 		{
-			Print(COLOR_4 + "Picked up Skill Book");
+			Print(COLOR_8 + "Picked up Skill Book");
 			Say("I picked up the Skill Book!");
 			NTC_PingDelay(200);
 			break;
@@ -449,12 +449,12 @@ function NTR_ReadBook()
 	if(_readbook.length == 0)
 	{
 		Print("Don't have: " + COLOR_17 + "Book of Skill");
-		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Book of Skill");		
+		NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Book of Skill Missing");		
 			returnCheck = true
 	}
 	if(returnCheck)
 	{
-		Print("Didn't get the Book of Skill");
+		Print(COLOR_17 + "Didn't get the Book of Skill");
 		return false;
 	}
 	
@@ -489,7 +489,7 @@ function NTR_ReadBook()
     		}
 	}
 		me.Cancel(1);
-		Print("Skill taught!");
+		Print(COLOR_8 + "Skill taught!");
 		if(_readbook.length > 0)
 			return true;
 		else
@@ -576,7 +576,7 @@ function NTR_MoveStaff()
 			NTCU_CloseCubeInt(cube[0]);
 			me.Cancel(1);
 			if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0)
-			Print(COLOR_ + "Staff in inventory!");
+			Print(COLOR_9 + "Staff in inventory!");
 			return true;}
 		else if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0){
 			Say("Staff in inventory!");
@@ -612,7 +612,7 @@ function NTR_MakeStaff()
 	}
 	if(returnCheck)
 	{
-		Print("Do not have proper components for the  Horadric Staff");
+		Print(COLOR_17 + "Do not have proper components for the  Horadric Staff");
 		return false;
 	}
 	
@@ -629,7 +629,7 @@ function NTR_MakeStaff()
 		NTCU_ClearCubeInt(cube[0]);
 		NTCU_CloseCubeInt(cube[0]);
 		me.Cancel(1);
-		Print("Staff made!");
+		Print(COLOR_8 + "Staff made!");
 		NTR_MoveStaff();
 		if(_horadricstaff.length > 0)
 			return true;
@@ -736,7 +736,7 @@ function NTR_GetTome()
 			}
 			NTC_PingDelay(100);
 			if (_tome.mode != 3 && _tome.mode != 5){
-			Print(COLOR_4 + "Picked up Tome!");
+			Print(COLOR_8 + "Picked up Tome!");
 			Say("I picked up the Tome!");
 			NTC_PingDelay(200);
 			break;
@@ -823,7 +823,7 @@ function NTR_ReadScroll()
 	}
 	if(returnCheck)
 	{
-		Print("Didn't get the Scroll of Resistance");
+		Print(COLOR_17 + "Didn't get the Scroll of Resistance");
 		return false;
 	}
 	
@@ -858,7 +858,7 @@ function NTR_ReadScroll()
     		}
 	}
 		me.Cancel(1);
-		Print("My resistance has increased!");
+		Print(COLOR_8 + "My resistance has increased!");
 		if(_readbook.length > 0)
 			return true;
 		else
