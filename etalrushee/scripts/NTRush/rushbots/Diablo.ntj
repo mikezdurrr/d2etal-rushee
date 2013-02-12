@@ -44,6 +44,7 @@ function NTMain() {
 	}
 
 	NTM_MoveTo(108, 7767, 5257);
+
 	NTM_MakeTP();
 		
 	Say("Diablo up!");
@@ -65,11 +66,15 @@ function NTMain() {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
 	}
-	NTSI_PickItems();
 	NTM_MoveTo(108, 7767, 5257);
 	NTM_MakeTP();
-	NTC_Delay(500);
+	NTC_Delay(200);
 	Say("Diablo is dead!");
+	NTC_Delay(200);
+	NTM_MoveTo(108, 7792, 5291);
+	NTSI_PickItems();
+	NTC_Delay(800);
+	NTM_MakeTP();
 	NTM_UsePortal("BluePortal", 103, me.charname);
 	NTC_Delay(3500);
 	
