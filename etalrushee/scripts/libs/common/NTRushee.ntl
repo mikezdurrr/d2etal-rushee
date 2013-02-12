@@ -276,33 +276,21 @@ return;
 
 function NTR_GetCube()
 {
-	for (i = 0; i < 20; i++)
-	{
 		var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
 		if (_cube)
-		break;
-	
-		for (i = 0; i < 20; i++)
-		{
-			if ((i % 5) == 0)
-			{
-				if (_cube.mode == 3 || _cube.mode == 5 && _cube.mode != 0 && _cube.mode != 4)
-				{
-					if (NTC_ClearCursor())
-					NTC_PingDelay(200);
+			{	
 					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
-				}
 			}
+			
 			NTC_PingDelay(100);
-			if (_cube.mode != 3 && _cube.mode != 5)
+			if (_cube.mode == 0)
 			{
 				Print(COLOR_8 + "Picked up the Cube");
 				Say("I picked up the Cube!");
 				NTC_PingDelay(200);
-				break;
 			}
-		}
-	}
+		
+	
 	return;
 }
 
@@ -352,33 +340,22 @@ function NTR_PlaceStaff()
 
 function NTR_GetBook()
 {
-
-	for (i = 0; i < 20; i++)
-	{
 		var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
 		if (_book)
-		break;
-	}		
-	for (i = 0; i < 20; i++)
-	{
-		if ((i % 5) == 0)
 		{
-			if (_book.mode == 3 || _book.mode == 5 && _book.mode != 0 && _book.mode != 4)
-			{
-				if (NTC_ClearCursor())
-				NTC_PingDelay(200);
+				NTC_PingDelay(100);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-			}
 		}
+		
 		NTC_PingDelay(100);
-		if (_book.mode != 3 && _book.mode != 5)
+		if (_book.mode == 0)
 		{
 			Print(COLOR_8 + "Picked up Skill Book");
 			Say("I picked up the Skill Book!");
 			NTC_PingDelay(200);
-			break;
+			
 		}
-	}
+	
 return;
 }
 
