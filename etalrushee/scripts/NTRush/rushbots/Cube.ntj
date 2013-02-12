@@ -67,6 +67,8 @@ function NTMain()
 			NTSI_PickItems();
 		}
 
+		Movetocube();
+		
 		NTM_MakeTP();
 
 		Say("Cube up!");
@@ -81,4 +83,16 @@ function NTMain()
 		NTTMGR_TownManager();
 	}
 	NTC_SendMsgToScript("loader.ntj", "end");
+}
+function Movetocube()
+{
+		var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
+		if (_cube.mode == 3 || _cube.mode == 5)
+		{
+			NTM_MoveTo(me.areaid, _cube.x, _cube.y);
+		}
+		
+		NTC_PingDelay(100);
+	
+return;
 }
