@@ -277,7 +277,7 @@ return;
 function NTR_GetCube()
 {
 		var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
-		if (_cube)
+		if (_cube.mode != 0)
 			{	
 					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
 			}
@@ -341,7 +341,7 @@ function NTR_PlaceStaff()
 function NTR_GetBook()
 {
 		var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
-		if (_book)
+		if (_book.mode != 0)
 		{
 				NTC_PingDelay(100);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
