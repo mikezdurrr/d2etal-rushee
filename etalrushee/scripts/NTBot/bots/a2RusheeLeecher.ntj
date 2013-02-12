@@ -157,7 +157,7 @@ return;
 function GetCube()
 {
 var _cube = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2231));
-	if(_cube.mode != 0)
+	while(_cube.mode != 0)
 	{
 		NTC_PingDelay(800);
 		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
@@ -187,7 +187,7 @@ return;
 function GetBook()
 {
 	var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
-	if (_book.mode != 0)
+	while(_book.mode != 0)
 	{
 		NTC_PingDelay(500);
 		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
