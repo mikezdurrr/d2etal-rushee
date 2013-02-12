@@ -65,11 +65,15 @@ function NTMain()
 
 	NTM_MakeTP();
 
+	NTC_Delay(200);
+
+	NTA_ClearPosition(10);
+
 	Say("Radament up!");
 
 	NTA_ClearPosition(10);
 	
-	NTC_Delay(2000);
+	NTC_Delay(2500);
 
 	NTA_ClearPosition(10);
 
