@@ -641,9 +641,9 @@ function NTR_GoDrognan()
 	NTC_Delay(100);
 	if(me.areaid == 40)
 	{
-		NTTM_TownMove("drognan");
 		Say("Heading to Drognan");
-   		_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(3023), 5);
+		NTTM_TownMove("drognan");
+		_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(3023), 5);
 		if(_npc)
 		{
 			if(GetDistance(me, _npc) < 15) 
