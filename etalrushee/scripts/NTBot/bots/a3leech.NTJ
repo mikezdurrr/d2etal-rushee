@@ -52,12 +52,15 @@ function chat(msg, type)
 						NTM_UsePortal("BluePortal", 94, NTConfig_Leader);
 						}
 						if(me.areaid == 94){
+						NTC_PingDelay(300);
 						NTR_OpenAltar();
+						NTC_PingDelay(300);
 						NTR_GetTome();
+						NTC_PingDelay(300);
 						NTR_TakePortal();
-						NTC_PingDelay(500);
+						NTC_PingDelay(300);
 						NTR_GoCain();
-						NTC_PingDelay(500);
+						NTC_PingDelay(300);
 						NTR_GoAlkor();}
 						NTR_CheckLocation();
 						break;
