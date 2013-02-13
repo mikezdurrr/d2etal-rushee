@@ -186,6 +186,7 @@ function NTR_GoEast()
 			}
 return;
 }
+
 function NTR_GoCain()
 {
 	if(me.areaid != 0)
@@ -225,7 +226,7 @@ function NTR_GetStaff()
 		if (_staff.mode != 3 && _staff.mode != 5)
 		{
 			Print(COLOR_8 + "Picked up the Staff");
-			Say("I picked up the staff!");
+			//Say("I picked up the staff!");
 			NTC_PingDelay(200);
 		}
 return;
@@ -542,8 +543,8 @@ function NTR_MoveStaff()
 	for(i = 0 ; i < _horadricstaff.length ; i++)
 	{
 		if(_horadricstaff[i].itemloc == 3){
-			Print(COLOR_8 + "Staff in cube");
-			Say("Moving Staff out of cube!");
+			Print(COLOR_1 + "Staff in cube");
+			Print(COLOR_8 + "Moving Staff out of cube!");
 			NTC_PingDelay(1000);
 			SetUIState(0x01, true);  		
 			NTCU_OpenCubeInt(cube[0]);
@@ -631,8 +632,10 @@ function NTR_CheckLocation()
 	if(!NTTM_TownMove("portalspot")) 
 	{
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
-		NTC_CancelOut(0);
 	}
+	NTC_CancelOut(0);
+	NTC_PingDelay(100);
+	
 return;
 }
 
@@ -641,9 +644,9 @@ function NTR_GoDrognan()
 	NTC_Delay(100);
 	if(me.areaid == 40)
 	{
-		Say("Heading to Drognan");
 		NTTM_TownMove("drognan");
-		_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(3023), 5);
+		Say("Heading to Drognan");
+   		_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(3023), 5);
 		if(_npc)
 		{
 			if(GetDistance(me, _npc) < 15) 
@@ -840,4 +843,195 @@ function NTR_ReadScroll()
 		else
 			return false;
 	}
+}
+
+function NTR_Death()
+{
+	if(me.mode == 17 || me.mode == 0 || me.hp < 1)
+	{
+		NTC_CheckPlayer(NTConfig_Leader);
+		RegisterEvent(EVENT_GAMEMSG, chat);
+		switch(chat)
+		{		
+			if(me.areaid == _leaderareaid)
+			{
+				NTC_Delay(500);
+			}
+			
+			if(me.areaid == 37 && _leaderareaid != 37)
+			{
+				me.Cancel(0);
+				NTR_GoEast();
+			}
+			
+			if(me.areaid == 49 && _leaderareaid != 49)
+			{
+				me.Cancel(0);
+				NTR_CheckLocation();
+			}
+			
+			if(me.areaid == 74 && _leaderareaid != 49)
+			{
+				me.Cancel(0);
+				NTR_CheckLocation();				
+			}
+			
+			if(me.areaid == 83 && _leaderareaid != 83)
+			{
+				me.Cancel(0);
+				NTR_GoCain();
+			}
+			
+			if(me.areaid == 102 && _leaderareaid != me.areaid)
+			{
+				me.Cancel(0);
+				NTR_CheckLocation();
+				NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
+				if(me.areaid == 102)
+				{
+					NTC_Delay(100);
+					NTM_MoveTo(me.areaid, 17590, 8068);
+					NTC_Delay(1500);
+				if(NTM_TakeUnit(NTC_UNIT_OBJECT, 342))
+					NTC_Delay(1500);
+					NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");
+				}
+			}
+			
+			if(me.areaid == 108 && _leaderareaid != me.areaid)
+			{
+				me.Cancel(0);
+				NTR_TalkTyrael():
+			}
+			
+			if(me.areaid == 110 && _leaderareaid != me.areaid)
+			{
+				me.Cancel(0);
+			}
+		}
+	}
+return;
+}
+function NTR_LureDiablo()
+{
+	if(me.areaid == 108){	
+	Print(COLOR_8 + "Attempting to Lure Diablo Away");
+	NTM_MoveTo(108, 7801, 5290);
+	NTC_Delay(1000);
+	NTM_MoveTo(108, 7806, 5288);
+	NTC_Delay(800);
+	NTM_MoveTo(108, 7814, 5300);
+	NTC_Delay(800);
+	NTM_MoveTo(108, 7801, 5290);
+	NTC_Delay(1000);
+	NTM_MoveTo(108, 7806, 5288);
+	NTC_Delay(800);
+	NTM_MoveTo(108, 7814, 5300);
+	NTC_Delay(800);
+	NTM_MoveTo(108, 7810, 5286);
+	NTC_Delay(800);
+	NTM_MoveTo(108, 7824, 5290);
+	NTC_Delay(1100);
+	NTM_MoveTo(108, 7831, 5301);
+	NTC_Delay(1000);
+	NTM_MoveTo(108, 7810, 5286);
+	NTC_Delay(800);
+	NTM_MoveTo(108, 7824, 5290);
+	NTC_Delay(1100);
+	NTM_MoveTo(108, 7831, 5301);
+	NTC_Delay(1000);
+	NTM_MoveTo(108, 7821, 5304);
+	NTC_Delay(800);
+	NTM_MoveTo(108, 7821, 5317);
+	NTC_Delay(1500);}	
+return;
+}
+function NTR_TalkTyraelSpirit()
+{
+	var _uiflag = 0x08;
+	if(me.areaid == 73)
+	{
+		Say("Heading to Tyrael");
+		NTR_GoTyraelSpirit();
+      	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
+      	if(_npc)
+      	{
+			if(GetDistance(me, _npc) < 15) 
+			{
+				NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+				NTC_CancelMenus();
+				NTC_PingDelay(500);
+				NTC_CancelOut(0);
+			}
+		}				
+	}
+return;
+}
+
+function NTR_GoTyraelSpirit()
+{
+  NTM_MoveTo(me.areaid, 22610, 15707);
+  NTM_MoveTo(me.areaid, 22581, 15705);
+  NTM_MoveTo(me.areaid, 22579, 15660);
+  NTM_MoveTo(me.areaid, 22576, 15638);
+  NTM_MoveTo(me.areaid, 22577, 15593);
+return;
+}
+
+function NTR_TalkTyrael()
+{
+	NTC_Delay(100);
+	if(me.areaid == 103) {
+	NTTM_TownMove("tyrael");
+
+ 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
+      
+      		if(_npc)
+      		{
+        		NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+         		if(NTT_DoInteract(_npc))
+            		{
+				if(GetDistance(me, _npc) < 15) 
+				{
+					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+					NTC_CancelOut(0);
+					NTC_PingDelay(500);
+					NTC_CancelOut(0);
+				}
+            		}
+		}
+				NTR_CheckLocation();
+				}
+return;
+}
+
+function NTR_GoTyrael()
+{
+	NTC_Delay(100);
+	if(me.areaid == 103) {
+	NTTM_TownMove("tyrael");
+
+ 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
+      
+      		if(_npc)
+      		{
+        		NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+         		if(NTT_DoInteract(_npc))
+            		{
+				if(GetDistance(me, _npc) < 15) 
+				{
+					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+					NTC_PingDelay(500);
+					NTC_CancelOut(0);
+					NTC_Delay(1000);//let portal open
+				}
+            		}
+		}
+				NTR_GoHarrogath();
+				NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");												
+				}
+return;
 }
