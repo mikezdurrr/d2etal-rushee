@@ -40,8 +40,6 @@ function chat(msg, type)
 						NTR_TalkMalah();
 						break;
 					case "Anya up!" :
-						NTR_TalkAnya();
-						NTC_PingDelay(500);
 						NTR_TalkMalah();
 						NTC_PingDelay(500);
 						NTR_TalkAnya();
