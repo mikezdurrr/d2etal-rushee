@@ -2,6 +2,22 @@ function NTR_Heal()
 {
 	if(me.hp < me.hpmax)
 	{
+		var _area = me.areaid;
+		if(me.areaid == 1){
+			_area = "Akara";}
+		if(me.areaid == 40){
+			_area = "Fara";}
+		if(me.areaid == 75){
+			_area = "Ormus";}
+		if(me.areaid == 103){
+			_area = "Jamella";}
+		if(me.areaid == 109){
+			_area = "Malah";}
+			
+		Print(COLOR_9 + "Checking Health..");
+		Print(COLOR_9 + "Current Health " + "( " + COLOR_1 + me.hp + COLOR_9 + " )");
+		Print(COLOR_11 + "Visiting Healer " + _area);
+		
 		if(me.areaid == 1)
 		{
 			NTTM_TownMove("akara");
@@ -202,7 +218,7 @@ function NTR_GoCain()
 				NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
 				NTC_CancelMenus();
-				NTC_PingDelay(500);
+				NTC_PingDelay(300);
 				NTC_CancelOut(0);
 				NTC_PingDelay(200);
 				NTC_CancelOut(0);
@@ -216,14 +232,15 @@ return;
 function NTR_GetStaff()
 {
 	var _staff = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2698));
-	if (_staff)
+	while(_staff.mode != 0)
 		{
+			NTC_PingDelay(100);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _staff);
 		}
 
 		NTC_PingDelay(100);
 
-		if (_staff.mode != 3 && _staff.mode != 5)
+		if(_staff.mode == 0)
 		{
 			Print(COLOR_8 + "Picked up the Staff");
 			//Say("I picked up the staff!");
@@ -280,6 +297,7 @@ function NTR_GetCube()
 		var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
 		while(_cube.mode != 0)
 		{	
+			NTC_PingDelay(100);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
 		}
 			
@@ -693,6 +711,7 @@ function NTR_OpenAltar()
 	{
 		if(GetDistance(me, _altar) > 2)  
             NTM_MoveTo(_altar.areaid,_altar.x+2, _altar.y);   
+			NTC_PingDelay(100);
             NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _altar);  
             NTC_PingDelay(500);
 	}
@@ -710,6 +729,7 @@ function NTR_GetTome()
 		if ((i % 5) == 0){
 			if (_tome.mode == 3 || _tome.mode == 5){
 				if (NTC_ClearCursor())
+				NTC_PingDelay(100);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _tome);
 				}
 			}
@@ -731,6 +751,7 @@ function NTR_GoHarrogath()
 	{
 		if(_gath)
 		{ 
+			NTC_PingDelay(100);
          	NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _gath); 			
 		}
 	}
@@ -775,10 +796,10 @@ function NTR_TalkMalah()
               		for(var i = 0 ; i < 4 ; i++)
                		{
                   		if((i % 4) == 0)
-                     		me.SelectNPCMenu(0x0D35);
-				NTC_PingDelay(500);
-				NTC_CancelOut(0);
-				NTC_PingDelay(500);
+                     	me.SelectNPCMenu(0x0D35);
+						NTC_PingDelay(500);
+						NTC_CancelOut(0);
+						NTC_PingDelay(500);
                		}
 		}
 	}				
