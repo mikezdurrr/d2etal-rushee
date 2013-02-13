@@ -48,7 +48,7 @@ function chat(msg, type)
 						if(me.areaid == 105){
 						NTR_TakePortal();
 						NTC_PingDelay(100);
-						TalkTyrael();
+						NTR_TalkTyrael();
 						}
 						break;
 
@@ -56,14 +56,14 @@ function chat(msg, type)
 						NTC_Delay(100);
 						if(me.areaid == 103){
 						NTM_UsePortal("BluePortal", 108, NTConfig_Leader);
-						NTM_MoveTo(me.areaid, 7767, 5261);
 						}
 						break;
 
 					case "Diablo is dead!" :
 						NTC_Delay(100);
 						NTR_TakePortal();
-						GoTyrael();
+						NTC_PingDelay(200);
+						NTR_GoTyrael();
 						break;
 				}
 			}
@@ -73,58 +73,4 @@ function chat(msg, type)
 		NTC_Delay(750);
 		ExitGame();
 	}
-}
-
-function TalkTyrael()
-{
-	NTC_Delay(100);
-	if(me.areaid == 103) {
-	NTTM_TownMove("tyrael");
-
- 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
-      
-      		if(_npc)
-      		{
-        		NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-         		if(NTT_DoInteract(_npc))
-            		{
-				if(GetDistance(me, _npc) < 15) 
-				{
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelOut(0);
-				}
-            		}
-		}
-				NTR_CheckLocation();
-				}
-return;
-}
-
-function GoTyrael()
-{
-	NTC_Delay(100);
-	if(me.areaid == 103) {
-	NTTM_TownMove("tyrael");
-
- 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
-      
-      		if(_npc)
-      		{
-        		NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-         		if(NTT_DoInteract(_npc))
-            		{
-				if(GetDistance(me, _npc) < 15) 
-				{
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelOut(0);
-					NTC_Delay(1000);//let portal open
-				}
-            		}
-		}
-				NTR_GoHarrogath();
-				NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");												
-				}
-return;
 }
