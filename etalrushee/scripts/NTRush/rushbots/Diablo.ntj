@@ -43,7 +43,7 @@ function NTMain() {
 		return;
 	}
 
-	NTM_MoveTo(108, 7767, 5257);
+	NTM_MoveTo(108, 7763, 5267);
 
 	NTM_MakeTP();
 		
@@ -62,11 +62,15 @@ function NTMain() {
 		}
 		NTC_Delay(500);
 	}
+	
+	//NTR_LureDiablo();
+	
+	Print(COLOR_8 + "Killing Diablo");
 	if (!NTA_KillMonster(243)) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
 	}
-	NTM_MoveTo(108, 7767, 5257);
+	NTM_MoveTo(108, 7763, 5267);
 	NTM_MakeTP();
 	NTC_Delay(200);
 	Say("Diablo is dead!");
