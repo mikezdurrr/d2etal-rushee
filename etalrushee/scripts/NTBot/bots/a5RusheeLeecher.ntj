@@ -41,6 +41,8 @@ function chat(msg, type)
 						NTC_PingDelay(500);
 						NTR_TalkAnya();
 						NTC_PingDelay(500);
+						NTR_TakePortal();
+						NTC_PingDelay(500);
 						NTR_TalkMalah();
 						NTC_Delay(500);
 						NTR_ReadScroll();
