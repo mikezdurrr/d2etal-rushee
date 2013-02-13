@@ -762,9 +762,8 @@ return;
 
 function NTR_TalkMalah()
 {
-	if(me.areaid == 114){
+	if(me.areaid == 109){
 	Say("Talking to Malah");
-	NTR_TakePortal();
 	NTTM_TownMove("malah");
  	_npc = NTC_FindUnit(NTC_UNIT_NPC, NTC_NPC_ID_MALAH, 5);
       
