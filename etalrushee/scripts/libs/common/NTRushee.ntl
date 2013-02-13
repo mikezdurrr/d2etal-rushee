@@ -842,46 +842,60 @@ function NTR_ReadScroll()
 		else
 			return false;
 	}
-}
-
-function NTR_Death()
+}/*
+function NTR_One()
 {
-	if(me.mode == 17 || me.mode == 0 || me.hp < 1)
+NTC_CheckPlayer(NTConfig_Leader);
+	if(me.areaid == _leaderareaid)
 	{
-		NTC_CheckPlayer(NTConfig_Leader);
-		RegisterEvent(EVENT_GAMEMSG, chat);
-		switch(chat)
-		{		
-			if(me.areaid == _leaderareaid)
-			{
-				NTC_Delay(500);
-			}
-			
-			if(me.areaid == 37 && _leaderareaid != 37)
+		NTC_Delay(500);
+	}
+	return;
+}
+function NTR_Two()
+{
+NTC_CheckPlayer(NTConfig_Leader);
+		if(me.areaid == 37 && _leaderareaid != 37)
 			{
 				me.Cancel(0);
 				NTR_GoEast();
 			}
-			
-			if(me.areaid == 49 && _leaderareaid != 49)
+	return;
+}
+function NTR_Three()
+{
+NTC_CheckPlayer(NTConfig_Leader);
+		if(me.areaid == 49 && _leaderareaid != 49)
 			{
 				me.Cancel(0);
 				NTR_CheckLocation();
 			}
-			
-			if(me.areaid == 74 && _leaderareaid != 49)
+	return;
+}
+function NTR_Four()
+{
+NTC_CheckPlayer(NTConfig_Leader);
+ if(me.areaid == 74 && _leaderareaid != 49)
 			{
 				me.Cancel(0);
 				NTR_CheckLocation();				
 			}
-			
-			if(me.areaid == 83 && _leaderareaid != 83)
+	return;
+}
+function NTR_Five()
+{
+NTC_CheckPlayer(NTConfig_Leader);
+if(me.areaid == 83 && _leaderareaid != 83)
 			{
 				me.Cancel(0);
 				NTR_GoCain();
 			}
-			
-			if(me.areaid == 102 && _leaderareaid != me.areaid)
+	return;
+}
+function NTR_Six()
+{
+NTC_CheckPlayer(NTConfig_Leader);
+ if(me.areaid == 102 && _leaderareaid != me.areaid)
 			{
 				me.Cancel(0);
 				NTR_CheckLocation();
@@ -896,21 +910,48 @@ function NTR_Death()
 					NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");
 				}
 			}
-			
-			if(me.areaid == 108 && _leaderareaid != me.areaid)
+	return;
+}
+function NTR_Seven()
+{
+NTC_CheckPlayer(NTConfig_Leader);
+if(me.areaid == 108 && _leaderareaid != me.areaid)
 			{
 				me.Cancel(0);
 				NTR_TalkTyrael():
 			}
-			
-			if(me.areaid == 110 && _leaderareaid != me.areaid)
+	return;
+}
+function NTR_Eight()
+{
+NTC_CheckPlayer(NTConfig_Leader);
+ if(me.areaid == 110 && _leaderareaid != me.areaid)
 			{
 				me.Cancel(0);
 			}
-		}
-	}
-return;
+	return;
 }
+function NTR_Death()
+{		
+	switch(me.areaid)
+		{		
+			case default : NTR_One();
+			
+			case 37 : NTR_Two();
+			
+			case 49 : NTR_Three();
+			
+			case 74 : NTR_Four();
+			
+			case 83 : NTR_Five();
+			
+			case 102 : NTR_Six();
+			
+			case 108 : NTR_Seven();
+			
+			case 110 : NTR_Eight();
+		}
+}*/
 function NTR_LureDiablo()
 {
 	if(me.areaid == 108){	
