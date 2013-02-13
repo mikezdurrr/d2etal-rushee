@@ -52,7 +52,7 @@ function chat(msg, type)
 						}
 						break;
 					case "Radament dead!" :
-						if(me.areaid = 49)
+						if(me.areaid == 49)
 						{
 							NTR_TakePortal();
 						}
@@ -105,10 +105,6 @@ function chat(msg, type)
 						}							
 						break;
 
-					case "talk to tyrael" :
-						GoTyrael();
-						TalkTyrael();
-						break;
 					case "Staff up!" :
 						NTC_Delay(100);
 						if(me.areaid == 40)
@@ -150,7 +146,7 @@ function chat(msg, type)
 							NTM_UsePortal("BluePortal", 73, NTConfig_Leader);
 						}
 						NTC_PingDelay(500);
-						TalkTyrael();
+						NTR_TalkTyraelSpirit();
 						NTC_PingDelay(500);
 						NTR_TakePortal();
 						NTC_PingDelay(500);
@@ -167,17 +163,6 @@ function chat(msg, type)
 						NTC_PingDelay(500);
 						NTR_TakePortal();
 						break;
-					case "talk to cain" :
-						talktoCain();
-						break;
-					case "read book" :
-						NTR_ReadBook();
-						break;
-					
-					case "go back!":
-						NTC_Delay(100);
-						NTR_TakePortal();
-						break;
 				}
 			}
 		}
@@ -187,62 +172,4 @@ function chat(msg, type)
 		NTC_Delay(750);
 		ExitGame();
 	}
-}
-
-function talktoCain()
-{
-	if(me.areaid == 40) 
-	{
-		Say("Heading to Cain");
-		NTTM_TownMove("cain");
-		_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(2890), 5);
-      
-		if(_npc)
-		{
-			if(GetDistance(me, _npc) < 15) 
-			{
-				NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-				NTC_CancelMenus();
-				NTC_PingDelay(500);
-				NTC_CancelOut(0);
-			}
-		}						
-	}
-	NTR_CheckLocation();
-return;
-}
-
-function TalkTyrael()
-{
-	var _uiflag = 0x08;
-	if(me.areaid == 73)
-	{
-		Say("Heading to Tyrael");
-		GoTyrael();
-      	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
-      	if(_npc)
-      	{
-			if(GetDistance(me, _npc) < 15) 
-			{
-				NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-				NTC_CancelMenus();
-				NTC_PingDelay(500);
-				NTC_CancelOut(0);
-			}
-		}				
-	}
-return;
-}
-
-function GoTyrael()
-{
-  NTM_MoveTo(me.areaid, 22610, 15707);
-  NTM_MoveTo(me.areaid, 22581, 15705);
-  NTM_MoveTo(me.areaid, 22579, 15660);
-  NTM_MoveTo(me.areaid, 22576, 15638);
-  NTM_MoveTo(me.areaid, 22577, 15593);
-
-return;
 }
