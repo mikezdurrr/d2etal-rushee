@@ -155,7 +155,103 @@ function NTR_TakePortal()
 	
 return false;
 }
+function NTR_GoAkara()
+{
+	if(me.areaid == 1)
+	{
+		NTTM_TownMove("akara");
+   
+		_npc = NTC_FindUnit(NTC_UNIT_NPC, 148, 5);
+      
+		if(_npc)
+		{
+			NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+			if(GetDistance(me, _npc) < 15) 
+			{
+				NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+				NTC_CancelMenus();
+				NTC_Delay(500);
+				NTC_CancelOut(0);
+			}
+		}
+		NTR_CheckLocation();
+	}
+	return;
+}
+function NTR_ClearLevel(pickitem, safelevel) {
+	var i;
+	var _room, _rooms;
+	var _distance, _minindex, _mindistance;
 
+	_room = GetRoom();
+
+	if (!_room) { return false; }
+
+	switch (arguments.length) {
+	case 0:
+		pickitem = true;
+		break;
+	case 1:
+		safelevel = 2;
+		break;
+	default:
+		if ((NTConfig_CheckSelfSafe.length < 1) && (NTConfig_CheckMercSafe.length < 1)) { safelevel = 0; }
+		break;
+	}
+
+	_rooms = new Array();
+
+	do {
+		_rooms.push([parseFloat(_room.x * 5 + _room.xsize * 5 / 2), parseFloat(_room.y * 5 + _room.ysize * 5 / 2)]);
+	} while(_room.GetNext());
+
+	while (_rooms.length > 0) {
+		_mindistance = 100000;
+	NTC_CheckPlayer(NTConfig_Leader);
+	if(me.areaid != _leaderareaid){
+	NTR_LeaveDen();}
+
+		for (i = 0; i < _rooms.length; i++) {
+			_distance = GetDistance(me.x, me.y, _rooms[i][0], _rooms[i][1]);
+
+			if (_distance < _mindistance) {
+				_minindex = i;
+				_mindistance = _distance;
+			}
+		}
+
+		if (NTM_MoveTo(me.areaid, _rooms[_minindex][0], _rooms[_minindex][1], 1, false, false)) {
+			if (!NTA_ClearRoom(pickitem, safelevel)) { return false; }
+	NTC_CheckPlayer(NTConfig_Leader);
+	if(me.areaid != _leaderareaid){
+	NTR_LeaveDen();}
+
+			NTP_DoPrecast(false);
+		}
+
+		_rooms.splice(_minindex, 1);
+	}
+
+	return true;
+}
+function NTR_Den()
+{
+	NTC_CheckPlayer(NTConfig_Leader);
+	if(me.areaid != _leaderareaid){
+	NTR_LeaveDen();}
+	NTR_ClearLevel();
+	if(me.areaid != _leaderareaid){
+	NTR_LeaveDen();}
+	return;
+}
+function NTR_LeaveDen()
+{
+	if(_leaderareaid != me.areaid){
+	NTM_MakeTP();
+	NTR_TakePortal();}
+	return;
+}
 function NTR_CubeStaff()
 {
 	if(me.areaid == 40)
