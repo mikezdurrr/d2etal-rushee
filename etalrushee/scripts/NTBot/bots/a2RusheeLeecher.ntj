@@ -78,9 +78,12 @@ function chat(msg, type)
 						break;
 
 					case "Summoner is dead!" :
+						if(me.areaid == 74){
+						NTC_PingDelay(200);
 						NTR_TakePortal();
-						NTC_PingDelay(500);
-						NTR_GoCain();
+						NTC_PingDelay(600);}
+						if(me.areaid == 40){
+						NTR_GoCain();}
 						break;
 
 					case "Leeches Talk to Tyrael!" :
