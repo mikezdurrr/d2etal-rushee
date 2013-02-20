@@ -29,7 +29,7 @@ function NTMain(){
 
 	while(1) 
 	{
-		if(me.areaid == 1){NTR_Heal();}
+		if(me.areaid == 75){NTR_Heal();}
 		if(me.hp < 1){NTR_Death();}		
 		NTC_Delay(250);
 	}
