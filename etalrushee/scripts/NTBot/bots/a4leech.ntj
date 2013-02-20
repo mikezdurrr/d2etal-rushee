@@ -35,6 +35,35 @@ function chat(msg, type)
 			var _msg = _split[1].substring(1);
 			if(_sender == NTConfig_Leader) {
 				switch(_msg) {
+					case "Hammer up!" :
+						if(me.areaid == 103){
+						NTC_PingDelay(200);
+						NTR_GoCain();
+						NTR_SSCheck();
+						NTC_PingDelay(200);
+						NTM_UsePortal("BluePortal", 107, NTConfig_Leader);}
+						if(me.areaid == 107){
+						NTC_PingDelay(200);
+						NTC_SwapWeapons();
+						NTC_PingDelay(500);
+						NTR_GetHammer();
+						NTC_PingDelay(200);
+						NTR_TakePortal();}
+						break;
+					
+					case "Hellforge up!" :
+						if(me.areaid == 103){
+						NTC_PingDelay(200);
+						NTR_TakePortal();}
+						while(me.areaid == 107){
+						NTC_PingDelay(300);
+						NTR_SmashNdatShit();
+						NTC_PingDelay(200);
+						NTR_TakePortal();}
+						if(me.areaid == 103){
+						NTC_PingDelay(200);
+						NTC_SwapWeapons();}					
+						break;
 
 					case "Izzy up!" :
 						if(me.areaid == 103){
