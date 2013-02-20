@@ -61,12 +61,13 @@ function chat(msg, type)
 						if(me.areaid == 40){
 						NTM_UsePortal("BluePortal", 60, NTConfig_Leader);}
 						while(me.areaid == 60){
-						NTC_PingDelay(200);
+						NTC_PingDelay(300);
 						NTR_GetCube();
+						NTC_PingDelay(300);
 						NTR_TakePortal();}						
 						break;
 					case "Staff up!" :
-						NTC_PingDelay(2000);
+						NTC_PingDelay(2500);
 						NTR_GoCain();
 						break;
 					case "Summoner up!" :
