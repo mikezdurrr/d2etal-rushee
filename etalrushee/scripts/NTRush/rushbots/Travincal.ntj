@@ -90,9 +90,7 @@ function NTMain()
 	NTM_MakeTP();
 	Say("Council is dead!");
 
-	while(!NTC_IsQuesterOut()) {
-		Delay(500);
-	}
+	NTC_Delay(3000);
 
 	NTSI_PickItems();
 		
