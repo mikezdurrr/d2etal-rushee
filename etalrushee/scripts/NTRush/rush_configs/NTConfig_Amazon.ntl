@@ -11,6 +11,7 @@ function NT_LoadConfig()
 
 	NTConfig_RushScript = [
 		//"Cain",
+		"DenofEvil",
 		"Andy",
 		"Radament",
 		"Cube",
