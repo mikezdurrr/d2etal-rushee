@@ -295,7 +295,8 @@ return;
 function NTR_GetCube()
 {
 		var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
-		while(_cube.mode != 0)
+		var _havecube = me.GetItems(549);
+		while(_cube.mode != 0 && _havecube.length == 0)
 		{	
 			NTC_PingDelay(100);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
@@ -359,20 +360,21 @@ function NTR_PlaceStaff()
 
 function NTR_GetBook()
 {
-		var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
-		while(_book.mode != 0)
-		{
-			NTC_PingDelay(100);
-			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
-		}
-		
+	var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
+	var _havebook = me.GetItems(552);
+	while(_book.mode != 0 && _havebook.length == 0)
+	{
 		NTC_PingDelay(100);
-		if (_book.mode == 0)
-		{
-			Print(COLOR_8 + "Picked up Skill Book");
-			//Say("I picked up the Skill Book!");
-			NTC_PingDelay(200);
-		}
+		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+	}
+	
+	NTC_PingDelay(100);
+	if (_book.mode == 0)
+	{
+		Print(COLOR_8 + "Picked up Skill Book");
+		//Say("I picked up the Skill Book!");
+		NTC_PingDelay(200);
+	}
 	
 return;
 }
