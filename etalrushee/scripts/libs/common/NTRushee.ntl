@@ -392,13 +392,19 @@ function NTR_GetCube()
 {
 		var _cube = NTC_FindUnit(NTC_UNIT_ITEM, 549);
 		var _havecube = me.GetItems(549);
-		while(_cube.mode != 0 && _havecube.length == 0)
+		while(_cube.mode != 0 && _havecube.itemloc != 0)
 		{	
 			NTC_PingDelay(100);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
-		}
-			
-		NTC_PingDelay(100);
+			NTC_PingDelay(500);
+			if(GetDistance(me, _cube) < 1){
+			NTM_MoveTo(_cube.areaid,_cube.x,_cube.y);
+			NTC_PingDelay(500);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);}
+			NTC_PingDelay(500);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _cube);
+			break;
+		}		
 		if (_cube.mode == 0)
 		{
 			Print(COLOR_8 + "Picked up the Cube");
@@ -458,13 +464,19 @@ function NTR_GetBook()
 {
 	var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
 	var _havebook = me.GetItems(552);
-	while(_book.mode != 0 && _havebook.length == 0)
+	while(_book.mode != 0 && _havebook.itemloc != 0)
 	{
-		NTC_PingDelay(100);
-		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+			NTC_PingDelay(100);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+			NTC_PingDelay(500);
+			if(GetDistance(me, _book) < 1){
+			NTM_MoveTo(_book.areaid,_book.x,_book.y);
+			NTC_PingDelay(500);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);}
+			NTC_PingDelay(500);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _book);
+			break;
 	}
-	
-	NTC_PingDelay(100);
 	if (_book.mode == 0)
 	{
 		Print(COLOR_8 + "Picked up Skill Book");
