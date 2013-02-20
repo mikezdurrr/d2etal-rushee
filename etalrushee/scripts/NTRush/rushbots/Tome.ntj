@@ -56,11 +56,13 @@ function NTMain()
 		NTC_TPGuard(25);
 	}
 
-	while(NTC_IsQuesterIn()) {
-		NTC_TPGuard(25);
+	while(NTC_IsQuesterOut()) {
+		NTC_Delay(250);
 	}
 
 	NTM_UsePortal("BluePortal", 75, me.charname);
+	
+	NTC_Delay(6000); //wait for rushee to talk to alkor
 
 	NTC_SendMsgToScript("loader.ntj", "end");
 }
