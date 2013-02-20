@@ -19,8 +19,6 @@ function NTMain()
 
 	NTTMGR_TownManager();
 
-	Say("Talk to Drognan!");
-
 	if(!NTTM_TownMove("waypoint")) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
 		return;
@@ -32,6 +30,8 @@ function NTMain()
 	}
 
 	NTP_DoPrecast(true);
+
+	Say("Talk to Drognan!");
 
 	for(i=0; i<3; i++) {		
 		if(!NTM_MoveToStair(me.areaid, 62+i)) { 
