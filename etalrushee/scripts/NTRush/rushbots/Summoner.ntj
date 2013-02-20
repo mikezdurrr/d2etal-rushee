@@ -107,7 +107,11 @@ function NTMain()
 		NTM_MoveTo(me.areaid, _journalx+15, _journaly-40);
 	}
 	NTM_MakeTP();
-	NTC_PingDelay(100);
+	NTC_PingDelay(200);
+	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, true)) {
+		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
+		return;
+	}
 	}
 
 	NTC_Delay(3000);
