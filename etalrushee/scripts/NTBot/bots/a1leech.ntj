@@ -42,6 +42,21 @@ function chat(msg, type)
             {
                 switch(_msg)
                 {
+			case "Den up!" :
+			NTC_Delay(200);
+			if(me.areaid == 1)
+			{
+				NTM_UsePortal("BluePortal", 8, NTConfig_Leader);
+			}
+				while(me.areaid == 8)
+			{
+				NTR_Den();
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid != _leaderareaid){
+				NTR_LeaveDen();}
+			}
+			NTR_GoAkara();
+			break;
                     case "Andariel up!" :
                     NTC_Delay(200);
                     for(var i = 0 ; i < 100 && me.areaid == 1 ; i++)
@@ -52,9 +67,9 @@ function chat(msg, type)
 
                     case "Andariel is dead!" :
                     NTC_Delay(200);
-					NTR_TakePortal();
+				NTR_TakePortal();
                     NTC_Delay(200);
-					NTR_GoEast();
+				NTR_GoEast();
                     break;  
                 }
             }
