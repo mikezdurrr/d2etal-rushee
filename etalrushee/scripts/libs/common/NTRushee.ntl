@@ -1086,3 +1086,148 @@ function NTR_GoTyrael()
 				}
 return;
 }
+function NTR_GetHammer()
+{
+	for (i = 0; i < 20; i++){
+	var _hammer = NTC_FindUnit(NTC_UNIT_ITEM, 90);
+	if (_hammer)
+	break;
+	}						
+	for (i = 0; i < 20; i++){
+		if ((i % 5) == 0){
+			if (_hammer.mode == 3 || _hammer.mode == 5){
+				if (NTC_ClearCursor())
+				NTC_PingDelay(100);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _hammer);
+				}
+			}
+			NTC_PingDelay(100);
+			if (_hammer.mode != 3 && _hammer.mode != 5){
+			Print(COLOR_8 + "Picked up Hellforge Hammer!");
+			NTC_PingDelay(200);
+			break;
+		}
+	}
+return;
+}
+
+function NTR_GoForge()
+{
+	var _forge = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3318));
+	if(_forge)
+	{		
+		if(NTA_ClearPosition()) {
+			NTSI_PickItems();
+		} 
+		else {
+			NTC_PingDelay(1500);
+		}
+
+		NTM_MoveTo(_forge.areaid, _forge.x-2, _forge.y-1);	
+		
+		NTA_ClearPosition(40);
+		
+		NTC_Delay(150);
+		
+		NTR_Hammer();
+		
+		NTM_MakeTP();
+
+		Say("Hammer up!");
+		
+		while(!NTC_IsQuesterIn()) {
+			NTC_TPGuard(40);
+		}
+						
+		NTA_ClearPosition(40);
+		
+		while(!NTC_IsQuesterOut()) {
+			NTC_TPGuard(20);
+		}
+				
+		NTM_MoveTo(_forge.areaid, _forge.x-2, _forge.y-1);		
+		
+		NTM_MakeTP();
+		
+		Say("Hellforge up!")
+		
+		while(!NTC_IsQuesterIn()) {
+			NTC_TPGuard(40);
+		}
+		
+		while(!NTC_IsQuesterOut()) {
+			NTC_TPGuard(20);
+		}
+						
+		NTSI_PickItems();
+		
+		NTC_SendMsgToScript("loader.ntj", "end");
+		
+		return;
+	}
+return;
+}
+
+function NTR_SmashNdatShit()
+{
+	if(me.areaid == 107){
+		var _forge = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3318));
+		if(!_forge){
+		return;}
+		if(_forge)
+		{ 	//do not edit this function it works perfectly
+			if(GetDistance(me, _forge) > 2)  
+				NTM_MoveTo(_forge.areaid,_forge.x-2, _forge.y-1);   
+				NTC_PingDelay(100);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);
+				NTC_PingDelay(3000);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
+				NTC_PingDelay(10);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
+				NTC_PingDelay(10);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
+				NTC_PingDelay(10);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
+				NTC_PingDelay(10);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
+				NTC_PingDelay(3500);
+		}
+	}
+return;
+}
+
+function NTR_SSCheck()
+{
+	var i;
+	var _soulStone = me.GetItems(551);		
+	for(i = 0 ; i < _soulStone.length ; i++)
+	{
+		if(_soulStone[i].itemloc != 0){
+			Print(COLOR_1 + "Soulstone Missing!");
+			NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_11 + "Soulstone Missing");		
+			NTR_GoCain();}
+		if(_soulStone[0].itemloc == 0){
+			Print(COLOR_8 + "Soulstone in Inventory");}
+	}
+return;
+}
+
+function NTR_Hammer()
+{
+		var _hammer = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2194));
+		if(_hammer)
+		{
+			if (_hammer.mode == 3 || _hammer.mode == 5)
+			{
+				NTM_MoveTo(me.areaid, _hammer.x, _hammer.y);
+			}
+		}
+		if(!_hammer)
+		{
+			Say("No Hammer here dude");
+			return;
+		}
+		NTC_PingDelay(100);
+	
+return;
+}
