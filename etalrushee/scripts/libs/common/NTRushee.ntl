@@ -696,9 +696,9 @@ function NTR_GoAlkor()
 		{
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-                 	NTC_PingDelay(500);
+            NTC_PingDelay(500);
 			NTC_CancelOut(0);
-                 	NTC_PingDelay(500);
+            NTC_PingDelay(500);
 			NTC_CancelOut(0);
 		}
 	}				
@@ -865,116 +865,89 @@ function NTR_ReadScroll()
 		else
 			return false;
 	}
-}/*
-function NTR_One()
-{
-NTC_CheckPlayer(NTConfig_Leader);
-	if(me.areaid == _leaderareaid)
-	{
-		NTC_Delay(500);
-	}
-	return;
 }
-function NTR_Two()
-{
-NTC_CheckPlayer(NTConfig_Leader);
-		if(me.areaid == 37 && _leaderareaid != 37)
-			{
-				me.Cancel(0);
-				NTR_GoEast();
-			}
-	return;
-}
-function NTR_Three()
-{
-NTC_CheckPlayer(NTConfig_Leader);
-		if(me.areaid == 49 && _leaderareaid != 49)
-			{
-				me.Cancel(0);
-				NTR_CheckLocation();
-			}
-	return;
-}
-function NTR_Four()
-{
-NTC_CheckPlayer(NTConfig_Leader);
- if(me.areaid == 74 && _leaderareaid != 49)
-			{
-				me.Cancel(0);
-				NTR_CheckLocation();				
-			}
-	return;
-}
-function NTR_Five()
-{
-NTC_CheckPlayer(NTConfig_Leader);
-if(me.areaid == 83 && _leaderareaid != 83)
-			{
-				me.Cancel(0);
-				NTR_GoCain();
-			}
-	return;
-}
-function NTR_Six()
-{
-NTC_CheckPlayer(NTConfig_Leader);
- if(me.areaid == 102 && _leaderareaid != me.areaid)
-			{
-				me.Cancel(0);
-				NTR_CheckLocation();
-				NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
-				if(me.areaid == 102)
-				{
-					NTC_Delay(100);
-					NTM_MoveTo(me.areaid, 17590, 8068);
-					NTC_Delay(1500);
-				if(NTM_TakeUnit(NTC_UNIT_OBJECT, 342))
-					NTC_Delay(1500);
-					NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");
-				}
-			}
-	return;
-}
-function NTR_Seven()
-{
-NTC_CheckPlayer(NTConfig_Leader);
-if(me.areaid == 108 && _leaderareaid != me.areaid)
-			{
-				me.Cancel(0);
-				NTR_TalkTyrael():
-			}
-	return;
-}
-function NTR_Eight()
-{
-NTC_CheckPlayer(NTConfig_Leader);
- if(me.areaid == 110 && _leaderareaid != me.areaid)
-			{
-				me.Cancel(0);
-			}
-	return;
-}
-function NTR_Death()
+function NTR_Death(area)
 {		
-	switch(me.areaid)
+	var area = me.areaid;
+	if(me.mode == 17 && me.hp < 1)
+	{
+		switch(me.areaid)
 		{		
-			case default : NTR_One();
-			
-			case 37 : NTR_Two();
-			
-			case 49 : NTR_Three();
-			
-			case 74 : NTR_Four();
-			
-			case 83 : NTR_Five();
-			
-			case 102 : NTR_Six();
-			
-			case 108 : NTR_Seven();
-			
-			case 110 : NTR_Eight();
+			default :
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == _leaderareaid)
+				{
+					NTC_Delay(500);
+				}
+				break;
+			case 37 :
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 37 && _leaderareaid != 37)
+				{
+					me.Cancel(0);
+					NTR_GoEast();
+				}
+				break;
+			case 49 : 
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 49 && _leaderareaid != 49)
+				{
+					me.Cancel(0);
+					NTR_CheckLocation();
+				}
+				break;
+			case 74 :
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 74 && _leaderareaid != 49)
+				{
+					me.Cancel(0);
+					NTR_CheckLocation();				
+				}
+				break;
+			case 83 : 
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 83 && _leaderareaid != 83)
+				{
+					me.Cancel(0);
+					NTR_GoCain();
+				}
+				break;
+			case 102 : 
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 102 && _leaderareaid != me.areaid)
+				{
+					me.Cancel(0);
+					NTR_CheckLocation();
+					NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
+					if(me.areaid == 102)
+					{
+						NTC_Delay(100);
+						NTM_MoveTo(me.areaid, 17590, 8068);
+						NTC_Delay(1500);
+					if(NTM_TakeUnit(NTC_UNIT_OBJECT, 342)){
+						NTC_Delay(1500);
+						NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");}
+					}
+				}
+				break;
+			case 108 : 
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 108 && _leaderareaid != me.areaid)
+				{
+					me.Cancel(0);
+					NTR_TalkTyrael();
+				}
+				break;
+			case 110 : 
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 110 && _leaderareaid != me.areaid)
+				{
+					me.Cancel(0);
+				}
+				break;
 		}
-}*/
+	}
+}
 function NTR_LureDiablo()
 {
 	if(me.areaid == 108){	
