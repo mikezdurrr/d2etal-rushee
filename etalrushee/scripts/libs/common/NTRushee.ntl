@@ -904,7 +904,7 @@ function NTR_Death(area)
 				{
 					me.Cancel(0);
 					NTC_Delay(800);
-					NTR_CheckLocation();				
+					NTR_GoCain();				
 				}
 				break;
 			case 83 : 
