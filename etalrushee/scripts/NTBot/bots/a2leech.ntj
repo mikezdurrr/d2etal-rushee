@@ -64,6 +64,7 @@ function chat(msg, type)
 						}
 						while(me.areaid == 49)
 						{
+							NTC_PingDelay(300);
 							NTR_GetBook();
 							NTC_PingDelay(500);
 							NTR_TakePortal();
