@@ -102,11 +102,7 @@ function NTMain()
 
 	Say("Radament dead!");
 
-	while(!NTC_IsQuesterOut()) {
-		Delay(500);
-	}
-
-	NTC_Delay(2000);
+	NTC_Delay(3000);
 
 	Movetobook();
 	
