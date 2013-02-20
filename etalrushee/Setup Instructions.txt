@@ -17,6 +17,24 @@
 
 7. Remember to save all changes and move on to Rusher-Setup.
 -------------------------------------------------------------------------------
+-------------RUSHEELEECHER-SETUP-----------------------------------------------
+-------------------------------------------------------------------------------
+1. Open scripts/NTBot/char_configs
+
+2. Copy the Config file of your Rushees character type(if you're rushing a druid copy NTConfig_Druid, Rename to NTConfig_Druid_CHARACTERNAME).
+
+3. Open the Character file you just Renamed and find ---- NTConfig_Leader = "config me";
+
+4. REPLACE "config me" with the characters name you inted to be the rusher.
+
+5. Go back to the scripts folder(where the EtalManager is) open RusheeLeecher.ntj
+
+6. Find var leaderAccountName = ""; set this to the RusheeStarter's account name Spelled EXACTLY
+
+7. Find var leaderName = "";set this to the RusheeStarter's Character name Spelled EXACTLY
+
+8. Remember to save all changes and move on to Rusher-Setup.
+-------------------------------------------------------------------------------
 -------------RUSHER-SETUP------------------------------------------------------
 -------------------------------------------------------------------------------
 1. Open scripts/NTRush/rush_configs
@@ -37,9 +55,9 @@
 
 4. Go back to the scripts folder(where the EtalManager is) open Rushbot.ntj
 
-5. Find var leaderAccountName = ""; set this to the Rushee's account name Spelled EXACTLY
+5. Find var leaderAccountName = ""; set this to the RusheeStarter's account name Spelled EXACTLY
 
-6. Find var leaderName = "";set this to the Rushee's Character name Spelled EXACTLY
+6. Find var leaderName = "";set this to the RusheeStarter's Character name Spelled EXACTLY
 
 7. Remember to save all changes and move on to EtalManager-Setup
 -------------------------------------------------------------------------------
@@ -73,6 +91,33 @@
 13. Choose the Character Position of your Rushee
 
 14. Press OK - and your Rushee is all setup!
+-------------------------------------------------------------------------------
+-----------REMEMBER-TO-SAVE-YOUR-PROFILES!-------------------------------------
+-------------------------------------------------------------------------------
+-------------ETALMANAGER-SETUP-------------------------------------------------
+---------------RUSHEELEECHER---------------------------------------------------
+-------------------------------------------------------------------------------
+1. Open scripts folder.
+
+2. Open ETAL Manager.exe //Run as Administrator
+
+3. Find the Add button and press it.
+
+4. Name the Profile - RusheeLeecher(doesnt matter what you name it this just makes it easier)
+
+5. Press the Auto Detection button
+
+6. Add the cdkey.mpq you'll be using
+
+7. Add the account name of your RusheeLeecher
+
+8. Choose the Server of your RusheeLeecher
+
+9. Choose RusheeLeecher.ntj as the Enter Point/Starter File
+
+10. Choose the Character Position of your Rushee
+
+11. Press OK - and your Rushee is all setup!
 -------------------------------------------------------------------------------
 -----------REMEMBER-TO-SAVE-YOUR-PROFILES!-------------------------------------
 -------------------------------------------------------------------------------
