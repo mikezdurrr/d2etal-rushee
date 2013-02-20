@@ -893,24 +893,24 @@ function NTR_Death(area)
 				if(me.areaid == 49 && _leaderareaid != 49)
 				{
 					me.Cancel(0);
-					NTR_CheckLocation();
 				}
+				NTR_CheckLocation();
 				break;
 			case 74 :
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 74 && _leaderareaid != 49)
 				{
-					me.Cancel(0);
-					NTR_CheckLocation();				
+					me.Cancel(0);				
 				}
+				NTR_CheckLocation();
 				break;
 			case 83 : 
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 83 && _leaderareaid != 83)
 				{
 					me.Cancel(0);
-					NTR_GoCain();
 				}
+				NTR_GoCain();
 				break;
 			case 102 : 
 				NTC_CheckPlayer(NTConfig_Leader);
@@ -930,13 +930,21 @@ function NTR_Death(area)
 					}
 				}
 				break;
+			case 107 : 
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 107 && _leaderareaid != me.areaid)
+				{
+					me.Cancel(0);
+				}
+					NTR_TalkTyrael();
+				break;
 			case 108 : 
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 108 && _leaderareaid != me.areaid)
 				{
 					me.Cancel(0);
-					NTR_TalkTyrael();
 				}
+					NTR_TalkTyrael();
 				break;
 			case 110 : 
 				NTC_CheckPlayer(NTConfig_Leader);
