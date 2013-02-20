@@ -93,6 +93,23 @@ function NTMain()
 	NTC_PingDelay(300);
 	Say("Summoner is dead!");
 
+	while(!NTC_IsQuesterOut()) {
+	if(_journalx < 25300) {
+		NTM_MoveTo(me.areaid, _journalx+55, _journaly);
+	}
+	if(_journaly < 5300) {
+		NTM_MoveTo(me.areaid, _journalx+15, _journaly+55);
+	}
+	if(_journalx > 25500) {
+		NTM_MoveTo(me.areaid, _journalx-40, _journaly+15);
+	}
+	if(_journaly > 5500) {
+		NTM_MoveTo(me.areaid, _journalx+15, _journaly-40);
+	}
+	NTM_MakeTP();
+	NTC_PingDelay(100);
+	}
+
 	NTC_Delay(3000);
 	while(!NTM_UsePortal("Portal", 40)) {
 		NTA_ClearPosition(40);
