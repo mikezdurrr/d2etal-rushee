@@ -37,6 +37,7 @@ function chat(msg, type)
 			if(_sender == NTConfig_Leader) {
 				switch(_msg) {
 					case "Anya up!" :
+						NTC_PingDelay(500);
 						NTR_TalkMalah();
 						NTC_PingDelay(500);
 						NTR_TalkAnya();
