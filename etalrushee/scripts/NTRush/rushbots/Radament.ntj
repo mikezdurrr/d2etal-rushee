@@ -71,15 +71,23 @@ function NTMain()
 
 	Say("Radament up!");
 
-	NTA_ClearPosition(10);
-	
-	NTC_Delay(2500);
-
-	NTA_ClearPosition(10);
-
 	while(!NTC_IsQuesterIn()) {				
 		NTC_TPGuard(15);
 	}
+
+	NTA_ClearPosition(10);
+	
+	NTC_Delay(1500);
+
+	NTA_ClearPosition(10);
+	
+	NTC_Delay(1000);
+
+	NTA_ClearPosition(10);
+	
+	NTC_Delay(500);
+
+	NTA_ClearPosition(10);
 
 	if(!NTA_KillMonster(229)) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
@@ -94,6 +102,10 @@ function NTMain()
 
 	Say("Radament dead!");
 
+	while(!NTC_IsQuesterOut()) {
+		Delay(500);
+	}
+
 	NTC_Delay(2000);
 
 	Movetobook();
@@ -105,7 +117,11 @@ function NTMain()
 	Say("Get the book!");
 
 	while(NTC_IsQuesterIn()) {
-		NTC_TPGuard(30);
+		NTC_TPGuard(10);
+	}
+
+	while(!NTC_IsQuesterOut()) {
+		Delay(500);
 	}
 
 	NTSI_PickItems();
