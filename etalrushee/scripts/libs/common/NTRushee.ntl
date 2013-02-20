@@ -885,6 +885,7 @@ function NTR_Death(area)
 				if(me.areaid == 37 && _leaderareaid != 37)
 				{
 					me.Cancel(0);
+					NTC_Delay(800);
 					NTR_GoEast();
 				}
 				break;
@@ -893,30 +894,34 @@ function NTR_Death(area)
 				if(me.areaid == 49 && _leaderareaid != 49)
 				{
 					me.Cancel(0);
+					NTC_Delay(800);
+					NTR_CheckLocation();
 				}
-				NTR_CheckLocation();
 				break;
 			case 74 :
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 74 && _leaderareaid != 49)
 				{
-					me.Cancel(0);				
+					me.Cancel(0);
+					NTC_Delay(800);
+					NTR_CheckLocation();				
 				}
-				NTR_CheckLocation();
 				break;
 			case 83 : 
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 83 && _leaderareaid != 83)
 				{
 					me.Cancel(0);
+					NTC_Delay(800);
+					NTR_GoCain();
 				}
-				NTR_GoCain();
 				break;
 			case 102 : 
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 102 && _leaderareaid != me.areaid)
 				{
 					me.Cancel(0);
+					NTC_Delay(800);
 					NTR_CheckLocation();
 					NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
 					if(me.areaid == 102)
@@ -935,16 +940,18 @@ function NTR_Death(area)
 				if(me.areaid == 107 && _leaderareaid != me.areaid)
 				{
 					me.Cancel(0);
-				}
+					NTC_Delay(800);
 					NTR_TalkTyrael();
+				}
 				break;
 			case 108 : 
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 108 && _leaderareaid != me.areaid)
 				{
 					me.Cancel(0);
-				}
+					NTC_Delay(800);
 					NTR_TalkTyrael();
+				}
 				break;
 			case 110 : 
 				NTC_CheckPlayer(NTConfig_Leader);
