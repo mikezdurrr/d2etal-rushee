@@ -1245,7 +1245,7 @@ function NTR_GoForge()
 			NTC_PingDelay(1500);
 		}
 
-		NTM_MoveTo(_forge.areaid, _forge.x-2, _forge.y-1);	
+		NTM_MoveTo(_forge.areaid, _forge.x+2, _forge.y-1);	
 		
 		NTA_ClearPosition(40);
 		
