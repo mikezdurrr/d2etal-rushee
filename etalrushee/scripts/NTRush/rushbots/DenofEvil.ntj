@@ -39,7 +39,7 @@ function NTMain()
 	NTC_Delay(300);
 	NTP_DoPrecast(true);
 	NTA_ClearLevel(true);
-	NTA_ClearLevel(true);
+	NTA_ClearLevel(true);}
 	
 	NTC_SendMsgToScript("loader.ntj", "end");		
 }
