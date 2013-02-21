@@ -1021,6 +1021,8 @@ function NTR_Death(area)
 				{
 					me.Cancel(0);
 					NTC_Delay(800);
+					NTR_CheckLocation();
+					NTC_Delay(300);
 					NTR_GoCain();				
 				}
 				break;
@@ -1030,6 +1032,8 @@ function NTR_Death(area)
 				{
 					me.Cancel(0);
 					NTC_Delay(800);
+					NTR_CheckLocation();
+					NTC_Delay(300);
 					NTR_GoCain();
 				}
 				break;
@@ -1040,6 +1044,7 @@ function NTR_Death(area)
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_CheckLocation();
+					NTC_Delay(300);
 					NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
 					if(me.areaid == 102)
 					{
