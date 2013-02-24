@@ -1,6 +1,6 @@
 function NTMain()
 {
-  Include("libs/common/NTCommon.ntl");
+	Include("libs/common/NTCommon.ntl");
 	NTC_IncludeLibs();
 	NTC_IncludeConfig("NTRush/rush_configs");
 
