@@ -563,7 +563,6 @@ return;
 
 function NTR_TalkJer()
 {
-	NTR_OpenQuest();
 	NTC_Delay(100);
 	if(me.areaid == 40) 
 	{
@@ -587,9 +586,7 @@ function NTR_TalkJer()
 		}					
 	}
 	NTC_Delay(500);
-	NTR_OpenQuest();
-	while(!me.GetQuest(14,4)){NTR_TalkJer();}
-	while(me.areaid == 40 && me.GetQuest(14, 4))
+	if(me.areaid == 40)
 	{
 		Print(COLOR_2 + "Heading to A3");
 		NTTM_TownMove("meshif");
@@ -1464,8 +1461,6 @@ return;
 }
 function NTR_OpenQuest()
 {
-	Include("libs/controlInfo.ntl");
-	NTC_IncludeLibs();
 	NTC_PingDelay(300);
 	SetUIState(0x0F, true);
 	NTC_PingDelay(2000);
