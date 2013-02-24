@@ -129,6 +129,7 @@ function NTMain()
 function Movetobook()
 {
 		var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
+		if(!_book){Say("Missed it bro"); return;}
 		if (_book.mode == 3 || _book.mode == 5)
 		{
 			NTM_MoveTo(me.areaid, _book.x, _book.y);
