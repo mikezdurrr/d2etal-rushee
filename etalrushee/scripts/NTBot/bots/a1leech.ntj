@@ -24,6 +24,7 @@ function NTMain()
 	{
 		if(me.areaid == 1){NTR_Heal();}
 		if(me.hp < 1){NTR_Death();}		
+		if(me.GetQuest(6, 12) && me.areaid == 1){NTR_GoEast();}
 		NTC_Delay(250);
 	}
 					
@@ -31,6 +32,7 @@ function NTMain()
 
 function chat(msg, type)
 {
+var i;
     if(type == 0)
     {
         var _split = msg.split(":");
@@ -41,36 +43,34 @@ function chat(msg, type)
             if(_sender == NTConfig_Leader)
             {
                 switch(_msg)
-                {
-			case "Den up!" :
-			NTC_Delay(200);
-			if(me.areaid == 1)
-			{
-				NTM_UsePortal("BluePortal", 8, NTConfig_Leader);
-			}
-				while(me.areaid == 8)
-			{
-				NTR_Den();
-				NTC_CheckPlayer(NTConfig_Leader);
-				if(me.areaid != _leaderareaid){
-				NTR_LeaveDen();}
-			}
-			NTR_GoAkara();
-			break;
+                {					
+					case "Den up!" :
+						NTC_Delay(200);
+						if(me.areaid == 1)
+						{
+							NTM_UsePortal("BluePortal", 8, NTConfig_Leader);
+						}
+						while(me.areaid == 8)
+						{
+							NTR_Den();
+							NTR_LeaveDen();
+						}				
+						break;
+						
                     case "Andariel up!" :
-                    NTC_Delay(200);
-                    for(var i = 0 ; i < 100 && me.areaid == 1 ; i++)
-                    {
-                       NTM_UsePortal("BluePortal", 37, NTConfig_Leader);
-                    }
-                    break;
+						NTC_Delay(200);
+						for(var i = 0 ; i < 100 && me.areaid == 1 ; i++)
+						{
+							NTM_UsePortal("BluePortal", 37, NTConfig_Leader);
+						}
+						break;
 
                     case "Andariel is dead!" :
-                    NTC_Delay(200);
-				NTR_TakePortal();
-                    NTC_Delay(200);
-				NTR_GoEast();
-                    break;  
+						if(me.areaid == 37){
+						NTC_Delay(200);
+						NTR_TakePortal();}
+						NTR_GoEast();
+						break;  
                 }
             }
         }
