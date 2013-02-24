@@ -249,6 +249,7 @@ _townpoints[0]["warriv"] = new coord();
 // act 2
 _townpoints[1] = new Object();
 _townpoints[1]["portalspot"] = new coord(5168,5055);
+_townpoints[1]["jerhyn"] = new coord(5062,5146); new coord(5080,5145);
 _townpoints[1]["stash"] = new coord(5124,5082);
 _townpoints[1]["fara"] = new coord(5124,5082);
 _townpoints[1]["cain"] = new coord(5124,5082);
