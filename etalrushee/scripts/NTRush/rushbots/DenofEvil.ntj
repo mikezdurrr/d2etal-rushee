@@ -16,11 +16,11 @@ function NTMain()
 
 	NTTMGR_TownManager();
 	
-	if(!NTM_TakeWaypoint(1)) {
-		NTC_SendMsgToScript("loader.ntj", "NTM_TakeWaypoint()");
-		return;
+	if(me.areaid != 1){
+	NTTM_TownMove("waypoint");
+	NTM_TakeWaypoint(1);
 	}
-
+	
 	if(me.areaid == 1){
 	NTTM_TownMove("exit");}
 	
@@ -35,11 +35,9 @@ function NTMain()
 	NTM_MakeTP();
 	Say("Den up!");
 	while(!NTC_IsQuesterIn()) {
-	NTC_TPGuard(30);}
-	NTC_Delay(300);
-	NTP_DoPrecast(true);
-	NTA_ClearLevel(true);
-	NTA_ClearLevel(true);}
+	NTP_DoPrecast(true);}	
+	NTR_ClearDen(true);	
+	NTR_ClearDen(true);}
 	
 	NTC_SendMsgToScript("loader.ntj", "end");		
 }
