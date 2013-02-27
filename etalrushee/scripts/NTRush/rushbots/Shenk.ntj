@@ -45,6 +45,8 @@ function NTMain()
 		NTC_TPGuard(20);
 	}
 
+	NTR_ClearSpot();
+	
 	if(!NTA_KillMonster(GetLocaleString(22435))) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
