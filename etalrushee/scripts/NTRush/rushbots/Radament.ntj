@@ -74,21 +74,9 @@ function NTMain()
 	while(!NTC_IsQuesterIn()) {				
 		NTC_TPGuard(15);
 	}
-
-	NTA_ClearPosition(10);
 	
-	NTC_Delay(1500);
-
-	NTA_ClearPosition(10);
+	NTR_ClearSpot();
 	
-	NTC_Delay(1000);
-
-	NTA_ClearPosition(10);
-	
-	NTC_Delay(500);
-
-	NTA_ClearPosition(10);
-
 	if(!NTA_KillMonster(229)) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
