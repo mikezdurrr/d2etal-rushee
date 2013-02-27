@@ -597,9 +597,7 @@ function NTR_TalkJer()
 		}					
 	}
 	NTC_Delay(500);
-	NTR_OpenQuest();
-	while(!me.GetQuest(14,4)){NTR_TalkJer();}
-	while(me.areaid == 40 && me.GetQuest(14, 4))
+	if(me.areaid == 40)
 	{
 		Print(COLOR_2 + "Heading to A3");
 		NTTM_TownMove("meshif");
