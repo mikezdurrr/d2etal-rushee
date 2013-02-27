@@ -39,6 +39,11 @@ function NTMain()
 		}
 	}
 
+	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, false)) {
+		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
+		return;
+	}
+	
 	if(_journalx < 25300) {
 		NTM_MoveTo(me.areaid, _journalx+55, _journaly);
 	}
@@ -53,7 +58,7 @@ function NTMain()
 	}
 
 	for(i=0; i<5; i++) {
-		NTA_ClearPosition(20);
+		NTA_ClearPosition(10);
 	}
 
 	NTM_MakeTP();
@@ -66,10 +71,7 @@ function NTMain()
 		NTC_TPGuard(10);
 	}	
 	
-	NTC_Delay(2000);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(2000);//wait for monsters to draw near
-	NTA_ClearPosition(10);
+	NTR_ClearSpot();
 
 	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, true)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
@@ -83,9 +85,21 @@ function NTMain()
 
 	NTC_PingDelay(300);
 
-	Say("Summoner is dead!");
-
 	while(!NTC_IsQuesterOut()) {
+	_unit = GetPresetUnits(me.areaid, 2);
+		
+	for(i=0;i < _unit.length; i++) {
+		if(_unit[i].id == 357) {
+			_journalx = _unit[i].roomx*5+_unit[i].x;
+			_journaly = _unit[i].roomy*5+_unit[i].y;
+		}
+	}
+
+	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, true)) {
+		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
+		return;
+	}
+	
 	if(_journalx < 25300) {
 		NTM_MoveTo(me.areaid, _journalx+55, _journaly);
 	}
@@ -98,13 +112,15 @@ function NTMain()
 	if(_journaly > 5500) {
 		NTM_MoveTo(me.areaid, _journalx+15, _journaly-40);
 	}
-	NTC_PingDelay(500);
-	NTM_MakeTP();
-	NTC_PingDelay(200);
-	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, true)) {
-		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
-		return;
+
+	for(i=0; i<5; i++) {
+		NTA_ClearPosition(10);
 	}
+
+	NTM_MakeTP();
+	NTC_Delay(500);
+	Say("Summoner is dead!");
+	NTC_Delay(2500);
 	}
 
 	NTC_Delay(3000);
