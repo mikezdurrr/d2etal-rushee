@@ -47,14 +47,10 @@ function NTMain()
 	while(!NTC_IsQuesterIn()) {
 		NTC_TPGuard(20);
 	}
+	
+	NTR_ClearSpot();
 
-	NTA_ClearPosition(10);
-
-	NTC_PingDelay(1000);
-
-	NTA_ClearPosition(10);
-
-	NTC_PingDelay(500);
+	NTC_PingDelay(200);
 
 	NTA_ClearPosition(20);
 
