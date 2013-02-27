@@ -1,6 +1,16 @@
+/* 
+Written by goodstuff for Automated Rushee/Rusher. 
+
+Any code not written by myself is listed in the credits in my thread.
+
+You can find any additional information @
+
+www.projectetal.com/forums/index.php?threads/automated-rushee-release-v1.11071
+*/
+
 function NTR_Heal()
 { 
-var i = .8;
+var i = .85;
 	if(me.hp < me.hpmax*i)
 	{
 		var _area = me.areaid;
@@ -15,8 +25,8 @@ var i = .8;
 		if(me.areaid == 109){
 			_area = "Malah";}
 			
-		Print(COLOR_9 + "Checking Health..");
-		Print(COLOR_9 + "Current Health " + "( " + COLOR_1 + me.hp + COLOR_9 + " )");
+		Print(COLOR_5 + "Checking Health..");
+		Print(COLOR_5 + "Current Health " + "( " + COLOR_1 + me.hp + COLOR_5 + " )");
 		Print(COLOR_11 + "Visiting Healer " + _area);
 		
 		if(me.areaid == 1)
@@ -130,7 +140,7 @@ function NTR_TakePortal()
 
 	do 
 	{
-		Print(COLOR_2 + "Using Portal");
+		Print(COLOR_5 + "Using Portal");
 		if(GetDistance(me, _portal) < 15) 
 		{
 			for(var i = 0 ; i < 20 ; i++) 
@@ -307,9 +317,9 @@ function NTR_CubeStaff()
 {
 	if(me.areaid == 40)
 	{
-		Print(COLOR_17 + "Cubing Staff!");
+		Print(COLOR_5 + "Cubing Staff!");
 		NTR_MakeStaff();
-		Print(COLOR_17 + "Success!");
+		Print(COLOR_5 + "Success!");
 		NTR_GoCain();
 	}
 return;
@@ -445,7 +455,7 @@ function NTR_GetCube()
 		var _cube = "Horadric Cube";
 		while(_item.mode != 0 && _havecube.itemloc != 0)
 		{	
-			Print(COLOR_3 + "Looking for " + _cube + "...");
+			Print(COLOR_5 + "Looking for " + _cube + "...");
 			NTR_GrabQuestItem();
 			break;
 		}		
@@ -548,7 +558,7 @@ function NTR_GetBook()
 	var _book = "Book of Skill";
 	while(_item.mode != 0 && _havebook.itemloc != 0)
 	{
-			Print(COLOR_3 + "Looking for " + _book + "...");
+			Print(COLOR_5 + "Looking for " + _book + "...");
 			NTR_GrabQuestItem();
 			break;
 	}
@@ -563,6 +573,7 @@ return;
 
 function NTR_TalkJer()
 {
+	NTR_OpenQuest();
 	NTC_Delay(100);
 	if(me.areaid == 40) 
 	{
@@ -586,7 +597,9 @@ function NTR_TalkJer()
 		}					
 	}
 	NTC_Delay(500);
-	if(me.areaid == 40)
+	NTR_OpenQuest();
+	while(!me.GetQuest(14,4)){NTR_TalkJer();}
+	while(me.areaid == 40 && me.GetQuest(14, 4))
 	{
 		Print(COLOR_2 + "Heading to A3");
 		NTTM_TownMove("meshif");
@@ -756,10 +769,10 @@ function NTR_MoveStaff()
 			NTCU_CloseCubeInt(cube[0]);
 			me.Cancel(1);
 			if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0)
-			Print(COLOR_9 + "Staff in inventory!");
+			Print(COLOR_5 + "Staff in inventory!");
 			return true;}
 		else if(_horadricstaff.length > 0 && _horadricstaff[0].itemloc == 0){
-			Print(COLOR_17 + "Staff in inventory!");
+			Print(COLOR_5 + "Staff in inventory!");
 			return true;}
 	}
 }
@@ -931,7 +944,7 @@ return;
 
 function NTR_GoHarrogath()
 {
-	Print(COLOR_11 + "Using Harrogath Portal");
+	Print(COLOR_5 + "Using Harrogath Portal");
 	var _gath = NTM_TakeUnit(NTC_UNIT_OBJECT, GetLocaleString(22646));
 	if(me.areaid == 103)
 	{
@@ -1079,7 +1092,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == _leaderareaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					NTC_Delay(500);
 				}
 				break;
@@ -1087,7 +1100,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 8 && _leaderareaid != 8)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_GoAkara();
@@ -1097,7 +1110,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 37 && _leaderareaid != 37)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_GoEast();
@@ -1107,7 +1120,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 49 && _leaderareaid != 49)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(3000);
 					NTR_CheckLocation();
@@ -1115,21 +1128,21 @@ function NTR_Death(area)
 				break;
 			case 74 :
 				NTC_CheckPlayer(NTConfig_Leader);
-				if(me.areaid == 74 && _leaderareaid != 49)
+				if(me.areaid == 74 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_CheckLocation();
-					NTC_Delay(5000);
+					NTC_Delay(3000);
 					NTR_GoCain();				
 				}
 				break;
 			case 83 : 
 				NTC_CheckPlayer(NTConfig_Leader);
-				if(me.areaid == 83 && _leaderareaid != 83)
+				if(me.areaid == 83 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_CheckLocation();
@@ -1141,7 +1154,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 102 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_CheckLocation();
@@ -1162,7 +1175,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 107 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_TalkTyrael();
@@ -1172,7 +1185,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 108 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(800);
 					NTR_GoTyrael();
@@ -1182,12 +1195,90 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 110 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_17 + _area);
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 				}
 				break;
 		}
 	}
+}/*
+function NTR_GoRushee()
+{
+	var _player = GetPlayerUnit();
+	var _area;
+	var _name;
+	var _msg;
+	if(arguments.length < 1)
+		_area = me.areaid
+	if(arguments.length > 0)
+		_area = area;
+	if(me.areaid == 37){
+		_msg = "Andariel is dead!";}
+	if(me.areaid == 49){
+		_msg = "Radament is dead!";}
+	if(me.areaid == 74){
+		_msg = "Summoner is dead!";}
+	if(me.areaid == 83){
+		_msg = "Council is dead!";}
+	if(me.areaid == 105){
+		_msg = "Izzy is dead!";}
+	if(me.areaid == 108){
+		_msg = "Diablo is dead!";}
+	if(me.areaid == 110){
+		_msg = "Shenk is dead!";}		
+		
+	do
+	{
+		if(_player != me)
+		{
+			NTM_MoveTo(_player.areaid,_player.x,_player.y);
+			if(GetDistance(me,_player) < 2)
+			{
+				Print(COLOR_2 + _player.name);
+				NTM_MoveTo(_player.areaid,_player.x,_player.y);	
+				NTM_MakeTP();
+				NTC_PingDelay(300);
+				Say(_msg);
+				NTC_PingDelay(3000);
+			}
+		}
+	}while(_player.GetNext());
+	return;
+}*/
+function NTR_ClearSpot()
+{
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
+	NTC_Delay(200);//wait for monsters to draw near
+	NTA_ClearPosition(10);
 }
 function NTR_LureDiablo()
 {
@@ -1430,12 +1521,12 @@ function NTR_SSCheck()
 	var _soulStone = me.GetItems(551);		
 	for(i = 0 ; i < _soulStone.length ; i++)
 	{
-		if(_soulStone[0].itemloc != 0){
+		if(_soulStone.length == 0){
 			Print(COLOR_1 + "Soulstone Missing!");
 			NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_11 + "Soulstone Missing");		
 			NTR_GoCain();}
 		if(_soulStone[0].itemloc == 0){
-			Print(COLOR_8 + "Soulstone in Inventory");}
+			Print(COLOR_5 + "Soulstone in Inventory");}
 	}
 return;
 }
@@ -1466,6 +1557,176 @@ function NTR_OpenQuest()
 	NTC_PingDelay(2000);
 	NTC_CancelOut(1);
 return;
+}
+function NTR_LevelTime(area, name)
+{
+	var BMClear = 1;
+	var DenClear = 0;
+	var CPClear = 1;
+	var CaveClear = 0;
+	var SFClear = 1;
+	var UGP1Clear = 1;
+	var UGP2Clear = 0;
+	var DWClear = 0;
+	var _player;
+	var _myPartyId;
+	var _area;
+	var _name;
+	_name = me.charname;
+
+	_player = GetPlayerUnit();
+	_myPartyId = _player.partyid;
+
+	if(arguments.length < 1)
+		_area = me.areaid
+	if(arguments.length > 0)
+		_area = area;
+	
+		while(_player.level < 13)
+		{
+			Print(COLOR_3 + "Checking Level... ");
+			Print(COLOR_5 + _player.name + " is level " + _player.level);
+			Print(COLOR_5 + "Moving to Act 1");
+			NTTMGR_TownManager();
+				if(me.areaid != 1){
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(1);}
+				if(me.areaid == 1 && BMClear == 0){
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(1);
+					NTTM_TownMove("exit");
+					Print(COLOR_5 + "Clearing Blood Moor");
+				while(me.areaid != 2){
+					NTM_MoveTo(2,me.x+10,me.y);}
+				if(me.areaid == 2){
+					NTA_ClearLevel(true, 40);
+					BMClear = 1;
+					Print(COLOR_5 + "Blood Moor Clear");}}
+				while(me.areaid == 1 && BMClear == 1 && DenClear == 0){	
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(1);				
+					NTTM_TownMove("exit");
+					Print(COLOR_5 + "Clearing Den of Evil");
+				while(me.areaid != 2){
+					NTM_MoveTo(2,me.x+10,me.y);}
+				if(me.areaid == 2){
+					NTM_MoveToStair(2,8);
+					NTM_TakeStair(8);}
+				if(me.areaid == 8){
+					NTA_ClearLevel(true, 40);
+					NTM_MakeTP();
+					DenClear = 1;
+					Print(COLOR_5 + "Den Clear");
+					NTM_UsePortal("BluePortal", 1, me.charname);}}
+				if(me.areaid == 1 && DenClear == 1 && BMClear == 1 && CPClear == 0)
+				{				
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(3);			
+					Print(COLOR_5 + "Clearing Cold Plains");			
+					if(me.areaid == 3){
+						NTA_ClearLevel(true, 40);
+						NTM_MakeTP();
+						CPClear = 1;
+						Print(COLOR_5 + "Cold Plains Clear");}	
+				}
+				if(me.areaid == 1 && DenClear == 1 && BMClear == 1 && CPClear == 1 && CaveClear == 0)
+				{
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(3);			
+					Print(COLOR_5 + "Clearing the Cave");			
+					
+				}
+				if(me.areaid == 3){
+					NTM_MoveToStair(3,9);
+					NTM_TakeStair(9);}
+				while(me.areaid == 9){
+					NTA_ClearLevel(true, 40);
+					NTM_MakeTP();
+					CaveClear = 1;
+					Print(COLOR_5 + "Cave Clear");
+					NTM_UsePortal("BluePortal", 1, me.charname);}	
+				if(me.areaid == 1 && DenClear == 1 && BMClear == 1 && CPClear == 1 && CaveClear == 1 && SFClear == 0)
+				{
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(4);			
+					Print(COLOR_5 + "Clearing Stony Field");		
+				while(me.areaid == 4 && SFClear == 0){
+					NTA_ClearLevel(true, 40);
+					SFClear = 1;
+					Print(COLOR_5 + "Stony Field Clear");}	
+				}
+				if(me.areaid == 1 && DenClear == 1 && BMClear == 1 && CPClear == 1 && CaveClear == 1 && SFClear == 1)
+				{
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(4);			
+				}
+				if(me.areaid == 4 && SFClear == 1)
+				{
+					Print(COLOR_5 + "Clearing UnderGround Passage lvl 1");	
+					NTM_MoveToStair(4,10);
+					NTM_TakeStair(10);
+					while(me.areaid == 10 && UGP2Clear == 0)
+					{
+						NTA_ClearLevel(true, 40);
+						UGP1Clear = 1;
+						Print(COLOR_5 + "UnderGround Passage lvl 1 clear");
+						NTM_MoveToStair(10,14);
+						NTM_TakeStair(14);		
+						Print(COLOR_5 + "Clearing UnderGround Passage lvl 2");	
+						if(me.areaid == 14 && UGP1Clear == 1)
+						{
+							NTA_ClearLevel(true, 40);
+							UGP2Clear = 1;
+							Print(COLOR_5 + "UnderGround Passage lvl 2 clear");
+							NTM_MoveToStair(14,10);
+							NTM_TakeStair(10);
+						}
+					}
+					while(me.areaid == 10 && UGP1Clear == 1 && UGP2Clear == 1)
+					{
+						Print(COLOR_5 + "Clearing Dark Wood");	
+						//need to figure out how to use "To The Dark Wood" stairs
+						//For now just go back to town and try to take Waypoint
+						NTM_MakeTP();
+						NTM_UsePortal("BluePortal", 1, me.charname);
+					}		
+				}				
+				if(me.areaid == 1 && DenClear == 1 && UGP1Clear == 1 && UGP2Clear == 1 && CaveClear == 1 && SFClear == 1)
+				{
+					NTTM_TownMove("waypoint");
+					NTM_TakeWaypoint(4);			
+					Print(COLOR_5 + "Clearing Dark Wood");		
+				}
+				if(me.areaid == 5 && UGP2Clear == 1)
+				{
+					NTA_ClearLevel(true, 40);
+					DWClear = 1;
+					Print(COLOR_5 + "Dark Wood clear");					
+				}
+			return;
+		}
+		while(_player.level >= 14 && _player.level <= 20)
+		{
+			Print(COLOR_3 + "Checking Level... ");
+			Print(COLOR_5 + _player.name + " is level " + _player.level);
+			Print(COLOR_5 + "Moving to Act 2");
+			if(me.areaid != 1){
+				NTM_MakeTP();
+				NTM_UsePortal("BluePortal", 1, me.charname);}
+			NTTMGR_TownManager();
+			NTTM_TownMove("waypoint");
+			NTM_TakeWaypoint(40);		
+			NTTM_TownMove("exit");
+			while(me.areaid != 41){
+			NTM_MoveTo(41, me.x+10, me.y);}
+			if(me.areaid == 41){
+			Print(COLOR_5 + "Clearing Rocky Wastes");
+			NTA_ClearLevel(true,40);}
+			
+			return;
+		}
+		NTC_Delay(100);
+	return false;	
 }
 function NTV_checkQuestState(questnumber){ // tool to check what parts of quests are complete
 
