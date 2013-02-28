@@ -1097,6 +1097,8 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == _leaderareaid)
 				{
+					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(500);
 				}
 				break;
@@ -1104,7 +1106,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 8 && _leaderareaid != 8)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
@@ -1119,7 +1121,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 37 && _leaderareaid != 37)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
@@ -1134,7 +1136,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 49 && _leaderareaid != 49)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
@@ -1147,7 +1149,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 74 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
@@ -1163,7 +1165,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 83 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
@@ -1180,7 +1182,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 102 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
@@ -1208,7 +1210,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 105 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
@@ -1223,7 +1225,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 108 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
@@ -1238,7 +1240,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 110 && _leaderareaid != me.areaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(800);
 					me.Cancel(0);
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
