@@ -1140,8 +1140,9 @@ function NTR_Death(area)
 					me.Cancel(0);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					NTC_Delay(3000);
+					NTC_Delay(800);
 					NTR_CheckLocation();
+					NTC_Delay(800);
 				}
 				break;
 			case 74 :
@@ -1157,7 +1158,7 @@ function NTR_Death(area)
 						NTC_CancelOut(1);}
 						NTC_Delay(800);
 						NTR_CheckLocation();
-						NTC_Delay(3000);
+						NTC_Delay(1000);
 						NTR_GoCain();
 				}
 				break;
@@ -1174,7 +1175,7 @@ function NTR_Death(area)
 						NTC_CancelOut(1);}
 					NTC_Delay(800);
 					NTR_CheckLocation();
-					NTC_Delay(3000);
+					NTC_Delay(1000);
 					NTR_GoCain();
 				}
 				break;
@@ -1191,7 +1192,7 @@ function NTR_Death(area)
 						NTC_CancelOut(1);}
 						NTC_Delay(800);
 						NTR_CheckLocation();
-						NTC_Delay(3000);
+						NTC_Delay(1000);
 						NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
 						if(me.areaid == 102)
 						{
@@ -1246,7 +1247,7 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-						NTC_PingDelay(2000);
+						NTC_PingDelay(1000);
 				}
 				break;
 		}
