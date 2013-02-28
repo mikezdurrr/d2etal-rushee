@@ -189,7 +189,6 @@ function NTR_GoAkara()
 			}
 		}
 		NTR_OpenQuest();
-		NTR_CheckLocation();
 	}
 	return;
 }
@@ -309,7 +308,13 @@ function NTR_LeaveDen()
 		NTC_PingDelay(300);
 		NTM_MakeTP();
 		NTR_TakePortal();}
+	if(me.GetQuest(1, 4) && me.areaid == 1){
+		NTR_OpenQuest();
 		NTR_GoAkara();
+		NTC_PingDelay(300);
+		NTR_GoAkara();}
+	if(me.GetQuest(1, 12) && me.areaid == 1){
+		NTR_CheckLocation();}
 		
 	return;
 }
@@ -597,6 +602,8 @@ function NTR_TalkJer()
 		}					
 	}
 	NTC_Delay(500);
+	NTR_OpenQuest();
+	if(!me.GetQuest(14, 4)){NTR_TalkJer();return;}
 	if(me.areaid == 40)
 	{
 		Print(COLOR_2 + "Heading to A3");
