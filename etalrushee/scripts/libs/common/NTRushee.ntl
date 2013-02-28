@@ -1106,10 +1106,13 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(1000);
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_GoAkara();
+					NTR_GoAkara();}
 				}
 				break;
 			case 37 :
@@ -1118,10 +1121,13 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(1000);
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_GoEast();
+					NTR_GoEast();}
 				}
 				break;
 			case 49 : 
@@ -1130,8 +1136,11 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
 					NTC_Delay(3000);
-					NTR_CheckLocation();
+					NTR_CheckLocation();}
 				}
 				break;
 			case 74 :
@@ -1140,12 +1149,14 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(1000);
-					NTC_CancelOut(1);
-					NTC_Delay(800);
-					NTR_CheckLocation();
-					NTC_Delay(3000);
-					NTR_GoCain();				
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
+						NTC_Delay(800);
+						NTR_CheckLocation();
+						NTC_Delay(3000);
+						NTR_GoCain();}				
 				}
 				break;
 			case 83 : 
@@ -1154,12 +1165,15 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(1000);
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_CheckLocation();
 					NTC_Delay(3000);
-					NTR_GoCain();
+					NTR_GoCain();}
 				}
 				break;
 			case 102 : 
@@ -1168,20 +1182,25 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(1000);
-					NTC_CancelOut(1);
-					NTC_Delay(800);
-					NTR_CheckLocation();
-					NTC_Delay(3000);
-					NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
-					if(me.areaid == 102)
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else
 					{
-						NTC_Delay(100);
-						NTM_MoveTo(me.areaid, 17590, 8068);
-						NTC_Delay(1500);
-						if(NTM_TakeUnit(NTC_UNIT_OBJECT, 342)){
-						NTC_Delay(1500);
-						NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");}
+						NTC_CancelOut(1);
+						NTC_Delay(800);
+						NTR_CheckLocation();
+						NTC_Delay(3000);
+						NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
+						if(me.areaid == 102)
+						{
+							NTC_Delay(100);
+							NTM_MoveTo(me.areaid, 17590, 8068);
+							NTC_Delay(1500);
+							if(NTM_TakeUnit(NTC_UNIT_OBJECT, 342)){
+								NTC_Delay(1500);
+								NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");}
+						}
 					}
 				}
 				break;
@@ -1191,10 +1210,13 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(1000);
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_TalkTyrael();
+					NTR_TalkTyrael();}
 				}
 				break;
 			case 108 : 
@@ -1203,10 +1225,13 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(1000);
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_GoTyrael();
+					NTR_GoTyrael();}
 				}
 				break;
 			case 110 : 
@@ -1216,7 +1241,10 @@ function NTR_Death(area)
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
 					NTC_Delay(300);
-					NTC_CancelOut(1);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);}
+					else{
+						NTC_PingDelay(2000);}
 				}
 				break;
 		}
