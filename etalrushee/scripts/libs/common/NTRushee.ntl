@@ -1097,8 +1097,6 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == _leaderareaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
-					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_PingDelay(200);
 				}
 				break;
@@ -1240,6 +1238,7 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 110 && _leaderareaid != me.areaid)
 				{
+					NTC_Delay(300);
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
