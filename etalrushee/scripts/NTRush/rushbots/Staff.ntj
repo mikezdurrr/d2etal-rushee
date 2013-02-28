@@ -57,13 +57,7 @@ function NTMain()
 		return;
 	}
 
-	for(i = 0; i < 2; i++) {
-		NTA_ClearPosition(15);
-		NTSI_PickItems();
-		NTC_PingDelay(100);
-	}
-
-	NTSI_PickItems();				
+	NTR_ClearSpot();
 
 	_Staff = NTC_FindUnit(NTC_UNIT_OBJECT, 356);
 		
