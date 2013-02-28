@@ -1097,8 +1097,8 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == _leaderareaid)
 				{
+					NTC_PingDelay(200);
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
-					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(500);
 				}
 				break;
@@ -1111,10 +1111,9 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_GoAkara();}
+					NTR_GoAkara();
 				}
 				break;
 			case 37 :
@@ -1126,10 +1125,9 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_GoEast();}
+					NTR_GoEast();
 				}
 				break;
 			case 49 : 
@@ -1140,9 +1138,8 @@ function NTR_Death(area)
 					me.Cancel(0);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
 					NTC_Delay(3000);
-					NTR_CheckLocation();}
+					NTR_CheckLocation();
 				}
 				break;
 			case 74 :
@@ -1154,11 +1151,10 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
 						NTC_Delay(800);
 						NTR_CheckLocation();
 						NTC_Delay(3000);
-						NTR_GoCain();}				
+						NTR_GoCain();
 				}
 				break;
 			case 83 : 
@@ -1170,12 +1166,11 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_CheckLocation();
 					NTC_Delay(3000);
-					NTR_GoCain();}
+					NTR_GoCain();
 				}
 				break;
 			case 102 : 
@@ -1187,8 +1182,6 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else
-					{
 						NTC_CancelOut(1);
 						NTC_Delay(800);
 						NTR_CheckLocation();
@@ -1203,7 +1196,6 @@ function NTR_Death(area)
 								NTC_Delay(1500);
 								NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");}
 						}
-					}
 				}
 				break;
 			case 105 : 
@@ -1215,10 +1207,9 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_TalkTyrael();}
+					NTR_TalkTyrael();
 				}
 				break;
 			case 108 : 
@@ -1230,10 +1221,9 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
 					NTC_CancelOut(1);
 					NTC_Delay(800);
-					NTR_GoTyrael();}
+					NTR_GoTyrael();
 				}
 				break;
 			case 110 : 
@@ -1245,8 +1235,7 @@ function NTR_Death(area)
 					NTC_Delay(300);
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);}
-					else{
-						NTC_PingDelay(2000);}
+						NTC_PingDelay(2000);
 				}
 				break;
 		}
