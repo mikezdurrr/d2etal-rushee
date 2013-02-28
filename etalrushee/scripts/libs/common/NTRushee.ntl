@@ -1097,7 +1097,6 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == _leaderareaid)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					NTC_Delay(500);
 				}
 				break;
@@ -1107,7 +1106,7 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(300);
+					NTC_Delay(1000);
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_GoAkara();
@@ -1119,7 +1118,7 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(300);
+					NTC_Delay(1000);
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_GoEast();
@@ -1141,7 +1140,7 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(300);
+					NTC_Delay(1000);
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_CheckLocation();
@@ -1155,7 +1154,7 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(300);
+					NTC_Delay(1000);
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_CheckLocation();
@@ -1169,7 +1168,7 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(300);
+					NTC_Delay(1000);
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_CheckLocation();
@@ -1192,7 +1191,7 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(300);
+					NTC_Delay(1000);
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_TalkTyrael();
@@ -1204,7 +1203,7 @@ function NTR_Death(area)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
-					NTC_Delay(300);
+					NTC_Delay(1000);
 					NTC_CancelOut(1);
 					NTC_Delay(800);
 					NTR_GoTyrael();
