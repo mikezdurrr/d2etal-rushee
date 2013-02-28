@@ -75,7 +75,7 @@ function NTMain()
 		NTC_TPGuard(15);
 	}
 	
-	NTR_ClearSpot();
+	NTR_ClearSpot(10,true,200);
 	
 	if(!NTA_KillMonster(229)) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");

@@ -57,7 +57,7 @@ function NTMain()
 		return;
 	}
 
-	NTR_ClearSpot();
+	NTR_ClearSpot(10,true,200);
 
 	_Staff = NTC_FindUnit(NTC_UNIT_OBJECT, 356);
 		

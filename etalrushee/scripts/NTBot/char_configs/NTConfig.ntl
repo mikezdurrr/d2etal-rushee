@@ -3,7 +3,8 @@
 // Done by Tru - April 2012
 
 var NTConfig_Script = [];
-
+// Rushee
+var NTConfig_LevelTime;
 // Class Specific Var's
 	var DebugAttacksInGame;
 	// Assassin

@@ -1296,40 +1296,48 @@ function NTR_GoRushee()
 	}while(_player.GetNext());
 	return;
 }*/
-function NTR_ClearSpot()
+function NTR_ClearSpot(range,pickit,delay)
 {
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
-	NTC_Delay(200);//wait for monsters to draw near
-	NTA_ClearPosition(10);
+	var _delay;
+	var _pick;
+	var _range;
+	
+	range = _range;
+	pickit = _pick;
+	delay = _delay;
+	
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(_delay);//wait for monsters to draw near
+	NTA_ClearPosition(_range, _pick);
 }
 function NTR_LureDiablo()
 {
