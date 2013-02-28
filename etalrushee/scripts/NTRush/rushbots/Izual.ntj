@@ -38,21 +38,13 @@ function NTMain()
 
 	NTM_MakeTP();
 
-	NTC_PingDelay(1500);
-
-	NTA_ClearPosition(10);
-
 	Say("Izzy up!");
 
 	while(!NTC_IsQuesterIn()) {
-		NTC_TPGuard(20);
+		NTC_TPGuard(10);
 	}
 	
 	NTR_ClearSpot();
-
-	NTC_PingDelay(200);
-
-	NTA_ClearPosition(20);
 
 	NTM_MoveTo(105, _izzy[0].roomx*5+_izzy[0].x, _izzy[0].roomy*5+_izzy[0].y, 0, true);
 
