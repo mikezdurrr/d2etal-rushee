@@ -85,7 +85,6 @@ function NTMain()
 
 	NTC_PingDelay(300);
 
-	while(!NTC_IsQuesterOut()) {
 	_unit = GetPresetUnits(me.areaid, 2);
 		
 	for(i=0;i < _unit.length; i++) {
@@ -120,10 +119,8 @@ function NTMain()
 	NTM_MakeTP();
 	NTC_Delay(500);
 	Say("Summoner is dead!");
-	NTC_Delay(2500);
-	}
-
-	NTC_Delay(3000);
+	NTC_Delay(4500);
+	
 	while(!NTM_UsePortal("Portal", 40)) {
 		NTA_ClearPosition(40);
 		NTM_MoveTo(me.areaid, _journalx, _journaly);
