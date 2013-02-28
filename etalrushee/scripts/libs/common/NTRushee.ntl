@@ -314,7 +314,7 @@ function NTR_LeaveDen()
 		NTC_PingDelay(300);
 		NTR_GoAkara();}
 	if(me.GetQuest(1, 12) && me.areaid == 1){
-		NTR_CheckLocation();}
+		NTR_CheckLocation();return;}
 		
 	return;
 }
@@ -1178,7 +1178,7 @@ function NTR_Death(area)
 				break;
 			case 105 : 
 				NTC_CheckPlayer(NTConfig_Leader);
-				if(me.areaid == 107 && _leaderareaid != me.areaid)
+				if(me.areaid == 105 && _leaderareaid != me.areaid)
 				{
 					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					me.Cancel(0);
