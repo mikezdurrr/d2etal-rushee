@@ -55,15 +55,7 @@ function NTMain()
 
 	NTSI_PickItems();
 
-	Say("Izzy dead!");
-	
-	NTC_Delay(2000);
-
-	NTA_ClearPosition(10);
-
-	NTSI_PickItems();
-
-	NTM_MakeTP();
+	NTR_GoRushee();
 
 	NTM_UsePortal("BluePortal", 103, me.charname);
 

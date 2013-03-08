@@ -59,6 +59,8 @@ function chat(msg, type)
 						NTC_PingDelay(300);
 						NTR_SmashNdatShit();
 						NTC_PingDelay(200);
+						NTR_SmashNdatShit();
+						NTC_PingDelay(200);
 						NTR_TakePortal();}
 						if(me.areaid == 103){
 						NTC_PingDelay(200);

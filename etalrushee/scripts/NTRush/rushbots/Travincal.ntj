@@ -87,8 +87,7 @@ function NTMain()
 		NTC_PingDelay(200);
 	}
 
-	NTM_MakeTP();
-	Say("Council is dead!");
+	NTR_GoRushee();
 
 	NTC_Delay(3000);
 

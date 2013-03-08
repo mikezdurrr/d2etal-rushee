@@ -85,41 +85,7 @@ function NTMain()
 
 	NTC_PingDelay(300);
 
-	_unit = GetPresetUnits(me.areaid, 2);
-		
-	for(i=0;i < _unit.length; i++) {
-		if(_unit[i].id == 357) {
-			_journalx = _unit[i].roomx*5+_unit[i].x;
-			_journaly = _unit[i].roomy*5+_unit[i].y;
-		}
-	}
-
-	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, true)) {
-		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
-		return;
-	}
-	
-	if(_journalx < 25300) {
-		NTM_MoveTo(me.areaid, _journalx+55, _journaly);
-	}
-	if(_journaly < 5300) {
-		NTM_MoveTo(me.areaid, _journalx+15, _journaly+55);
-	}
-	if(_journalx > 25500) {
-		NTM_MoveTo(me.areaid, _journalx-40, _journaly+15);
-	}
-	if(_journaly > 5500) {
-		NTM_MoveTo(me.areaid, _journalx+15, _journaly-40);
-	}
-
-	for(i=0; i<5; i++) {
-		NTA_ClearPosition(10);
-	}
-
-	NTM_MakeTP();
-	NTC_Delay(500);
-	Say("Summoner is dead!");
-	NTC_Delay(4500);
+	NTR_GoRushee();
 	
 	while(!NTM_UsePortal("Portal", 40)) {
 		NTA_ClearPosition(40);
