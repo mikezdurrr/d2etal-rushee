@@ -77,12 +77,12 @@ function NTMain()
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
 		return;
 	}
-/*
+
 	if(!NTA_KillMonster(250)) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
 	}
-*/
+
 	if(!NTM_MoveToPresetUnit(me.areaid, 2, 402, 0, 0, false)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
 		return;
