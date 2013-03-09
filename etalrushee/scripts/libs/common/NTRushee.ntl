@@ -1277,6 +1277,7 @@ function NTR_GoRushee()
 		if(_player != me)
 		{
 			Print(COLOR_2 + "Teleporting to " + _player.name);
+			//NTM_TeleportTo(_player.x,_player.y);
 			NTM_MoveTo(me.areaid,_player.x,_player.y);
 			NTM_MakeTP();
 			NTC_PingDelay(300);

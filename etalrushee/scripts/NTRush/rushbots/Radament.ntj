@@ -89,7 +89,12 @@ function NTMain()
 	if(NTA_KillMonster(229)) {
 		_rad = [me.x, me.y];
 	}
-
+	
+	if(!NTM_MoveToStair(me.areaid, 48)) {
+		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToStair()");
+		return;
+	}
+	
 	NTR_GoRushee();
 
 	NTC_Delay(1000);

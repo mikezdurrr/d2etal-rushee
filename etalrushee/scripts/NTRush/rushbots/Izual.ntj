@@ -44,7 +44,7 @@ function NTMain()
 		NTC_TPGuard(10);
 	}
 	
-	NTR_ClearSpot(10,true,200);
+	NTR_ClearSpot(10,false,200);
 
 	NTM_MoveTo(105, _izzy[0].roomx*5+_izzy[0].x, _izzy[0].roomy*5+_izzy[0].y, 0, true);
 
@@ -53,6 +53,8 @@ function NTMain()
 		return;
 	}
 
+	Say("Izzy dead!");
+	
 	NTSI_PickItems();
 
 	NTR_GoRushee();
