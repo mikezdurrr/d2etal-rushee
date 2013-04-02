@@ -1085,7 +1085,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 8 && _leaderareaid != 8)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1100,7 +1102,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 37 && _leaderareaid != 37)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1115,7 +1119,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 49 && _leaderareaid != 49)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1143,7 +1149,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 74 && _leaderareaid != 74)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1160,7 +1168,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 83 && _leaderareaid != 83)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1177,7 +1187,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 102 && _leaderareaid != 102)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1203,7 +1215,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 105 && _leaderareaid != 105)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1218,7 +1232,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 108 && _leaderareaid != 108)
 				{
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1233,8 +1249,9 @@ function NTR_Death(area)
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 110 && _leaderareaid != 110)
 				{
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
 					NTC_Delay(300);
-					Print(COLOR_1 + "I fukn died at " + COLOR_5 + _area);
 					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
 					NTC_Delay(800);
 					me.Cancel(0);
@@ -1247,15 +1264,19 @@ function NTR_Death(area)
 		}
 	}
 }
-function NTR_GoRushee()
+function NTR_GoRushee(area,name)
 {
 	var _player = GetPlayerUnit();
 	var _area;
 	var _name;
 	var _msg;
+	var _rushee = NTConfig_RusheeLeader;
+	name = NTConfig_RusheeLeader;
+	area = me.areaid;
+	
+	if(arguments.length < 0)
+		_area = me.areaid;
 	if(arguments.length < 1)
-		_area = me.areaid
-	if(arguments.length > 0)
 		_area = area;
 	if(me.areaid == 37){
 		_msg = "Andariel is dead!";}
@@ -1270,22 +1291,25 @@ function NTR_GoRushee()
 	if(me.areaid == 108){
 		_msg = "Diablo is dead!";}
 	if(me.areaid == 110){
-		_msg = "Shenk is dead!";}		
+		_msg = "Shenk is dead!";}
 		
 	while(_player.GetNext())
 	{
-		if(_player != me)
+		if(_rushee == _player.name)
 		{
-			Print(COLOR_2 + "Teleporting to " + _player.name);
-			//NTM_TeleportTo(_player.x,_player.y);
-			NTM_MoveTo(me.areaid,_player.x,_player.y);
-			NTM_MakeTP();
-			NTC_PingDelay(300);
-			Say(_msg);
-			NTC_PingDelay(3000);
-		}
+			Print(COLOR_2 + "Teleporting to " + name);
+			if (GetDistance(me, name) <= GetDistance(me, name)) {
+				NTM_GetCloserInt(NTConfig_RusheeLeader);	
+				NTM_MoveTo(me.areaid,_player.x+1,_player.y);
+				NTM_MakeTP();
+				NTC_PingDelay(300);
+				Say(_msg);
+				NTC_PingDelay(3000);
+				return;
+			}
+		}break;
 	}
-	return;
+	return false;
 }
 function NTR_ClearSpot(range,pickit,delay)
 {
@@ -1293,10 +1317,11 @@ function NTR_ClearSpot(range,pickit,delay)
 	var _pick;
 	var _range;
 	
-	range = _range;
-	pickit = _pick;
-	delay = _delay;
+	_range = range;
+	_pick = pickit;
+	_delay = delay;
 	
+	//Print(COLOR_3 + "Clearing area " + range + " " + pickit + " " + delay);
 	NTC_Delay(_delay);//wait for monsters to draw near
 	NTA_ClearPosition(_range, _pick);
 	NTC_Delay(_delay);//wait for monsters to draw near
@@ -1375,19 +1400,19 @@ function NTR_TalkTyrael()
       		{
         		NTM_MoveTo(me.areaid, _npc.x, _npc.y);
          		if(NTT_DoInteract(_npc))
-            		{
-				if(GetDistance(me, _npc) < 15) 
-				{
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelOut(0);
-					NTC_PingDelay(500);
-					NTC_CancelOut(0);
-				}
-            		}
-		}
-				NTR_CheckLocation();
-				}
+            	{
+					if(GetDistance(me, _npc) < 15) 
+					{
+						NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+						NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+						NTC_CancelOut(0);
+						NTC_PingDelay(500);
+						NTC_CancelOut(0);
+					}
+            	}
+			}
+		NTR_CheckLocation();
+	}
 return;
 }
 
@@ -1525,7 +1550,7 @@ function NTR_SmashNdatShit()
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
 				NTC_PingDelay(150);
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
-				NTC_PingDelay(3500);
+				NTC_PingDelay(2500);
 		}
 	}
 return;

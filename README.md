@@ -6,17 +6,13 @@ Visit http://www.projectetal.com/forums/index.php?forum/#project-d2etal.3 for mo
 
 A few things to mention:
 
-- When using the rushbot
-if you are going to skip ahead or back up a script YOU MUST PAUSE FIRST with pause/break.
+-The Rushees MUST have a TownPortal Scroll in their inventory for Den of Evil!
 
-- If for some reason the rushbot leaves the game the rushee will also leave! It's somewhere in there but I'll have to disable the leader check.
+-The Rushees Inventory MUST have the first 3 left rows free for use in act 2!
 
-- When the rushee is called to enter Duriel's tomb and place staff in the orifice, 
-be patient it may take 1 second, it may take 10 seconds depending on which tomb it is. 
-I'm not sure if there is a better way of doing this at this time, although I do have something to try.
+When using the rushbot:
+-If you are going to skip ahead or back up a script YOU MUST PAUSE FIRST with pause/break.
 
-- In the NTBot char_config: I recommend you setting your rushee's NTConfig_PartyMaxTime = 20; to 2000 
-this ensures the rushee won't leave before your rushbot gets in game.
+-If for some reason the rushbot leaves the game the rushee will also leave!
 
-- I plan on adding in skills/tome/anya quests in the near future.
-
+-Currently you either need a bumper to join or bring your own in with the game to advance to the next difficulty. -- or crush and comment out a5 script.

@@ -39,7 +39,7 @@ function NTMain()
 		}
 	}
 
-	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, false)) {
+	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 20, 20, false)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
 		return;
 	}
@@ -71,7 +71,9 @@ function NTMain()
 		NTC_TPGuard(10);
 	}	
 	
-	NTR_ClearSpot(10,true,200);
+	NTR_ClearSpot(15,true,250);
+	
+	NTA_ClearPosition(10);
 
 	if(!NTM_MoveToPresetUnit(me.areaid, 2, 357, 0, 0, true)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
@@ -80,11 +82,6 @@ function NTMain()
 
 	if(!NTA_KillMonster(250)) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
-		return;
-	}
-
-	if(!NTM_MoveToPresetUnit(me.areaid, 2, 402, 0, 0, false)) {
-		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
 		return;
 	}
 	

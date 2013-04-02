@@ -1,8 +1,9 @@
 -------------------------------------------------------------------------------
 ----------STEPS-TO-SETUP-RUSHEE/RUSHER-----------------------------------------
 -------------------------------------------------------------------------------
----------------RUHSEE-SETUP----------------------------------------------------
+---------------RUHSEELEADER-SETUP----------------------------------------------
 -------------------------------------------------------------------------------
+
 1. Open scripts/NTBot/char_configs
 
 2. Copy the Config file of your Rushees character type(if you're rushing a druid copy NTConfig_Druid, Rename to NTConfig_Druid_CHARACTERNAME).
@@ -11,14 +12,16 @@
 
 4. REPLACE "config me" with the characters name you inted to be the rusher.
 
-5. Go back to the scripts folder(where the EtalManager is) open RusheeStarter.ntj
+5. Go back to the scripts folder(where the EtalManager is) open RusheeLeader.ntj
 
 6. Change anything you feel you need to(join channel, channel name).
 
 7. Remember to save all changes and move on to Rusher-Setup.
+
 -------------------------------------------------------------------------------
 -------------RUSHEELEECHER-SETUP-----------------------------------------------
 -------------------------------------------------------------------------------
+
 1. Open scripts/NTBot/char_configs
 
 2. Copy the Config file of your Rushees character type(if you're rushing a druid copy NTConfig_Druid, Rename to NTConfig_Druid_CHARACTERNAME).
@@ -29,48 +32,54 @@
 
 5. Go back to the scripts folder(where the EtalManager is) open RusheeLeecher.ntj
 
-6. Find var leaderAccountName = ""; set this to the RusheeStarter's account name Spelled EXACTLY
+6. Find var leaderAccountName = ""; set this to the RusheeLeader's account name Spelled EXACTLY
 
-7. Find var leaderName = "";set this to the RusheeStarter's Character name Spelled EXACTLY
+7. Find var leaderName = "";set this to the RusheeLeader's Character name Spelled EXACTLY
 
 8. Remember to save all changes and move on to Rusher-Setup.
+
 -------------------------------------------------------------------------------
 -------------RUSHER-SETUP------------------------------------------------------
 -------------------------------------------------------------------------------
+
 1. Open scripts/NTRush/rush_configs
 
 2. Copy the Config file of your Rushers character type(if you're rushing a druid copy NTConfig_Druid, Rename to NTConfig_Druid_CHARACTERNAME).
 
-3. Open the Character file you just Renamed and set the rushbots you want to run
+2.1. Open the Character file you just Renamed and set the rushbots you want to run
 
-3.1- set the inventory they way you prefer
+3. Find NTConfig_RusheeLeader = ""; Set to RusheeLeader's name.
 
-3.2- set the belt the way you prefer
+3.1- Set the inventory they way you prefer
 
-3.3- set the Picket the way you prefer
+3.2- Set the belt the way you prefer
+
+3.3- Set the Pickit the way you prefer
 
 3.4- Find this line  --  NTConfig_AttackSkill[0] = 0; 
 
-3.5- set all these to the skills of your character class MAKE SURE EVERY ONE HAS A SKILL IN IT.
+3.5- Set all these to the skills of your character class MAKE SURE EVERY ONE HAS A SKILL IN IT.
 
 4. Go back to the scripts folder(where the EtalManager is) open Rushbot.ntj
 
-5. Find var leaderAccountName = ""; set this to the RusheeStarter's account name Spelled EXACTLY
+5. Find var leaderAccountName = ""; set this to the RusheeLeader's account name Spelled EXACTLY
 
-6. Find var leaderName = "";set this to the RusheeStarter's Character name Spelled EXACTLY
+6. Find var leaderName = ""; set this to the RusheeLeader's Character name Spelled EXACTLY
 
 7. Remember to save all changes and move on to EtalManager-Setup
+
 -------------------------------------------------------------------------------
 -------------ETALMANAGER-SETUP-------------------------------------------------
-------------------RUSHEE-------------------------------------------------------
+------------------RUSHEELeader-------------------------------------------------
 -------------------------------------------------------------------------------
+
 1. Open scripts folder.
 
 2. Open ETAL Manager.exe //Run as Administrator
 
 3. Find the Add button and press it.
 
-4. Name the Profile - RusheeStarter(doesnt matter what you name it this just makes it easier)
+4. Name the Profile - RusheeLeader(doesnt matter what you name it this just makes it easier)
 
 5. Press the Auto Detection button
 
@@ -80,7 +89,7 @@
 
 8. Choose the Server of your Rushee
 
-9. Choose RusheeStarter.ntj as the Enter Point/Starter File
+9. Choose RusheeLeader.ntj as the Enter Point/Starter File
 
 10. Find Game Name and Game PW, Uncheck these
 
@@ -91,12 +100,14 @@
 13. Choose the Character Position of your Rushee
 
 14. Press OK - and your Rushee is all setup!
+
 -------------------------------------------------------------------------------
 -----------REMEMBER-TO-SAVE-YOUR-PROFILES!-------------------------------------
 -------------------------------------------------------------------------------
 -------------ETALMANAGER-SETUP-------------------------------------------------
 ---------------RUSHEELEECHER---------------------------------------------------
 -------------------------------------------------------------------------------
+
 1. Open scripts folder.
 
 2. Open ETAL Manager.exe //Run as Administrator
@@ -118,12 +129,14 @@
 10. Choose the Character Position of your Rushee
 
 11. Press OK - and your Rushee is all setup!
+
 -------------------------------------------------------------------------------
 -----------REMEMBER-TO-SAVE-YOUR-PROFILES!-------------------------------------
 -------------------------------------------------------------------------------
 -------------ETALMANAGER-SETUP-------------------------------------------------
 ------------------RUSHER-------------------------------------------------------
 -------------------------------------------------------------------------------
+
 1. If you closed ETAL Manager.exe open it
 
 2. Find the Add button and press it.
@@ -145,6 +158,7 @@
 10. Press OK - and your Rusher is all setup!
 
 11. Now you can Run the bots!
+
 -------------------------------------------------------------------------------
 -----------REMEMBER-TO-SAVE-YOUR-PROFILES!-------------------------------------
 -------------------------------------------------------------------------------

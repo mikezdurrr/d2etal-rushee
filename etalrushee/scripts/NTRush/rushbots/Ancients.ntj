@@ -10,7 +10,7 @@ function NTMain()
 	NTSI_LoadNIPFiles("NTBot/item_configs");
 
 	NTA_Initialize();
-
+/*
 	if(!NTTM_CheckAct()) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_CheckAct()");
 		return;
@@ -39,7 +39,7 @@ function NTMain()
 		NTC_SendMsgToScript("loader.ntj", "NTM_TakeStair()");
 		return;
 	}
-		
+*/		
 	if(!NTM_MoveTo(me.areaid, 10057, 12645)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveTo()");
 		return;
@@ -49,9 +49,6 @@ function NTMain()
 			
 	NTM_MakeTP();
 			
-	while(!NTC_IsQuesterIn()) {
-		NTC_Delay(500);
-	}
 
 	NTA_ClearPosition(10);
 
@@ -83,8 +80,30 @@ function NTMain()
 	}
 
 	Say("Ancients dead! Get back to town!");
-
-	NTM_MakeTP(true);
-
+	
+	// This takes stair to World Stone Level 1
+	NTM_MoveToStair(me.areaid, 128);
+	
+	OpenGate();
+	//GetLocaleString(22685)
+	//GetLocaleString(22663)
+	
+	NTM_TakeStair(128);
+	
+	//now you need to either add more code or can end it here
+	
 	NTC_SendMsgToScript("loader.ntj", "end");	
+}
+function OpenGate(msg)
+{
+	msg = Say("Open Sesimie");
+	var _gate = GetUnit(NTC_UNIT_OBJECT, 547);
+	if(_gate)  
+    {  
+		if(GetDistance(me, _gate) > 2)  
+        NTM_MoveTo(_gate.areaid,_gate.x+2, _gate.y);   
+        NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _gate);  
+        NTC_PingDelay(500);  
+	}
+return;
 }

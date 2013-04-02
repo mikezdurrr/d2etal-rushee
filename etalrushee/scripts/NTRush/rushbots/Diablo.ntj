@@ -70,10 +70,7 @@ function NTMain() {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
 	}
-	NTM_MoveTo(108, 7763, 5267);
-	NTM_MakeTP();
-	NTC_Delay(200);
-	Say("Diablo is dead!");
+	NTR_GoRushee();
 	NTC_Delay(200);
 	NTM_MoveTo(108, 7792, 5291);
 	NTSI_PickItems();

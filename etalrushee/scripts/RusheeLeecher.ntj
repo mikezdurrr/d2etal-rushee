@@ -16,8 +16,8 @@
 // =============================================================================
 // Leader Account settings
 // =============================================================================
-var leaderAccountName = "puffd"; 
-var leaderName = "tkd_toke";
+var leaderAccountName = ""; 
+var leaderName = "";
 // =============================================================================
 
 // Leecher game entry delays use to stagger when leechers join game...
@@ -46,7 +46,7 @@ var fastJoin = false;				// this has preconfigured delays for easy switching.  G
 // =============================================================================
 // Game password (leave blank if none)
 // =============================================================================
-var gamepassword = "521";
+var gamepassword = "";
 
 // =============================================================================
 // UseCDKeyChangeTrick :

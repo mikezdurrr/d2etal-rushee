@@ -44,28 +44,20 @@ function NTMain()
 	while(!NTC_IsQuesterIn()) {
 		NTC_TPGuard(20);
 	}
-
-	NTR_ClearSpot(10,true,200);
+	
+	NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_MONSTER, 776, -5, 5);
 	
 	if(!NTA_KillMonster(GetLocaleString(22435))) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
 	}
 
-	NTA_ClearPosition();
-
-	NTM_MoveTo(110, 3855, 5125);
-	NTM_MakeTP();
-
-	Say("Shenk is dead!");
+	NTA_ClearPosition(20,true);
 
 	NTSI_PickItems();
-
-	if(!NTM_MoveTo(110, 3865, 5125)) {
-		NTC_SendMsgToScript("loader.ntj", "NTM_MoveTo()");
-		return;
-	}
-
+	
+	NTR_GoRushee();
+	
 	NTM_UsePortal("BluePortal", 109, me.charname);
 
 	NTC_SendMsgToScript("loader.ntj", "end");

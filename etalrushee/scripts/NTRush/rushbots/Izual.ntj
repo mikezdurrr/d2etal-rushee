@@ -52,8 +52,6 @@ function NTMain()
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
 		return;
 	}
-
-	Say("Izzy dead!");
 	
 	NTSI_PickItems();
 

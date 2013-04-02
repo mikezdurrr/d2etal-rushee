@@ -77,6 +77,8 @@ function NTMain()
 	
 	NTR_ClearSpot(10,true,200);
 	
+	NTA_ClearPosition(10);
+	
 	NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 355, +5, +2);
 	
 	if(!NTA_KillMonster(229)) {
@@ -88,11 +90,6 @@ function NTMain()
 
 	if(NTA_KillMonster(229)) {
 		_rad = [me.x, me.y];
-	}
-	
-	if(!NTM_MoveToStair(me.areaid, 48)) {
-		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToStair()");
-		return;
 	}
 	
 	NTR_GoRushee();

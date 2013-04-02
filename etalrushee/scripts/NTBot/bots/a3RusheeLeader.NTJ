@@ -56,12 +56,12 @@ function chat(msg, type)
 						NTC_PingDelay(300);
 						NTR_GetTome();
 						NTC_PingDelay(300);
-						NTR_TakePortal();
+						NTR_TakePortal();}
+						if(me.areaid == 75){
 						NTC_PingDelay(300);
-						NTR_GoCain();
+						NTR_GoAlkor();
 						NTC_PingDelay(300);
-						NTR_GoAlkor();}
-						NTR_CheckLocation();
+						NTR_CheckLocation();}
 						break;
 					case "Council up!" :
 						NTC_Delay(100);

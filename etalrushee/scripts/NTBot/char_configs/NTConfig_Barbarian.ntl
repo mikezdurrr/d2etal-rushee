@@ -35,14 +35,18 @@ function NT_LoadConfig()
 	//		RusheeStarter 
 	//------------------------------------------------------------------------------
 
-	NTConfig_Script.push("a1leech.ntj");
-	NTConfig_Script.push("a2leech.ntj");
-	NTConfig_Script.push("a3leech.ntj");
-	NTConfig_Script.push("a4leech.ntj");
-	NTConfig_Script.push("a5leech.ntj");
+	//------------------------------------------------------------------------------
+	//		RusheeLeader -- There is only One RusheeLeader
+	//------------------------------------------------------------------------------
+
+	NTConfig_Script.push("a1RusheeLeader.ntj");
+	NTConfig_Script.push("a2RusheeLeader.ntj");
+	NTConfig_Script.push("a3RusheeLeader.ntj");
+	NTConfig_Script.push("a4RusheeLeader.ntj");
+	NTConfig_Script.push("a5RusheeLeader.ntj");
 
 	//------------------------------------------------------------------------------
-	//		RusheeLeecher
+	//		RusheeLeecher -- These are Additional rushee's
 	//------------------------------------------------------------------------------
 
 	//NTConfig_Script.push("a1RusheeLeecher.ntj");
@@ -50,6 +54,7 @@ function NT_LoadConfig()
 	//NTConfig_Script.push("a3RusheeLeecher.ntj");
 	//NTConfig_Script.push("a4RusheeLeecher.ntj");
 	//NTConfig_Script.push("a5RusheeLeecher.ntj");
+
 
 	//------------------------------------------------------------------------------
 	// Speed Settings

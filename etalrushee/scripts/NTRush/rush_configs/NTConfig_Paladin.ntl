@@ -8,6 +8,8 @@ function NT_LoadConfig()
 	// 
 	// -----------------------------------------------------------------------------------------------------
 	NTConfig_Bumper = "";
+	
+	NTConfig_RusheeLeader = "";
 
 	NTConfig_RushScript = [
 		//"Cain",

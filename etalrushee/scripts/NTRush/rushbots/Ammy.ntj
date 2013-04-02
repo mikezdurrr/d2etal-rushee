@@ -62,6 +62,13 @@ function NTMain()
 	NTC_PingDelay(100);
 		
 	NTM_MakeTP();
+	
+	NTC_PingDelay(100);
+	
+	if(!NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 149, +8, +2)) {
+		NTC_SendMsgToScript("loader.ntj", "NTM_MoveToPresetUnit()");
+		return;
+	}
 		
 	Say("Ammy up!");
 

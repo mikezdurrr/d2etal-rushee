@@ -5,6 +5,7 @@ var NTConfig_TpHarem;
 var NTConfig_RushScript = [];
 var NTConfig_Rusher = "";
 var NTConfig_Bumper = "";
+var NTConfig_RusheeLeader = "";
 
 // Class Specific Var's
 	var DebugAttacksInGame;

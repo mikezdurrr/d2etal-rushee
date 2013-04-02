@@ -29,7 +29,7 @@ var joinChannelInChat			= "op Etal Rushee Channel";		 // Channel you want your b
 ///////////////////////////////////////
 //        Message Settings: 		 //		// These controll what your bot sais to the leechers will also send a log incommand to a channel bot
 ///////////////////////////////////////
-var chatMessageOnJoin			= ".login";	// Chat Message to say Login command for channel bot will only be sent once
+var chatMessageOnJoin			= "";	// Chat Message to say Login command for channel bot will only be sent once
 var chatMessageAfterGame1		= "";	// Optional chat message Line #1 to say after each game on Channel
 var chatMessageAfterGame2		= "";		// Optional chat message Line #2 to say after each game on Channel
 var chatMessageAfterGame3		= "";		// Optional chat message Line #3 to say after each game on Channel
