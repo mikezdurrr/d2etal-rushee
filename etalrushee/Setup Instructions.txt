@@ -10,7 +10,7 @@
 
 3. Open the Character file you just Renamed and find ---- NTConfig_Leader = "config me";
 
-4. REPLACE "config me" with the characters name you inted to be the rusher.
+4. REPLACE "config me" with the Rusher's name. Spelled EXACTLY
 
 5. Go back to the scripts folder(where the EtalManager is) open RusheeLeader.ntj
 

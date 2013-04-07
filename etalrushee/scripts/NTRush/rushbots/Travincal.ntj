@@ -76,16 +76,10 @@ function NTMain()
 
 	for(i = 0 ; i < _attackpos.length ; i += 2) {
 		NTM_MoveTo(me.areaid, _attackpos[i]+_deltax, _attackpos[i+1]+_deltay);
-		NTA_ClearPosition(25);
+		NTA_ClearPosition(25,false);
 		NTC_PingDelay(200);
 	}
 	_pretp1 = [_todurx-2, _todury-35, me.x-30, me.y, me.x+60, me.y, me.x-30, me.y, _todurx-2, _todury-35];
-
-	for(i = 0 ; i < _pretp.length ; i += 2) {
-		NTM_MoveTo(me.areaid, _pretp1[i], _pretp1[i+1]);
-		NTA_ClearPosition(10);
-		NTC_PingDelay(200);
-	}
 
 	NTR_GoRushee();
 

@@ -48,10 +48,7 @@ function NTMain()
 
 	NTM_MoveTo(105, _izzy[0].roomx*5+_izzy[0].x, _izzy[0].roomy*5+_izzy[0].y, 0, true);
 
-	if(!NTA_KillMonster(256)) {
-		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");
-		return;
-	}
+	NTA_KillMonster(256)
 	
 	NTSI_PickItems();
 

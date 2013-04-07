@@ -545,6 +545,7 @@ function NTR_GetBook()
 	var _item = NTC_FindUnit(NTC_UNIT_ITEM, 552);
 	var _havebook = me.GetItems(552);
 	var _book = "Book of Skill";
+	if(!_item){return true;}
 	if(_item.mode != 0 && _havebook.itemloc != 0)
 	{
 			Print(COLOR_5 + "Looking for " + _book + "...");
@@ -625,11 +626,11 @@ function NTR_TalkJer()
                      	me.SelectNPCMenu(0x0D38);
                   		NTC_Delay(100);
                		}
-		}
+				}
 
-	}
+		}
 		NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");												
-			}
+	}
 }
 
 function NTR_ReadBook()
@@ -884,8 +885,7 @@ function NTR_GoAlkor()
             NTC_PingDelay(300);
 			NTC_CancelOut(0);
 		}
-	}				
-		           }
+	}}
 return;
 }
 
@@ -1264,20 +1264,36 @@ function NTR_Death(area)
 		}
 	}
 }
+function GetLeaderUnit(name) {
+	var _unit = NTC_FindUnit(NTC_UNIT_PLAYER);
+	
+	if (_unit) {
+		do {
+			if (_unit.name === name) {
+				return _unit;
+			}
+		} while (_unit.GetNext());
+	}
+	
+	return false;
+}
+function NT_GetCloserIntS(unit){ 
+	if(GetDistance(me, unit) > 2)
+		return NTM_MoveTo(unit.areaid, unit.x+1, unit.y);
+	return true;
+}
 function NTR_GoRushee(area,name)
 {
+	
+	name = NTConfig_RusheeLeader;
+	area = me.areaid;
+	var _leader = NTConfig_RusheeLeader;
 	var _player = GetPlayerUnit();
+	var _leaderUnit = GetLeaderUnit(_leader);
 	var _area;
 	var _name;
 	var _msg;
-	var _rushee = NTConfig_RusheeLeader;
-	name = NTConfig_RusheeLeader;
-	area = me.areaid;
 	
-	if(arguments.length < 0)
-		_area = me.areaid;
-	if(arguments.length < 1)
-		_area = area;
 	if(me.areaid == 37){
 		_msg = "Andariel is dead!";}
 	if(me.areaid == 49){
@@ -1295,21 +1311,24 @@ function NTR_GoRushee(area,name)
 		
 	while(_player.GetNext())
 	{
-		if(_rushee == _player.name)
+		if(_player.name == _leader)
 		{
 			Print(COLOR_2 + "Teleporting to " + name);
-			if (GetDistance(me, name) <= GetDistance(me, name)) {
-				NTM_GetCloserInt(NTConfig_RusheeLeader);	
-				NTM_MoveTo(me.areaid,_player.x+1,_player.y);
-				NTM_MakeTP();
-				NTC_PingDelay(300);
-				Say(_msg);
-				NTC_PingDelay(3000);
-				return;
-			}
+				if (GetDistance(me, name) < 2) {
+					NT_GetCloserIntS(_leaderUnit);
+					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
+				}
+				if (GetDistance(me, name) <= GetDistance(me, name)) {
+					NT_GetCloserIntS(_leaderUnit);
+					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
+				}
+			NTM_MakeTP();
+			NTC_PingDelay(300);
+			Say(_msg);
+			return NTC_PingDelay(3000);
 		}break;
 	}
-	return false;
+	return;
 }
 function NTR_ClearSpot(range,pickit,delay)
 {
@@ -1322,38 +1341,39 @@ function NTR_ClearSpot(range,pickit,delay)
 	_delay = delay;
 	
 	//Print(COLOR_3 + "Clearing area " + range + " " + pickit + " " + delay);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
-	NTC_Delay(_delay);//wait for monsters to draw near
-	NTA_ClearPosition(_range, _pick);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	NTC_Delay(delay);//wait for monsters to draw near
+	NTA_ClearPosition(range, pickit);
+	return true;
 }
 function NTR_TalkTyraelSpirit()
 {

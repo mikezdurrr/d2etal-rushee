@@ -70,7 +70,7 @@ function chat(msg, type)
 						break;
 					case "Staff up!" :
 						NTC_PingDelay(3500);
-						TalkMeshif();
+						NTR_GoCain();
 						break;
 					case "Summoner up!" :
 						NTC_Delay(100);
@@ -86,7 +86,7 @@ function chat(msg, type)
 						NTR_TakePortal();
 						NTC_PingDelay(600);}
 						if(me.areaid == 40){
-						TalkMeshif();}
+						NTR_GoCain();}
 						break;
 
 					case "Leeches Talk to Tyrael!" :
@@ -109,31 +109,6 @@ function chat(msg, type)
 		NTC_Delay(750);
 		ExitGame();
 	}
-}
-function TalkMeshif()
-{
-    if(me.areaid == 40)
-    {
-        NTTM_TownMove("meshif");
- 
-          _npc = NTC_FindUnit(NTC_UNIT_NPC, 210, 5);
- 
-          if(_npc)
-          {
-            NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-            if(GetDistance(me, _npc) < 15)
-            {
-                NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-                NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-                NTC_CancelMenus();
-                NTC_Delay(500);
-                NTC_CancelOut(0);
-            }
- 
-        }
-        NTR_CheckLocation();
-    }
-    return;
 }
 function TalktoJeryhn()
 {
