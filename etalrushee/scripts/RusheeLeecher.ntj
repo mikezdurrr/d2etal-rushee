@@ -16,8 +16,10 @@
 // =============================================================================
 // Leader Account settings
 // =============================================================================
-var leaderAccountName = ""; 
-var leaderName = "";
+
+var leaderAccountName = "LeaderAccount"; //RusheeLeaders Account
+var leaderName = "LeaderName";	//RusheeLeaders Character Name
+
 // =============================================================================
 
 // Leecher game entry delays use to stagger when leechers join game...
