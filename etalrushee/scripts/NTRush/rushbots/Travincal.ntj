@@ -69,6 +69,8 @@ function NTMain()
 
 	NTP_DoPrecast(true);
 		
+	NTR_ClearSpot(15,true,200);
+	
 	if(!NTM_MoveTo(me.areaid, 5780+_deltax, 1555+_deltay)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveTo()");
 		return;
@@ -83,13 +85,11 @@ function NTMain()
 
 	NTR_GoRushee();
 
-	NTC_Delay(3000);
+	NTC_Delay(1000);
+		
+	NTM_MoveTo(me.areaid, _todurx-17, _todury+10);	
 
 	NTSI_PickItems();
-		
-	NTM_MoveTo(me.areaid, _todurx-17, _todury+10);
-
-	NTM_MakeTP(true);
 	
 	NTC_SendMsgToScript("loader.ntj", "end");
 }

@@ -103,10 +103,10 @@ function NTMain()
 		}
 
 		NTSI_PickItems();
-		NTM_MakeTP(true);
-		Say("Leeches Talk to Tyrael!");
+		
+		NTR_GoTyraelSpirit();
 	}
-
+	
 	if(!NTTM_TownMove("waypoint")) {
 		NTC_SendMsgToScript("loader.ntj", "NTTM_TownMove()");
 		return;

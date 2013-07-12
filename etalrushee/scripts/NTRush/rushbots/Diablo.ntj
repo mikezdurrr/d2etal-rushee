@@ -63,8 +63,6 @@ function NTMain() {
 		NTC_Delay(500);
 	}
 	
-	//NTR_LureDiablo();
-	
 	Print(COLOR_8 + "Killing Diablo");
 	if (!NTA_KillMonster(243)) {
 		NTC_SendMsgToScript("loader.ntj", "NTA_KillMonster()");

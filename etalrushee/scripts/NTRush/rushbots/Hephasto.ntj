@@ -38,10 +38,7 @@ function NTMain()
 		if(!NTA_KillMonster(409)){
 			NTC_SendMsgToScript("loader.ntj", "NTA_KillBoss()");
 			return;
-			}
 		}
-	
+	}	
 	NTR_GoForge();		
-		
-	NTC_Delay(2000);
 }

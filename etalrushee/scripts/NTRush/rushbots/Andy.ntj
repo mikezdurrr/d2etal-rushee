@@ -77,7 +77,7 @@ function NTMain() {
 
 	NTSI_PickItems();
 
-	Say("Andariel is dead!");
+	NTR_GoRushee();
 
 	if (!NTM_MoveTo(me.areaid, 22595, 9617)) {
 		NTC_SendMsgToScript("loader.ntj", "NTM_MoveTo()");

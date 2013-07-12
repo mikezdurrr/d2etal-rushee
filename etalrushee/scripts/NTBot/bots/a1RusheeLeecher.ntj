@@ -12,16 +12,14 @@ function NTMain()
 
 	RegisterEvent(EVENT_GAMEMSG, chat);
 
-	if(!NTTM_CheckAct(1)) 
-	{
+	if(!NTTM_CheckAct(1)){
 		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_CheckAct()");
 		return;
 	}
 
 	NTR_CheckLocation();
 	
-	while(1) 
-	{
+	while(1){
 		if(me.areaid == 1){NTR_Heal();}
 		if(me.hp < 1){NTR_Death();}		
 		if(me.GetQuest(6, 12) && me.areaid == 1){NTR_GoEast();}
@@ -33,25 +31,19 @@ function NTMain()
 function chat(msg, type)
 {
 var i;
-    if(type == 0)
-    {
+    if(type == 0){
         var _split = msg.split(":");
-        if(_split.length >= 1 && _split[1] != undefined)
-        {
+        if(_split.length >= 1 && _split[1] != undefined){
             var _sender = _split[0].substring(3, _split[0].length - 3);
             var _msg = _split[1].substring(1);
-            if(_sender == NTConfig_Leader)
-            {
-                switch(_msg)
-                {					
+            if(_sender == NTConfig_Leader){
+                switch(_msg){					
 					case "Den up!" :
 						NTC_Delay(200);
-						if(me.areaid == 1)
-						{
+						if(me.areaid == 1){
 							NTM_UsePortal("BluePortal", 8, NTConfig_Leader);
 						}
-						while(me.areaid == 8)
-						{
+						while(me.areaid == 8){
 							NTR_Den();
 							NTR_LeaveDen();
 						}				
@@ -59,25 +51,20 @@ var i;
 						
                     case "Andariel up!" :
 						NTC_Delay(200);
-						for(var i = 0 ; i < 100 && me.areaid == 1 ; i++)
-						{
+						for(var i = 0 ; i < 100 && me.areaid == 1 ; i++){
 							NTM_UsePortal("BluePortal", 37, NTConfig_Leader);
 						}
 						break;
 
                     case "Andariel is dead!" :
 						if(me.areaid == 37){
-						NTC_Delay(200);
-						NTR_TakePortal();}
+							NTC_Delay(200);
+							NTR_TakePortal();
+						}
 						NTR_GoEast();
 						break;  
                 }
             }
         }
-    }
-    else if(type == 4 && (msg.indexOf("weaken") != -1) && (msg.indexOf(NTConfig_Leader) != -1))
-    {
-        NTC_Delay(750);
-        ExitGame();
     }
 }

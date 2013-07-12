@@ -57,11 +57,11 @@ function NTMain()
 		return;
 	}
 
-	NTR_ClearSpot(10,true,200);
+	NTA_ClearPosition(10);
 
 	_Staff = NTC_FindUnit(NTC_UNIT_OBJECT, 356);
 		
-	if(_Staff) {	
+	if(_Staff){	
 		if(NTM_MoveTo(_Staff.areaid, _Staff.x+3, _Staff.y+3)) {
 			NTA_ClearPosition(15);
 			NTSI_PickItems();
@@ -78,11 +78,13 @@ function NTMain()
 	}
 
 	NTA_ClearPosition(30);
+	
 	NTM_MoveTo(_Staff.areaid, _Staff.x-1, _Staff.y-8);
 
 	NTM_MakeTP(true);
 
 	Say("Staff up!");
+	
 	Delay(5000);
 
 	NTM_UsePortal("BluePortal", 1, me.charname);

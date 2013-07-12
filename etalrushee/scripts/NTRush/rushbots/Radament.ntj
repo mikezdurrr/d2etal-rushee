@@ -76,9 +76,7 @@ function NTMain()
 	}
 	
 	NTR_ClearSpot(10,true,200);
-	
-	NTA_ClearPosition(10);
-	
+		
 	NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 355, +5, +2);
 	
 	if(!NTA_KillMonster(229)) {
@@ -97,9 +95,10 @@ function NTMain()
 	NTC_Delay(1000);
 	
 	if(me.areaid == 49){
-	NTR_TakePortal();	
+		NTR_TakePortal();	
 	if(me.areaid == 40)
-	NTM_UsePortal("BluePortal",49,me.charname);}	
+		NTM_UsePortal("BluePortal",49,me.charname);
+	}	
 	
 	NTM_MoveToPresetUnit(me.areaid, NTC_UNIT_OBJECT, 355, +5, +2);
 	
@@ -127,17 +126,15 @@ function NTMain()
 	NTM_UsePortal("BluePortal", 40, me.charname);
 	
 	NTC_SendMsgToScript("loader.ntj", "end");
-}
-function Movetobook()
-{
+	
+	function Movetobook()
+	{
 		var _book = NTC_FindUnit(NTC_UNIT_ITEM, 552);
 		if(!_book){Say("Missed it bro"); return;}
-		if (_book.mode == 3 || _book.mode == 5)
-		{
+		if (_book.mode == 3 || _book.mode == 5){
 			NTM_MoveTo(me.areaid, _book.x, _book.y);
-		}
-		
-		NTC_PingDelay(100);
-	
-return;
+		}	
+		NTC_PingDelay(100);	
+		return true;
+	}
 }

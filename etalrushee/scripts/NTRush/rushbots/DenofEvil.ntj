@@ -17,27 +17,31 @@ function NTMain()
 	NTTMGR_TownManager();
 	
 	if(me.areaid != 1){
-	NTTM_TownMove("waypoint");
-	NTM_TakeWaypoint(1);
+		NTTM_TownMove("waypoint");
+		NTM_TakeWaypoint(1);
 	}
 	
 	if(me.areaid == 1){
-	NTTM_TownMove("exit");}
+		NTTM_TownMove("exit");
+	}
 	
 	while(me.areaid != 2){
-	NTM_MoveTo(2,me.x+10,me.y);}
+		NTM_MoveTo(2,me.x+10,me.y);
+	}
 	
 	if(me.areaid == 2){
-	NTM_MoveToStair(me.areaid, 8);
-	NTM_TakeStair(8);}	
+		NTM_MoveToStair(me.areaid, 8);
+		NTM_TakeStair(8);
+	}	
 	
 	if(me.areaid == 8){
-	NTM_MakeTP();
-	Say("Den up!");
-	while(!NTC_IsQuesterIn()) {
-	NTP_DoPrecast(true);}	
-	NTR_ClearDen(true);	
-	NTR_ClearDen(true);}
-	
+		NTM_MakeTP();
+		Say("Den up!");
+		while(!NTC_IsQuesterIn()){
+			NTP_DoPrecast(true);
+		}	
+		NTR_ClearDen(true);	
+		NTR_ClearDen(true);
+	}	
 	NTC_SendMsgToScript("loader.ntj", "end");		
 }

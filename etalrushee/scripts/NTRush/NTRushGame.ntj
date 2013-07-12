@@ -1,4 +1,6 @@
 var Rev = "ERusher v1.0";
+var CurScriptIndex = 0;
+var LastScript = false;
 
 var InitLife;
 var Corpses = 0;
