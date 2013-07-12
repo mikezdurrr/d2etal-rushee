@@ -26,21 +26,19 @@
 
 2. Copy the Config file of your Rushers character type(if you're rushing a druid copy NTConfig_Druid, Rename to NTConfig_Druid_CHARACTERNAME).
 
-3. Open the Character file you just Renamed and set the rushbots you want to run
+3. Open the Character file you just Renamed and set the rushbots you want to run.
 
-4. Find NTConfig_RusheeLeader = ""; Set to RusheeLeader's name.
+4. Find this line  --  NTConfig_AttackSkill[0] = 0; 
 
-5. Find this line  --  NTConfig_AttackSkill[0] = 0; 
+4.1 Set all these to the skills you'll be using.
 
-5.1 Set all these to the skills you'll be using.
+5. Go back to the scripts folder(where the EtalManager is) open Rushbot.ntj
 
-6. Go back to the scripts folder(where the EtalManager is) open Rushbot.ntj
+6. Find var leaderAccountName = ""; set this to the RusheeLeader's account name Spelled EXACTLY
 
-7. Find var leaderAccountName = ""; set this to the RusheeLeader's account name Spelled EXACTLY
+7. Find var leaderName = ""; set this to the RusheeLeader's Character name Spelled EXACTLY
 
-8. Find var leaderName = ""; set this to the RusheeLeader's Character name Spelled EXACTLY
-
-9. Remember to save all changes and move on to EtalManager-Setup
+8. Remember to save all changes and move on to EtalManager-Setup.
 
 -------------------------------------------------------------------------------
 -------------RUSHEELEECHER-SETUP-----------------------------------------------
@@ -60,7 +58,7 @@
 
 7. Find var leaderName = "";set this to the RusheeLeader's Character name Spelled EXACTLY
 
-8. Remember to save all changes and move on to Rusher-Setup.
+8. Remember to save all changes and move on to EtalManager-Setup.
 
 -------------------------------------------------------------------------------
 -------------ETALMANAGER-SETUP-------------------------------------------------
