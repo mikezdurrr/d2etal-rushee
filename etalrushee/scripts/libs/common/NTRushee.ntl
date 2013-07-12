@@ -5,13 +5,12 @@ Any code not written by myself is listed in the credits in my thread.
 
 You can find any additional information @ www.projectetal.com/forums/index.php?threads/automated-rushee-release-v1.11071
 */
-function NTR_GoRushee(area,name)
+function NTR_GoRushee(area)
 {	
-	name = NTConfig_RusheeLeader;
 	area = me.areaid;
-	var _rushee = NTConfig_RusheeLeader;
 	var _player = GetPlayerUnit();
-	var _leaderUnit = GetLeaderUnit(_rushee);
+	var _leaderUnit = GetLeaderUnit(_player);
+	var name = _player.name;
 	var _msg;
 	
 	if(me.areaid == 37){
@@ -30,8 +29,8 @@ function NTR_GoRushee(area,name)
 		_msg = "Shenk is dead!";}
 		
 	while(_player.GetNext()){
-		if(_player.name == _rushee){
-			Print(COLOR_2 + "Teleporting to " + name);
+		if(_player.name !== me.name){
+			Print(COLOR_2 + "Teleporting to " + _player.name);
 				if(GetDistance(me, name) < 1){
 					NT_GetCloserIntS(_leaderUnit);
 					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
@@ -1236,15 +1235,15 @@ function NTR_ClearSpot(range,pickit,delay)
 	}
 	return false;
 }
-function NTR_ClearRushee(area,name)
+function NTR_ClearRushee(area)
 {	
-	name = NTConfig_RusheeLeader;
 	area = me.areaid;
-	var _rushee = NTConfig_RusheeLeader;
 	var _player = GetPlayerUnit();
-	var _leaderUnit = GetLeaderUnit(_rushee);		
+	var _leaderUnit = GetLeaderUnit(_player);
+	var name = _player.name;
+	
 	while(_player.GetNext()){
-		if(_player.name == _rushee){
+		if(_player.name !== me.name){
 				if(GetDistance(me, name) < 1){
 					NT_GetCloserIntS(_leaderUnit);
 					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);

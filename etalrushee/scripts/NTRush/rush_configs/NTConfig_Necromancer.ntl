@@ -9,10 +9,8 @@ function NT_LoadConfig()
 	// -----------------------------------------------------------------------------------------------------
 	NTConfig_Bumper = "";
 	
-	NTConfig_RusheeLeader = "";
-
 	NTConfig_RushScript = [
-		//"Cain",
+		//"Cain",		//is not supported with rushees
 		"DenofEvil",
 		"Andy",
 		"Radament",
@@ -29,9 +27,9 @@ function NT_LoadConfig()
 		"Diablo",
 		"Shenk",
 		"Anya",
-		"Ancients",
-		"Baal",
-		"Waypoints"
+		"Ancients",		//is not supported with rushees
+		"Baal",			//is not supported with rushees
+		"Waypoints"		//is not supported with rushees
 	];
 
 	NTConfig_TpHarem = true;
