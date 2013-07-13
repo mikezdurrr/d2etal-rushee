@@ -9,8 +9,7 @@ function NTR_GoRushee(area)
 {	
 	area = me.areaid;
 	var _player = GetPlayerUnit();
-	var _leaderUnit = GetLeaderUnit(_player);
-	var name = _player.name;
+	var _leaderUnit = GetLeaderUnit(_player.name);
 	var _msg;
 	
 	if(me.areaid == 37){
@@ -29,13 +28,13 @@ function NTR_GoRushee(area)
 		_msg = "Shenk is dead!";}
 		
 	while(_player.GetNext()){
-		if(_player.name !== me.name){
+		if(_player.name !== me.name && _player.areaid === area){
 			Print(COLOR_2 + "Teleporting to " + _player.name);
-				if(GetDistance(me, name) < 1){
+				if(GetDistance(me, _leaderUnit) < 1){
 					NT_GetCloserIntS(_leaderUnit);
 					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
 				}
-				else if(GetDistance(me, name) <= GetDistance(me, name)){
+				else if(GetDistance(me, _leaderUnit) <= GetDistance(me, _leaderUnit)){
 					NT_GetCloserIntS(_leaderUnit);
 				}
 			NTM_MakeTP();
@@ -1239,16 +1238,15 @@ function NTR_ClearRushee(area)
 {	
 	area = me.areaid;
 	var _player = GetPlayerUnit();
-	var _leaderUnit = GetLeaderUnit(_player);
-	var name = _player.name;
+	var _leaderUnit = GetLeaderUnit(_player.name);
 	
 	while(_player.GetNext()){
-		if(_player.name !== me.name){
-				if(GetDistance(me, name) < 1){
+		if(_player.name !== me.name && _player.areaid === area){
+				if(GetDistance(me, _leaderUnit) < 1){
 					NT_GetCloserIntS(_leaderUnit);
 					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
 				}
-				else if(GetDistance(me, name) <= GetDistance(me, name)){
+				else if(GetDistance(me, _leaderUnit) <= GetDistance(me, _leaderUnit)){
 					NT_GetCloserIntS(_leaderUnit);
 				}
 			return NTA_ClearPosition(10);
