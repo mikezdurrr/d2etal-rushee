@@ -30,20 +30,32 @@ function NTR_GoRushee(area)
 	while(_player.GetNext()){
 		if(_player.name !== me.name && _player.areaid === area){
 			Print(COLOR_2 + "Teleporting to " + _player.name);
-				if(GetDistance(me, _leaderUnit) < 1){
-					NT_GetCloserIntS(_leaderUnit);
-					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
-				}
-				else if(GetDistance(me, _leaderUnit) <= GetDistance(me, _leaderUnit)){
-					NT_GetCloserIntS(_leaderUnit);
-				}
+			TelePlayer();
 			NTM_MakeTP();
 			NTC_PingDelay(300);
 			Say(_msg);
-			return NTC_PingDelay(3000);
-		}break;
+			NTC_PingDelay(3500);			
+			while(_player.areaid === area && _player.mode != 17){
+				TelePlayer();
+				NTM_MakeTP();
+				NTC_PingDelay(300);
+				Say(_msg);
+				NTC_PingDelay(3500);
+			}
+		}
+		break;
 	}
 	return false;
+	function TelePlayer(){		
+		if(GetDistance(me, _leaderUnit) < 2){
+			NT_GetCloserIntS(_leaderUnit);
+			NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
+		}
+		else{
+			NT_GetCloserIntS(_leaderUnit);
+		}
+		return false;
+	}
 }
 function NTR_Heal()
 { 
@@ -1242,13 +1254,13 @@ function NTR_ClearRushee(area)
 	
 	while(_player.GetNext()){
 		if(_player.name !== me.name && _player.areaid === area){
-				if(GetDistance(me, _leaderUnit) < 1){
-					NT_GetCloserIntS(_leaderUnit);
-					NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
-				}
-				else if(GetDistance(me, _leaderUnit) <= GetDistance(me, _leaderUnit)){
-					NT_GetCloserIntS(_leaderUnit);
-				}
+			if(GetDistance(me, _leaderUnit) < 1){
+				NT_GetCloserIntS(_leaderUnit);
+				NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
+			}
+			else{
+				NT_GetCloserIntS(_leaderUnit);
+			}
 			return NTA_ClearPosition(10);
 		}
 		break;
