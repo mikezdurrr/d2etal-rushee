@@ -64,4 +64,8 @@ function chat(msg, type)
 			}
 		}
 	}
+    else if(type == 4 && (msg.indexOf("weaken") != -1) && (msg.indexOf(NTConfig_Leader) != -1)){
+        NTC_Delay(750);
+        ExitGame();
+    }
 }
