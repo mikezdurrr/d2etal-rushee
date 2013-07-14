@@ -9,7 +9,6 @@ function NTR_GoRushee(area)
 {	
 	area = me.areaid;
 	var _player = GetPlayerUnit();
-	var _leaderUnit = GetLeaderUnit(_player.name);
 	var _msg;
 	
 	if(me.areaid == 37){
@@ -46,13 +45,18 @@ function NTR_GoRushee(area)
 		break;
 	}
 	return false;
-	function TelePlayer(){		
+	function TelePlayer(){	
+	
+	var _leaderUnit = GetLeaderUnit(_player.name);
+	
 		if(GetDistance(me, _leaderUnit) < 2){
 			NT_GetCloserIntS(_leaderUnit);
-			NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
+			return NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
 		}
 		else{
-			NT_GetCloserIntS(_leaderUnit);
+			if(GetDistance(me, _leaderUnit) <= GetDistance(me, _leaderUnit) || GetDistance(me, _leaderUnit) >= GetDistance(me, _leaderUnit)){
+				return NT_GetCloserIntS(_leaderUnit);
+			}
 		}
 		return false;
 	}
