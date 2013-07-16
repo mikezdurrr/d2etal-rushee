@@ -20,6 +20,7 @@ function NTMain()
 	NTR_CheckLocation();
 	
 	while(1){
+		NTR_HPCheck();
 		if(me.areaid == 1){NTR_Heal();}
 		if(me.hp < 1){NTR_Death();}		
 		if(me.GetQuest(6, 12) && me.areaid == 1){NTR_GoEast();}
@@ -57,11 +58,12 @@ var i;
 						break;
 
                     case "Andariel is dead!" :
-						if(me.areaid == 37){
-							NTC_Delay(200);
-							NTR_TakePortal();
-						}
-						NTR_GoEast();
+						if(me.mode != 17)
+							if(me.areaid == 37){
+								NTC_Delay(200);
+								NTR_TakePortal();
+							}
+							NTR_GoEast();
 						break;  
                 }
             }

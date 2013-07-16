@@ -28,6 +28,7 @@ function NTMain(){
 	NTR_CheckLocation();
 	
 	while(1){
+		NTR_HPCheck();
 		if(me.areaid == 75){NTR_Heal();}
 		if(me.hp < 1){NTR_Death();}		
 		NTC_Delay(250);
@@ -72,11 +73,12 @@ function chat(msg, type)
 						break;
 
 					case "Council is dead!" :
-						NTC_Delay(100);
-						NTR_TakePortal();
-						NTC_PingDelay(500);
-						NTR_GoCain();
-						break;
+						if(me.mode != 17)
+							NTC_Delay(100);
+							NTR_TakePortal();
+							NTC_PingDelay(500);
+							NTR_GoCain();
+							break;
 
 					case "Mephisto up!" :
 						NTC_Delay(100);
@@ -86,15 +88,16 @@ function chat(msg, type)
 						break;
 
 					case "Mephisto is dead!" :
-						if(me.areaid == 102){
-							NTC_Delay(100);
-							NTM_MoveTo(me.areaid, 17590, 8068);
-							NTC_Delay(1500);
-							if(NTM_TakeUnit(NTC_UNIT_OBJECT, 342))
-							NTC_Delay(1500);
-							NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");
-						}
-						break;
+						if(me.mode != 17)
+							if(me.areaid == 102){
+								NTC_Delay(100);
+								NTM_MoveTo(me.areaid, 17590, 8068);
+								NTC_Delay(1500);
+								if(NTM_TakeUnit(NTC_UNIT_OBJECT, 342))
+								NTC_Delay(1500);
+								NTC_SendMsgToScript("NTBotGame.ntj", "SCRIPT_END");
+							}
+							break;
 				}
 			}
 		}

@@ -18,6 +18,7 @@ function NTMain(){
 	NTR_CheckLocation();
 
 	while(1){
+		NTR_HPCheck();
 		if(me.areaid == 109){NTR_Heal();}
 		if(me.hp < 1){NTR_Death();}		
 		NTC_Delay(250);
@@ -58,13 +59,14 @@ function chat(msg, type)
 						break;
 					
 					case "Shenk is dead!" :
-						NTC_Delay(100);
-						if(me.areaid == 110){
-							NTC_PingDelay(500);
-							NTR_TakePortal();
-						}
-						NTC_PingDelay(100);
-						break;
+						if(me.mode != 17)
+							NTC_Delay(100);
+							if(me.areaid == 110){
+								NTC_PingDelay(500);
+								NTR_TakePortal();
+							}
+							NTC_PingDelay(100);
+							break;
 				}
 			}
 		}

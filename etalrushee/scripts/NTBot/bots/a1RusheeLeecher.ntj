@@ -57,11 +57,12 @@ var i;
 						break;
 
                     case "Andariel is dead!" :
-						if(me.areaid == 37){
-							NTC_Delay(200);
-							NTR_TakePortal();
-						}
-						NTR_GoEast();
+						if(me.mode != 17)
+							if(me.areaid == 37){
+								NTC_Delay(200);
+								NTR_TakePortal();
+							}
+							NTR_GoEast();
 						break;  
                 }
             }

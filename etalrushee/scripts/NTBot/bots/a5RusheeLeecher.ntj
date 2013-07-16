@@ -55,11 +55,12 @@ function chat(msg, type)
 						break;
 					
 					case "Shenk is dead!" :
-						NTC_Delay(100);
-						if(me.areaid == 110){
-							NTR_TakePortal();
-						}
-						break;
+						if(me.mode != 17)
+							NTC_Delay(100);
+							if(me.areaid == 110){
+								NTR_TakePortal();
+							}
+							break;
 				}
 			}
 		}

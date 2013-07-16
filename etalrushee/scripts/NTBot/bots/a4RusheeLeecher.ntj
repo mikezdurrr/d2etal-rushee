@@ -41,13 +41,14 @@ function chat(msg, type)
 						break;
 
 					case "Izzy dead!" :
-						NTC_Delay(100);
-						if(me.areaid == 105){
-							NTR_TakePortal();
-							NTC_PingDelay(100);
-							NTR_TalkTyrael();
-						}
-						break;
+						if(me.mode != 17)
+							NTC_Delay(100);
+							if(me.areaid == 105){
+								NTR_TakePortal();
+								NTC_PingDelay(100);
+								NTR_TalkTyrael();
+							}
+							break;
 
 					case "Diablo up!" :
 						NTC_Delay(100);
@@ -60,11 +61,12 @@ function chat(msg, type)
 						break;
 
 					case "Diablo is dead!" :
-						NTC_Delay(100);
-						NTR_TakePortal();
-						NTC_PingDelay(200);
-						NTR_GoTyrael();
-						break;
+						if(me.mode != 17)
+							NTC_Delay(100);
+							NTR_TakePortal();
+							NTC_PingDelay(200);
+							NTR_GoTyrael();
+							break;
 				}
 			}
 		}
