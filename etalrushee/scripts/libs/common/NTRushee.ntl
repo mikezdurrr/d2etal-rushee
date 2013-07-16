@@ -1277,9 +1277,11 @@ function NTR_ClearRushee(area)
 				NTM_MoveTo(_player.areaid,_player.x+1,_player.y, 0);
 			}
 			else{
-				NT_GetCloserIntS(_leaderUnit);
+				if(GetDistance(me, _leaderUnit) <= GetDistance(me, _leaderUnit) || GetDistance(me, _leaderUnit) >= GetDistance(me, _leaderUnit)){
+					return NT_GetCloserIntS(_leaderUnit);
+				}
 			}
-			return NTA_ClearPosition(10);
+			return NTA_ClearPosition(15);
 		}
 		break;
 	}
