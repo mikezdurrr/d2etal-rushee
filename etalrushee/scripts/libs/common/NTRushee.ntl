@@ -89,22 +89,33 @@ function NTR_GoRushee(area)
 }
 function NTR_HPCheck()
 {
+	var c = .8;
+	var checkHP;
+	var CurrentHP;
 	var i = .85;
-	//Going to rewrite this to be in a loop after each lifeChunked set CurrentHP so no spam until lifeChunked again
-	//Been trying a few loops and seems they just continually loop since this function is in a loop already
-	if(!NTC_InTown() && me.hp < me.hpmax*i && !lifeChunked){		
-		lifeChunked = true;
-		NTC_Delay(200);
-		Say("I Need An Adult!");
-		NTC_Delay(500);
-		Say("I Need An Adult!");
-		NTC_Delay(1000);
-		Say("I Need An Adult!");
-		NTC_Delay(1000);
-		Say("I Need An Adult!");
+	//We spam 5 times with 1 sec intervals -- still want to check if attacked again
+	if(!NTC_InTown() && me.hp < me.hpmax*i && !lifeChunked){
+		for(i = 0; i < 10; i++){
+			NTC_PingDelay(1000);
+			Say("I Need An Adult!");
+			i++;
+		}
+		if(i >= 8){
+			lifeChunked = true;
+			CurrentHP = me.hp;
+			checkHP = parseInt(me.hpmax/100*CurrentHP*c);
+			// Print(COLOR_8 + "Current HP = " + CurrentHP);
+			// Print(COLOR_8 + "Checking if drops below " + checkHP);
+		}
+		// if(!NTC_InTown() && CurrentHP < checkHP && lifeChunked){
+			// for(i = 0; i < 10; i++){
+				// NTC_PingDelay(1000);
+				// Say("I Need An Adult!");
+				// i++;
+			// }
+		// }
 		return lifeChunked;
 	}
-	
 }
 function NTR_Heal()
 { 
@@ -722,22 +733,28 @@ function NTR_GetBook()
 	if(!_item){
 		return true;
 	}
-	if(_item.mode != 0 && _havebook.itemloc != 0){
+	for(i = 0 ; i > 100 && _item.mode != 0 && _havebook.itemloc != 0 ; i++){
 		Print(COLOR_5 + "Looking for " + _book + "...");
 		NTR_GrabQuestItem();
-		return false;
 	}
-	if(_item.mode != 0 && _havebook.itemloc != 0){
-		Print(COLOR_5 + "Looking for " + _book + "...");
-		NTR_GrabQuestItem();
-		return false;
-	}
-	if(_item.mode != 0 && _havebook.itemloc != 0){
-		Print(COLOR_5 + "Looking for " + _book + "...");
-		NTR_GrabQuestItem();
-		return false;
-	}
-	else if (_item.mode == 0){
+	
+	// if(_item.mode != 0 && _havebook.itemloc != 0){
+		// Print(COLOR_5 + "Looking for " + _book + "...");
+		// NTR_GrabQuestItem();
+		// return false;
+	// }
+	// if(_item.mode != 0 && _havebook.itemloc != 0){
+		// Print(COLOR_5 + "Looking for " + _book + "...");
+		// NTR_GrabQuestItem();
+		// return false;
+	// }
+	// if(_item.mode != 0 && _havebook.itemloc != 0){
+		// Print(COLOR_5 + "Looking for " + _book + "...");
+		// NTR_GrabQuestItem();
+		// return false;
+	// }
+	
+	if (_item.mode == 0){
 		Print(COLOR_8 + "Picked up Skill Book");
 		NTC_PingDelay(200);
 	}
@@ -860,14 +877,13 @@ function NTR_GetAmmy()
 	function FailSafeAmmy(){
 		var _tomb = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3317)); 
 		//attempts to get the ammy 5 times after that it continues.
-		for(i = 0; i < 10; i++ && (!_ammy || _ammy.mode != 0 || _ammy.mode != 1 && _ammy.mode != 3 || _ammy.mode != 5)){
+		for(i = 5; i > 0; i-- && (!_ammy || _ammy.mode != 0 || _ammy.mode != 1 && _ammy.mode != 3 || _ammy.mode != 5)){
 			NTC_PingDelay(1000);
-			Say("!Ammy bug Attempting to fix");
+			Say("!Ammy bugg " + i + " attempts until skip");
 			NTM_WalkTo(me.x-1, me.y-6);
 			NTR_OpenAmmy();
-			i++;
 		}
-		if(i >=10){Say("Nothing i do works!");}
+		if(i <=1){Say("Nothing i do works!");}
 		//need to add code to send to rushee and rusher to end script if it reaches this point
 	}
 }
@@ -921,17 +937,28 @@ function NTR_GrabQuestItem()
 }
 function NTR_GetStaff()
 {
-	var _staff = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2698));
-	var Staff = "Staff";
-	while(_staff.mode != 0){
-		Print(COLOR_5 + "Looking for the " + Staff + "...");
-		NTC_PingDelay(100);
-		NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _staff);
-	}
-	NTC_PingDelay(100);
-	if(_staff.mode == 0){
-		Print(COLOR_8 + "Picked up the Staff");
+	for (i = 0; i < 20; i++){
+		var _staff = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2698));
+		var Staff = "Staff";
+		if(!_staff){return false;}
+		if (_staff)
+		break;
+	}						
+	for (i = 0; i < 20; i++){
+		if ((i % 5) == 0){
+			if (_staff.mode == 3 || _staff.mode == 5){
+				if (NTC_ClearCursor())
+				Print(COLOR_5 + "Looking for the " + Staff + "...");
+				NTC_PingDelay(300);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _staff);
+			}
+		}
 		NTC_PingDelay(200);
+		if (_staff.mode != 3 && _staff.mode != 5){
+			Print(COLOR_8 + "Picked up the Staff");
+			NTC_PingDelay(300);
+			break;
+		}
 	}
 	return false;
 }
