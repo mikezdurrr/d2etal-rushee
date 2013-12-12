@@ -1,5 +1,5 @@
 /* 
-ReWrite by goodstuff for Automated Rushee/Rusher. 
+Written by goodstuff for Automated Rushee/Rusher. 
 
 Any code not written by myself is listed in the credits in my thread.
 
@@ -499,7 +499,7 @@ function NTR_GoAkara()
 				NTC_CancelOut(0);
 			}
 		}
-		NTR_OpenQuest();
+		NTR_CheckLocation();
 	}
 	return false;
 }
@@ -666,12 +666,15 @@ function NTR_TalkTyraelSpirit()
 }
 function NTR_GoTyraelSpirit()
 {
-	NTM_WalkTo(22619, 15709);
-	NTM_MoveTo(me.areaid, 22610, 15707);
-	NTM_MoveTo(me.areaid, 22581, 15705);
-	NTM_MoveTo(me.areaid, 22579, 15660);
-	NTM_MoveTo(me.areaid, 22576, 15638);
-	NTM_MoveTo(me.areaid, 22577, 15593);
+	var mx = [22610,22581,22579,22576,22577];
+	var my = [15707,15705,15660,15638,15593];
+	
+	if(!NTM_WalkTo(22619, 15709)){ return false; }
+	
+	for(var i = 0 ; i < mx.length ; i+=1){
+		NTM_MoveTo(me.areaid, mx[i], my[i]);
+	}	
+	
 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
 	if(!_npc){return false;}
 	if(_npc){
@@ -734,9 +737,10 @@ function NTR_TalkAnya()
 		Print(COLOR_2 + "Heading to Anya");
 		NTM_UsePortal("BluePortal", 114, NTConfig_Leader);
 	}
-	while(me.areaid == 114){
+	if(me.areaid == 114){
 		NTC_PingDelay(500);
 		_anya = NTC_FindUnit(NTC_UNIT_OBJECT, 558, 5);
+		if(!_anya){ return false; }
 		if(_anya){
 			NTM_MoveTo(_anya.areaid,_anya.x+2, _anya.y);  
 			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _anya); 
@@ -770,16 +774,17 @@ function NTR_TalkMalah()
 function NTR_GetBook()
 {
 	var _item = NTC_FindUnit(NTC_UNIT_ITEM, 552);
-	var _havebook = me.GetItems(552);
 	var _book = "Book of Skill";
-	if(!_item){
-		return true;
-	}
+	
+	if(!_item){ return false; }
 	if(_item){
-		for(i = 0 ; i < 100 && _item.mode != 0 && _havebook.itemloc != 0 ; i++){
-			Print(COLOR_5 + "Looking for " + _book + "...");
-			NTR_GrabQuestItem();
-			NTC_Delay(300);
+		for(var i = 0 ; i < 100 && _item.mode != 0; i++){
+			if(_item.mode != 0){
+				Print(COLOR_5 + "Looking for " + _book + "...");
+				NTM_MoveTo(_item.areaid,_item.x,_item.y);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _item);
+				NTC_Delay(300);
+			}
 			if (_item.mode == 0){
 				Print(COLOR_8 + "Picked up Skill Book");
 				NTC_PingDelay(200);
@@ -870,6 +875,7 @@ function NTR_UseScrollOfTownPortal()
 function NTR_OpenAmmy()
 {
 	var _tomb = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3317)); 
+	if(!_tomb){ return false; }
 	if(_tomb){  
 		if(GetDistance(me, _tomb) > 2){
 			NTM_MoveTo(_tomb.areaid,_tomb.x+2, _tomb.y);   
@@ -881,31 +887,29 @@ function NTR_OpenAmmy()
 }
 function NTR_GetAmmy()
 {
-	for (i = 0; i < 20; i++){
-		var _ammy = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2697));
-		if(!_ammy){return FailSafeAmmy();}
-		if (_ammy)
-		break;
-	}						
-	for (i = 0; i < 20; i++){
-		if ((i % 5) == 0){
-			if (_ammy.mode == 3 || _ammy.mode == 5){
-				if (NTC_ClearCursor())
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _ammy);
+	var _ammy = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2697));
+	if(!_ammy){return FailSafeAmmy();}
+	if (_ammy){			
+		for (i = 0; i < 20; i++){
+			if ((i % 5) == 0){
+				if (_ammy.mode == 3 || _ammy.mode == 5){
+					if (NTC_ClearCursor())
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _ammy);
+				}
 			}
-		}
-		NTC_PingDelay(100);
-		if (_ammy.mode != 3 && _ammy.mode != 5){
-			Print(COLOR_8 + "Picked up the Ammy");
-			NTC_PingDelay(200);
-			break;
+			NTC_PingDelay(100);
+			if (_ammy.mode != 3 && _ammy.mode != 5){
+				Print(COLOR_8 + "Picked up the Ammy");
+				NTC_PingDelay(200);
+				break;
+			}
 		}
 	}
 	return false;
 	function FailSafeAmmy(){
 		var _tomb = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3317)); 
 		//attempts to get the ammy 5 times after that it continues.
-		for(i = 5; i > 0; i-- && (!_ammy || _ammy.mode != 0 || _ammy.mode != 1 && _ammy.mode != 3 || _ammy.mode != 5)){
+		for(i = 5; i > 0 && (!_ammy || _ammy.mode != 0 || _ammy.mode != 1 && _ammy.mode != 3 || _ammy.mode != 5) ; i--){
 			NTC_PingDelay(1000);
 			Say("!Ammy bugg " + i + " attempts until skip");
 			NTM_WalkTo(me.x-1, me.y-6);
@@ -918,75 +922,47 @@ function NTR_GetAmmy()
 function NTR_GetCube()
 {
 	var _item = NTC_FindUnit(NTC_UNIT_ITEM, 549);
-	var _havecube = me.GetItems(549);
 	var _cube = "Horadric Cube";
+	
 	if(!_item){return false;}
 	if(_item){
-		for(i = 0 ; i < 11 && _item.mode != 0 && _havecube[0].itemloc != 0 ; i++){	
-			Print(COLOR_5 + "Looking for " + _cube + "...");
-			NTR_GrabQuestItem();
-			NTC_Delay(300);
+		for(var i = 0 ; i < 100 && _item.mode != 0; i++){
+			if(_item.mode != 0){
+				Print(COLOR_5 + "Looking for " + _cube + "...");
+				NTM_MoveTo(_item.areaid,_item.x,_item.y);
+				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _item);
+				NTC_Delay(300);
+			}
 			if (_item.mode == 0){
 				Print(COLOR_8 + "Picked up the " + _cube + "!");
 				NTC_PingDelay(200);
 				break;
 			}
-		}
-	}	
-	return false;
-}
-function NTR_GrabQuestItem()
-{
-	var _cube = me.GetItems(549);
-	var _book = me.GetItems(552);
-	var _item;
-	if(me.areaid == 49){
-		_item = NTC_FindUnit(NTC_UNIT_ITEM, 552);
+		}		
 	}
-	if(me.areaid == 60){
-		_item = NTC_FindUnit(NTC_UNIT_ITEM, 549);
-	}
-	if(!_item){
-		return true;
-	}
-	else if(_item){
-		NTC_Delay(100);
-		for(var i = 0 ; i < 5 && _item[0].itemloc != 0 ; i++){
-			NTC_Delay(300);
-			NTM_MoveTo(_item.areaid,_item.x,_item.y);
-			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _item);
-			if(_item.mode == 0 || _item[0].itemloc == 0 )
-				break;
-		}
-		
-		NTC_Delay(300);
-	}
-	
 	return false;
 }
 function NTR_GetStaff()
 {
-	for (i = 0; i < 20; i++){
-		var _staff = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2698));
-		var Staff = "Staff";
-		if(!_staff){return false;}
-		if (_staff)
-		break;
-	}						
-	for (i = 0; i < 20; i++){
-		if ((i % 5) == 0){
-			if (_staff.mode == 3 || _staff.mode == 5){
-				if (NTC_ClearCursor())
-				Print(COLOR_5 + "Looking for the " + Staff + "...");
-				NTC_PingDelay(300);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _staff);
+	var _staff = NTC_FindUnit(NTC_UNIT_ITEM, GetLocaleString(2698));
+	var Staff = "Staff";
+	if(!_staff){return false;}
+	if (_staff){
+		for (i = 0; i < 20; i++){
+			if ((i % 5) == 0){
+				if (_staff.mode == 3 || _staff.mode == 5){
+					if (NTC_ClearCursor())
+					Print(COLOR_5 + "Looking for the " + Staff + "...");
+					NTC_PingDelay(300);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _staff);
+				}
 			}
-		}
-		NTC_PingDelay(200);
-		if (_staff.mode != 3 && _staff.mode != 5){
-			Print(COLOR_8 + "Picked up the Staff");
-			NTC_PingDelay(300);
-			break;
+			NTC_PingDelay(200);
+			if (_staff.mode != 3 && _staff.mode != 5){
+				Print(COLOR_8 + "Picked up the Staff");
+				NTC_PingDelay(300);
+				break;
+			}
 		}
 	}
 	return false;
@@ -1188,6 +1164,7 @@ function NTR_ReadScroll()
 function NTR_OpenAltar()
 {
 	var _altar = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(2229));
+	if(_altar){ return false; }
 	if(_altar){
 		if(GetDistance(me, _altar) > 2){
             NTM_MoveTo(_altar.areaid,_altar.x+2, _altar.y);   
@@ -1200,32 +1177,30 @@ function NTR_OpenAltar()
 }
 function NTR_GetTome()
 {	
-	for (i = 0; i < 20; i++){
 	var _tome = NTC_FindUnit(NTC_UNIT_ITEM, 548);
 	if(!_tome){return FailSafeTome();}
-	if (_tome)
-	break;
-	}						
-	for (i = 0; i < 20; i++){
-		if ((i % 5) == 0){
-			if (_tome.mode == 3 || _tome.mode == 5){
-				if (NTC_ClearCursor())
-				NTC_PingDelay(100);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _tome);
+	if (_tome){				
+		for (i = 0; i < 20; i++){
+			if ((i % 5) == 0){
+				if (_tome.mode == 3 || _tome.mode == 5){
+					if (NTC_ClearCursor())
+					NTC_PingDelay(100);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _tome);
+				}
 			}
-		}
-		NTC_PingDelay(100);
-		if (_tome.mode != 3 && _tome.mode != 5){
-			Print(COLOR_8 + "Picked up Tome!");
-			NTC_PingDelay(200);
-			break;
+			NTC_PingDelay(100);
+			if (_tome.mode != 3 && _tome.mode != 5){
+				Print(COLOR_8 + "Picked up Tome!");
+				NTC_PingDelay(200);
+				break;
+			}
 		}
 	}
 	return false;	
 	function FailSafeTome(){
 		var altarcount = 0;
 		//attempts to get the tome 3 times after that it continues.
-		for(i = 1; i < 6; i++ && (!_tome || _tome.mode != 0 || _tome.mode != 1 && _tome.mode != 3 || _tome.mode != 5)){
+		for(i = 1; i < 6 && (!_tome || _tome.mode != 0 || _tome.mode != 1 && _tome.mode != 3 || _tome.mode != 5) ; i++){
 			NTC_PingDelay(1000);
 			Say("!Attempt # " + i);
 			NTM_WalkTo(me.x-1, me.y-6);			
@@ -1360,12 +1335,12 @@ function NTR_SmashNdatShit()
 function NTR_SSCheck()
 {
 	var i;
-	var _soulStone = me.GetItems(551);		
-	for(i = 0 ; i < _soulStone.length ; i++){
+	var _soulStone = me.GetItems(551);
+	for(var i = 0 ; i < _soulStone.length ; i++){
 		if(_soulStone[0].itemloc == 0){
 			Print(COLOR_5 + "Soulstone in Inventory");
 		}
-		else{
+		else if(_soulStone[0].itemloc != 0){
 			Print(COLOR_1 + "Soulstone Missing!");
 			NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_11 + "Soulstone Missing");		
 			NTR_GoCain();
@@ -1426,9 +1401,7 @@ function NTR_ClearRushee(area)
 }
 function NTR_CheckLocation()
 {
-	if(!NTTM_TownMove("portalspot")){
-		NTC_SendMsgToScript("NTBotGame.ntj", "NTTM_TownMove()");
-	}
+	if(!NTTM_TownMove("portalspot")){ return false; }
 	NTC_CancelOut(0);
 	NTC_PingDelay(100);	
 	return false;
