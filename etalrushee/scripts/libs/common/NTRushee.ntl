@@ -117,10 +117,11 @@ function NTR_HPCheck()
 		return lifeChunked;
 	}
 }
-function NTR_Heal()
+function NTR_Heal(area)
 { 
-var _area;
-var i = .85;
+	area = me.areaid;
+	var _area;
+	var i = .85;
 	if(me.hp < me.hpmax*i){ //if below 85% max health visit healer
 		if(me.areaid == 1){
 			_area = "Akara";
@@ -140,88 +141,93 @@ var i = .85;
 			
 		Print(COLOR_5 + "Checking Health..");
 		NTC_Delay(200);
-		Print(COLOR_5 + "Current Health " + "( " + COLOR_1 + me.hp + COLOR_5 + " )");
-		NTC_Delay(200);
-		Print(COLOR_11 + "Visiting Healer " + _area);
+		Print(COLOR_5 + "Current Health " + "( " + COLOR_1 + me.hp + COLOR_5 + " ) " + COLOR_11 + "Visiting Healer : " + _area);
 		
-		if(me.areaid == 1){
-			NTTM_TownMove("akara");   
-			_npc = NTC_FindUnit(NTC_UNIT_NPC, 148, 5);      
-			if(_npc){
-				NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-				if(GetDistance(me, _npc) < 15){
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelMenus();
-					NTC_Delay(500);
-					NTC_CancelOut(0);
+		switch(area)
+		{		
+			case 1 :
+				NTTM_TownMove("akara");   
+				_npc = NTC_FindUnit(NTC_UNIT_NPC, 148, 5);      
+				if(_npc){
+					NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+					if(GetDistance(me, _npc) < 15){
+						NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+						NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+						NTC_CancelMenus();
+						NTC_Delay(500);
+						NTC_CancelOut(0);
+					}
 				}
-			}
-		}
-	
-		if(me.areaid == 40){
-			NTTM_TownMove("fara");   
-			_npc = NTC_FindUnit(NTC_UNIT_NPC, 178, 5);      
-			if(_npc){
-				NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-				if(GetDistance(me, _npc) < 15){
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelMenus();
-					NTC_Delay(500);
-					NTC_CancelOut(0);
+				NTR_CheckLocation();
+				break;		
+			case 40 :
+				NTTM_TownMove("fara");   
+				_npc = NTC_FindUnit(NTC_UNIT_NPC, 178, 5);      
+				if(_npc){
+					NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+					if(GetDistance(me, _npc) < 15){
+						NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+						NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+						NTC_CancelMenus();
+						NTC_Delay(500);
+						NTC_CancelOut(0);
+					}
 				}
-			}
-		}
-		if(me.areaid == 75){
-			NTTM_TownMove("ormus");   
-			_npc = NTC_FindUnit(NTC_UNIT_NPC, 255, 5);      
-			if(_npc){
-				NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-				if(GetDistance(me, _npc) < 15){
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelMenus();
-					NTC_Delay(500);
-					NTC_CancelOut(0);
+				NTR_CheckLocation();
+				break;
+			case 75 :
+				NTTM_TownMove("ormus");   
+				_npc = NTC_FindUnit(NTC_UNIT_NPC, 255, 5);      
+				if(_npc){
+					NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+					if(GetDistance(me, _npc) < 15){
+						NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+						NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+						NTC_CancelMenus();
+						NTC_Delay(500);
+						NTC_CancelOut(0);
+					}
 				}
-			}
-		}
-		if(me.areaid == 103){
-			NTTM_TownMove("jamella");   
-			_npc = NTC_FindUnit(NTC_UNIT_NPC, 405, 5);      
-			if(_npc){
-				NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-				if(GetDistance(me, _npc) < 15){
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelMenus();
-					NTC_Delay(500);
-					NTC_CancelOut(0);
+				NTR_CheckLocation();
+				break;
+			case 103 :
+				NTTM_TownMove("jamella");   
+				_npc = NTC_FindUnit(NTC_UNIT_NPC, 405, 5);      
+				if(_npc){
+					NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+					if(GetDistance(me, _npc) < 15){
+						NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+						NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+						NTC_CancelMenus();
+						NTC_Delay(500);
+						NTC_CancelOut(0);
+					}
 				}
-			}
-		}
-		if(me.areaid == 109){
-			NTTM_TownMove("malah");   
-			_npc = NTC_FindUnit(NTC_UNIT_NPC, 513, 5);      
-			if(_npc){
-				NTM_MoveTo(me.areaid, _npc.x, _npc.y);
-				if(GetDistance(me, _npc) < 15){
-					NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
-					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
-					NTC_CancelMenus();
-					NTC_Delay(500);
-					NTC_CancelOut(0);
+				NTR_CheckLocation();
+				break;
+			case 109 :
+				NTTM_TownMove("malah");   
+				_npc = NTC_FindUnit(NTC_UNIT_NPC, 513, 5);      
+				if(_npc){
+					NTM_MoveTo(me.areaid, _npc.x, _npc.y);
+					if(GetDistance(me, _npc) < 15){
+						NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
+						NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _npc);
+						NTC_CancelMenus();
+						NTC_Delay(500);
+						NTC_CancelOut(0);
+					}
 				}
-			}
+				NTR_CheckLocation();
+				break;
 		}
-		NTR_CheckLocation();
-	}
 	return false;
+	}
 }
 function NTR_Death(area)
 {	
 	var _area = me.areaid;
+	
 	if(me.areaid == 8){
 		_area = "Den of Evil";
 	}
@@ -237,6 +243,9 @@ function NTR_Death(area)
 	if(me.areaid == 83){
 		_area = "Travincal";
 	}
+	if(me.areaid == 94){
+		_area = "Ruined Temple";
+	}
 	if(me.areaid == 102){
 		_area = "Mephisto";
 	}
@@ -249,9 +258,9 @@ function NTR_Death(area)
 	if(me.areaid == 110){
 		_area = "Shenk";
 	}			
-	var area = me.areaid;
+	area = me.areaid;
 	if(me.mode == 17 && me.hp < 1){
-		switch(me.areaid){
+		switch(area){
 			case 8 :
 				NTC_CheckPlayer(NTConfig_Leader);
 				if(me.areaid == 8 && _leaderareaid != 8){
@@ -266,6 +275,7 @@ function NTR_Death(area)
 						NTC_CancelOut(1);
 					}
 					NTC_Delay(800);
+					Say("I died I need a sec");
 					NTR_GoAkara();
 				}
 				break;
@@ -283,6 +293,7 @@ function NTR_Death(area)
 						NTC_CancelOut(1);
 					}
 					NTC_Delay(800);
+					Say("I died I need a sec");
 					NTR_GoEast();
 				}
 				break;
@@ -299,20 +310,8 @@ function NTR_Death(area)
 						NTC_CancelOut(1);
 					}
 					NTC_Delay(800);
+					Say("I died I need a sec");
 					NTR_CheckLocation();
-					NTC_Delay(800);
-					
-					NTM_UsePortal("BluePortal", 49, NTConfig_Leader);
-						
-					if(me.areaid == 49){
-						NTC_PingDelay(300);
-						NTR_GetBook();
-						NTC_PingDelay(500);
-						NTR_TakePortal();
-						NTC_PingDelay(500);
-						NTR_ReadBook();
-						NTR_GoCain();
-					}
 				}
 				break;
 			case 74 :
@@ -329,6 +328,7 @@ function NTR_Death(area)
 						NTC_CancelOut(1);
 					}
 					NTC_Delay(800);
+					Say("I died I need a sec");
 					NTR_CheckLocation();
 					NTC_Delay(1000);
 					NTR_GoCain();
@@ -348,9 +348,30 @@ function NTR_Death(area)
 						NTC_CancelOut(1);
 					}
 					NTC_Delay(800);
+					Say("I died I need a sec");
 					NTR_CheckLocation();
 					NTC_Delay(1000);
 					NTR_GoCain();
+				}
+				break;
+			case 94 :
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid == 94 && _leaderareaid != 94){
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die at " + COLOR_5 + _area);
+					NTC_Delay(300);
+					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death at " + COLOR_5 + _area);
+					NTC_Delay(800);
+					me.Cancel(0);
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);
+					}
+					NTC_Delay(800);
+					Say("I died I need a sec");
+					NTR_CheckLocation();
+					NTC_Delay(500);
+					NTR_GoAlkor();				
 				}
 				break;
 			case 102 : 
@@ -367,6 +388,7 @@ function NTR_Death(area)
 						NTC_CancelOut(1);
 					}
 					NTC_Delay(800);
+					Say("I died I need a sec");
 					NTR_CheckLocation();
 					NTC_Delay(1000);
 					NTM_UsePortal("BluePortal", 102, NTConfig_Leader);
@@ -428,10 +450,29 @@ function NTR_Death(area)
 					if(GetUIState(0x09, true)){
 						NTC_CancelOut(1);
 					}
-					NTC_PingDelay(1000);
+					NTC_Delay(1000);
+				}
+				break;
+			default :
+				NTC_CheckPlayer(NTConfig_Leader);
+				if(me.areaid !== _leaderareaid){
+					NTC_Delay(200);
+					Print(COLOR_1 + "Rusher let me die");
+					NTC_Delay(300);
+					NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_1 + "Death Occurred");
+					NTC_Delay(800);
+					me.Cancel(0);
+					NTC_Delay(300);
+					if(GetUIState(0x09, true)){
+						NTC_CancelOut(1);
+					}
+					NTC_Delay(800);
+					Say("I died I need a sec");
+					NTR_CheckLocation();
 				}
 				break;
 		}
+		return true;
 	}
 }
 function NTR_OpenQuest()
@@ -632,6 +673,7 @@ function NTR_GoTyraelSpirit()
 	NTM_MoveTo(me.areaid, 22576, 15638);
 	NTM_MoveTo(me.areaid, 22577, 15593);
 	_npc = NTC_FindUnit(NTC_UNIT_NPC, GetLocaleString(1013), 5);
+	if(!_npc){return false;}
 	if(_npc){
 		if(GetDistance(me, _npc) < 1)
 			NTM_MoveTo(_npc.areaid, _npc.x, _npc.y);
@@ -733,32 +775,18 @@ function NTR_GetBook()
 	if(!_item){
 		return true;
 	}
-	for(i = 0 ; i > 100 && _item.mode != 0 && _havebook.itemloc != 0 ; i++){
-		Print(COLOR_5 + "Looking for " + _book + "...");
-		NTR_GrabQuestItem();
+	if(_item){
+		for(i = 0 ; i < 100 && _item.mode != 0 && _havebook.itemloc != 0 ; i++){
+			Print(COLOR_5 + "Looking for " + _book + "...");
+			NTR_GrabQuestItem();
+			NTC_Delay(300);
+			if (_item.mode == 0){
+				Print(COLOR_8 + "Picked up Skill Book");
+				NTC_PingDelay(200);
+				break;
+			}
+		}		
 	}
-	
-	// if(_item.mode != 0 && _havebook.itemloc != 0){
-		// Print(COLOR_5 + "Looking for " + _book + "...");
-		// NTR_GrabQuestItem();
-		// return false;
-	// }
-	// if(_item.mode != 0 && _havebook.itemloc != 0){
-		// Print(COLOR_5 + "Looking for " + _book + "...");
-		// NTR_GrabQuestItem();
-		// return false;
-	// }
-	// if(_item.mode != 0 && _havebook.itemloc != 0){
-		// Print(COLOR_5 + "Looking for " + _book + "...");
-		// NTR_GrabQuestItem();
-		// return false;
-	// }
-	
-	if (_item.mode == 0){
-		Print(COLOR_8 + "Picked up Skill Book");
-		NTC_PingDelay(200);
-	}
-	
 	return false;
 }
 function NTR_ReadBook()
@@ -892,23 +920,18 @@ function NTR_GetCube()
 	var _item = NTC_FindUnit(NTC_UNIT_ITEM, 549);
 	var _havecube = me.GetItems(549);
 	var _cube = "Horadric Cube";
-	while(_item.mode != 0 && _havecube.itemloc != 0){	
-		Print(COLOR_5 + "Looking for " + _cube + "...");
-		NTR_GrabQuestItem();
-		if(_havecube.itemloc != 0){
+	if(!_item){return false;}
+	if(_item){
+		for(i = 0 ; i < 11 && _item.mode != 0 && _havecube[0].itemloc != 0 ; i++){	
+			Print(COLOR_5 + "Looking for " + _cube + "...");
 			NTR_GrabQuestItem();
+			NTC_Delay(300);
+			if (_item.mode == 0){
+				Print(COLOR_8 + "Picked up the " + _cube + "!");
+				NTC_PingDelay(200);
+				break;
+			}
 		}
-		if(_havecube.itemloc != 0){
-			NTR_GrabQuestItem();
-		}
-		if(_havecube.itemloc != 0){
-			NTR_GrabQuestItem();
-		}
-		break;
-	}		
-	if (_item.mode == 0){
-		Print(COLOR_8 + "Picked up the Cube");
-		NTC_PingDelay(200);
 	}	
 	return false;
 }
@@ -926,13 +949,19 @@ function NTR_GrabQuestItem()
 	if(!_item){
 		return true;
 	}
-	NTC_PingDelay(100);
-	NTM_MoveTo(_item.areaid,_item.x,_item.y);
-	NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _item);
-	NTC_PingDelay(300);
-	NTM_MoveTo(_item.areaid,_item.x,_item.y);
-	NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _item);
-	NTC_PingDelay(300);
+	else if(_item){
+		NTC_Delay(100);
+		for(var i = 0 ; i < 5 && _item[0].itemloc != 0 ; i++){
+			NTC_Delay(300);
+			NTM_MoveTo(_item.areaid,_item.x,_item.y);
+			NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _item);
+			if(_item.mode == 0 || _item[0].itemloc == 0 )
+				break;
+		}
+		
+		NTC_Delay(300);
+	}
+	
 	return false;
 }
 function NTR_GetStaff()
@@ -1308,24 +1337,21 @@ function NTR_SmashNdatShit()
 	if(me.areaid == 107){
 		var _forge = NTC_FindUnit(NTC_UNIT_OBJECT, GetLocaleString(3318));
 		if(!_forge){
-			return;
+			return false;
 		}
 		if(_forge){
 			if(GetDistance(me, _forge) > 5){
 				NTM_MoveTo(_forge.areaid,_forge.x+3, _forge.y);   
-				NTC_PingDelay(150);
+				NTC_Delay(150);
+				
 				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);
-				NTC_PingDelay(3000);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
-				NTC_PingDelay(150);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
-				NTC_PingDelay(150);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
-				NTC_PingDelay(200);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
-				NTC_PingDelay(150);
-				NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
-				NTC_PingDelay(2500);
+				NTC_Delay(3000);
+				
+				for(var i = 0 ; i < 5 && _forge ; i++){
+					NTC_Delay(150);
+					NTC_DoClick(NTC_CLICK_LDOWN, NTC_SHIFT_NONE, _forge);  
+				}
+				NTC_Delay(2500);
 			}
 		}
 	}
@@ -1336,13 +1362,13 @@ function NTR_SSCheck()
 	var i;
 	var _soulStone = me.GetItems(551);		
 	for(i = 0 ; i < _soulStone.length ; i++){
-		if(_soulStone.length == 0){
+		if(_soulStone[0].itemloc == 0){
+			Print(COLOR_5 + "Soulstone in Inventory");
+		}
+		else{
 			Print(COLOR_1 + "Soulstone Missing!");
 			NTC_SendLogToOOG(NTC_LOG_COMMON, me.charname + ": " + COLOR_11 + "Soulstone Missing");		
 			NTR_GoCain();
-		}
-		if(_soulStone[0].itemloc == 0){
-			Print(COLOR_5 + "Soulstone in Inventory");
 		}
 	}
 	return false;
@@ -1466,10 +1492,11 @@ function NTR_ClearLevel(pickitem, safelevel) {
 	while (_rooms.length > 0) {
 		_mindistance = 100000;
 		
-		if(me.GetQuest(1, 4)){
+		if(me.GetQuest(1, 4) || me.GetQuest(1,12) && me.GetQuest(1,0)){
 			NTR_LeaveDen();
+			break;
 		}
-		for (i = 0; i < _rooms.length; i++) {
+		for (i = 0; i < _rooms.length && !me.GetQuest(1,4) ; i++) {
 			_distance = GetDistance(me.x, me.y, _rooms[i][0], _rooms[i][1]);
 
 			if (_distance < _mindistance) {
@@ -1520,6 +1547,9 @@ function NTR_ClearDen(pickitem, safelevel) {
 		if (NTM_MoveTo(me.areaid, _rooms[_minindex][0], _rooms[_minindex][1], 1, false, false)) {
 			if (!NTA_ClearRoom(pickitem, safelevel)) { return false; }
 				
+			if(NTConfig_IdInField){
+				NT_FieldID();
+			} 
 			NTP_DoPrecast(false);
 		}
 		_rooms.splice(_minindex, 1);
@@ -1535,23 +1565,16 @@ function NTR_Den()
 }
 function NTR_LeaveDen()
 {
-	if(me.GetQuest(1, 4) && me.areaid == 8){
-		Print(COLOR_2 + "Den Quest Complete");
-		NTC_PingDelay(300);
-		NTR_UseScrollOfTownPortal();
+	if(me.GetQuest(1, 4) && me.GetQuest(1, 1) && me.areaid == 8){
+		Print(C_DARK_GREEN + "Den Quest Complete");
+		NTC_Delay(300);
+		if(!NTR_UseScrollOfTownPortal()){
+			Say("Cant TownPortal");
+		}
 		NTR_TakePortal();
 	}
-	if(me.GetQuest(1, 4) && me.areaid == 1){
-		NTR_OpenQuest();
-		NTR_GoAkara();
-		NTC_PingDelay(300);
-		NTR_GoAkara();
-	}
-	if(me.GetQuest(1, 12) && me.areaid == 1){
-		NTR_CheckLocation();
-		return true;
-	}		
-	return false;
+	if(me.areaid === 1)
+		return NTR_GoAkara();
 }
 function GetLeaderUnit(name){
 	var _unit = NTC_FindUnit(NTC_UNIT_PLAYER);	
